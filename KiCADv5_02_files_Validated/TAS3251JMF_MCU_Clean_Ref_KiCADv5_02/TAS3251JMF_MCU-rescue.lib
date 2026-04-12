@@ -1,0 +1,39 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# LM5010AMH-SamacSys_Parts
+#
+DEF LM5010AMH-SamacSys_Parts IC 0 30 Y Y 1 F N
+F0 "IC" 1450 300 50 H V L CNN
+F1 "LM5010AMH-SamacSys_Parts" 1450 200 50 H V L CNN
+F2 "SOP65P640X110-15N" 1450 100 50 H I L CNN
+F3 "http://www.ti.com/lit/ds/symlink/lm5010a.pdf" 1450 0 50 H I L CNN
+F4 "LM5010AMH, Switching Regulator, Buck Controller, 1A, Adjustable, 6.6  7.4 V, 1000 kHz, 14-Pin TSSOP EP" 1450 -100 50 H I L CNN "Description"
+F5 "1.1" 1450 -200 50 H I L CNN "Height"
+F6 "Texas Instruments" 1450 -300 50 H I L CNN "Manufacturer_Name"
+F7 "LM5010AMH" 1450 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "926-LM5010AMH" 1450 -500 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.com/Search/Refine.aspx?Keyword=926-LM5010AMH" 1450 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "6553948P" 1450 -700 50 H I L CNN "RS Part Number"
+F11 "http://uk.rs-online.com/web/p/products/6553948P" 1450 -800 50 H I L CNN "RS Price/Stock"
+DRAW
+P 5 0 1 6 200 100 1400 100 1400 -900 200 -900 200 100 N
+X NC 1 0 0 200 R 50 50 0 0 B
+X SOFTSTART 10 1600 -400 200 L 50 50 0 0 B
+X SD/RON 11 1600 -300 200 L 50 50 0 0 B
+X VCC 12 1600 -200 200 L 50 50 0 0 B
+X VIN 13 1600 -100 200 L 50 50 0 0 B
+X NC_3 14 1600 0 200 L 50 50 0 0 B
+X EP 15 800 -1100 200 U 50 50 0 0 B
+X SWITCH 2 0 -100 200 R 50 50 0 0 B
+X BST 3 0 -200 200 R 50 50 0 0 B
+X ISENSE 4 0 -300 200 R 50 50 0 0 B
+X SGND 5 0 -400 200 R 50 50 0 0 B
+X RTN 6 0 -500 200 R 50 50 0 0 B
+X NC_1 7 0 -600 200 R 50 50 0 0 B
+X NC_2 8 1600 -600 200 L 50 50 0 0 B
+X FEEDBACK 9 1600 -500 200 L 50 50 0 0 B
+ENDDRAW
+ENDDEF
+#
+#End Library

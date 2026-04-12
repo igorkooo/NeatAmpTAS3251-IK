@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name TAS3251)(type KiCad)(uri ${KIPRJMOD}/TAS3251.pretty)(options "")(descr ""))
+)

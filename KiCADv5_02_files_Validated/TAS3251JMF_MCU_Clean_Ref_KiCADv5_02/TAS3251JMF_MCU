@@ -1,0 +1,165 @@
+Source:	C:\Users\JMF\Dropbox\Hifi\TAS3251amp\TAS3251JMF_MCU\TAS3251JMF_MCU.sch
+Date:	20/01/2020 22:20:43
+Tool:	Eeschema (5.0.2)-1
+Component Count:	160
+Ref	Value	Part	Footprint	Description	Vendor
+C1	10µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C2	0.1µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C3	0.1µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C4	10µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C5	0.1µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:C0603C104K5RACTU	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C6	0.1µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:C0603C104K5RACTU	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C7	1µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71C105KA12D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C8	1µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71C105KA12D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C9	2.2µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:C1005X5R1A225K050BC	Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+C10	0.1µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C11	2.2µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR72A105KA01L	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder		
+C12	2.2µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR72A105KA01L	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder		
+C13	2.2µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR72A105KA01L	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder		
+C14	2.2µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR72A105KA01L	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder		
+C15	2400µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:EEU-FC1H222	Capacitor_THT:CP_Radial_D18.0mm_P7.50mm		
+C16	2400µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:EEU-FC1H222	Capacitor_THT:CP_Radial_D18.0mm_P7.50mm		
+C17	0.033µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71E333KA01D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C18	0.033µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71E333KA01D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C19	1µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71C105KA12D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C20	0.033µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71E333KA01D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C21	0.033µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71E333KA01D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C22	0.047µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71H473KA61D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C23	1000pF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM1555C1H102JA01D	Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+C24	1000pF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM1555C1H102JA01D	Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+C25	10µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR71C106KAC7L	Capacitor_THT:CP_Radial_D5.0mm_P2.00mm		
+C26	10µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR71C106KAC7L	Capacitor_THT:CP_Radial_D5.0mm_P2.00mm		
+C27	10µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR71C106KAC7L	Capacitor_THT:CP_Radial_D5.0mm_P2.00mm		
+C28	10µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR71C106KAC7L	Capacitor_THT:CP_Radial_D5.0mm_P2.00mm		
+C29	0.68µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J	Capacitor_THT:C_Rect_L18.0mm_W9.0mm_P15.00mm_FKS3_FKP3		
+C30	0.68µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J	Capacitor_THT:C_Rect_L18.0mm_W9.0mm_P15.00mm_FKS3_FKP3		
+C31	0.68µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J	Capacitor_THT:C_Rect_L18.0mm_W9.0mm_P15.00mm_FKS3_FKP3		
+C32	0.68µF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J	Capacitor_THT:C_Rect_L18.0mm_W9.0mm_P15.00mm_FKS3_FKP3		
+C33	1000pF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D	Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+C34	1000pF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D	Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+C35	1000pF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D	Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+C36	1000pF	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D	Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+C37	4.7µF	AAP090A_PowerSupplies-SchDoc-rescue:GRM31CR71E475KA88L	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder		
+C38	10µF	Device:CP	Capacitor_SMD:CP_Elec_4x5.8	Polarized capacitor	
+C39	0.47µF	AAP090A_PowerSupplies-SchDoc-rescue:GRM188R71E474KA12D	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C40	47µF	Device:CP	Capacitor_SMD:CP_Elec_8x6.2	Polarized capacitor	
+C41	2.2µF	AAP090A_PowerSupplies-SchDoc-rescue:GRM31CR72A105KA01L	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder		
+C42	100µF	Device:CP	Capacitor_SMD:CP_Elec_5x5.8	Polarized capacitor	
+C43	0.01µF	AAP090A_PowerSupplies-SchDoc-rescue:06031C103KAT2A	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C44	2.2µF	Device:C	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder	Unpolarized capacitor	
+C45	0.1µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C46	4700pF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C47	47µF	Device:CP	Capacitor_SMD:CP_Elec_6.3x5.8	Polarized capacitor	
+C48	0.47µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C49	0.1µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C50	4700pF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C51	0.1µF	AAP090A_PowerSupplies-SchDoc-rescue:C0603C104K5RACTU	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+C52	4.7µF	Device:C	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder	Unpolarized capacitor	
+C54	1µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C55	1µF	Device:C	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor	
+C58	2.2µF	Device:C	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder	Unpolarized capacitor	
+C59	2.2µF	Device:C	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder	Unpolarized capacitor	
+C60	2.2µF	Device:C	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder	Unpolarized capacitor	
+C61	4.7µF	Device:C	Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder	Unpolarized capacitor	
+C62	0.1µF	Device:C_Small	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor, small symbol	
+C63	0.1µF	Device:C_Small	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor, small symbol	
+C64	0.1µF	Device:C_Small	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor, small symbol	
+C65	0.01µF	Device:C_Small	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor, small symbol	
+C66	1µF	Device:C_Small	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor, small symbol	
+C67	0.1µF	Device:C_Small	Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Unpolarized capacitor, small symbol	
+D1	Orange	Device:LED	LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Light emitting diode	
+D2	Red	Device:LED	LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Light emitting diode	
+D3	D_Schottky	Device:D_Schottky	Diode_SMD:D_SOD-123F	Schottky diode	
+D4	Green	Device:LED	LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Light emitting diode	
+D5	Green	Device:LED	LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Light emitting diode	
+D6	Green	Device:LED	LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Light emitting diode	
+D7	D_Schottky_x2_Serial_AKC	Device:D_Schottky_x2_Serial_AKC	Package_TO_SOT_SMD:SOT-23	Dual Schottky diode, anode/cathode/center	
+D8	Green	Device:LED	LED_SMD:LED_0603_1608Metric	Light emitting diode	
+H2	MountingHole	Mechanical:MountingHole	MountingHole:MountingHole_3.2mm_M3_DIN965_Pad	Mounting Hole without connection	
+H3	MountingHole	Mechanical:MountingHole	MountingHole:MountingHole_3.2mm_M3_DIN965_Pad	Mounting Hole without connection	
+H4	MountingHole	Mechanical:MountingHole	MountingHole:MountingHole_3.2mm_M3_DIN965_Pad	Mounting Hole without connection	
+H5	MountingHole	Mechanical:MountingHole	MountingHole:MountingHole_3.2mm_M3_DIN965_Pad	Mounting Hole without connection	
+HS1	Heatsink	Mechanical:Heatsink_Pad	TAS3251:Advanced_ATS078036036-TI1OP-1099-C1-R1	Heatsink with electrical connection	
+IC1	LM5010MHX	TAS3251JMF_MCU-rescue:LM5010AMH-SamacSys_Parts	SamacSys_Parts:SOP65P640X110-15N		
+J1	Oscill sync	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:0022112042	Connector_Molex:Molex_KK-254_AE-6410-04A_1x04_P2.54mm_Vertical		
+J2	Freq Adjust	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:PEC04DAAN	Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical		
+J3	OUTA	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:CMP-0075104-1	TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-3-2-5.08_1x02_P5.08mm_Horizontal		
+J4	OUTB	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:CMP-0075104-1	TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-3-2-5.08_1x02_P5.08mm_Horizontal		
+J5	PVDD	AAP090A_PowerSupplies-SchDoc-rescue:CMP-0075104-1	TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-3-2-5.08_1x02_P5.08mm_Horizontal		
+J6	Conn_01x01_Male	Connector:Conn_01x01_Male	Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical	Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J7	Conn_01x01_Male	Connector:Conn_01x01_Male	Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical	Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J8	Conn_01x01_Male	Connector:Conn_01x01_Male	Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical	Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J9	Conn_01x01_Male	Connector:Conn_01x01_Male	Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical	Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J10	Conn_01x03	Connector_Generic:Conn_01x03	Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical	Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J11	Conn_01x06	Connector_Generic:Conn_01x06	Connector_Molex:Molex_KK-254_AE-6410-06A_1x06_P2.54mm_Vertical	Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J12	Conn_02x03_Odd_Even	Connector_Generic:Conn_02x03_Odd_Even	Connector_IDC:IDC-Header_2x03_P2.54mm_Vertical	Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)	
+J13	Conn_01x04	Connector_Generic:Conn_01x04	Connector_Molex:Molex_KK-254_AE-6410-04A_1x04_P2.54mm_Vertical	Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J15	Conn_02x05	Connector_Generic:Conn_02x05_Odd_Even	Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical	Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)	
+J16	Conn_01x03	Connector_Generic:Conn_01x03	Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical	Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J17	Conn_01x10	Connector_Generic:Conn_01x10	Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical	Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J18	Conn_01x04	Connector_Generic:Conn_01x04	Connector_Molex:Molex_KK-254_AE-6410-04A_1x04_P2.54mm_Vertical	Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)	
+J19	Conn_01x04	Connector_Generic:Conn_01x04	Connector_Molex:Molex_KK-254_AE-6410-04A_1x04_P2.54mm_Vertical	Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)	
+JP1	AMP RESET Jumper	Jumper:Jumper_3_Bridged12	Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical	Jumper, 3-pole, pins 1+2 closed/bridged	
+JP2	Jumper_2_Bridged	Jumper:Jumper_2_Bridged	Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical	Jumper, 2-pole, closed/bridged	
+JP4	Jumper_2_Bridged	Jumper:Jumper_2_Bridged	Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical	Jumper, 2-pole, closed/bridged	
+JP5	Jumper_2_Bridged	Jumper:Jumper_2_Bridged	Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical	Jumper, 2-pole, closed/bridged	
+JP6	SolderJumper_3_Open	Jumper:SolderJumper_3_Open	Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels	Solder Jumper, 3-pole, open	
+JP7	SolderJumper_3_Open	Jumper:SolderJumper_3_Open	Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels	Solder Jumper, 3-pole, open	
+JP8	SolderJumper_3_Open	Jumper:SolderJumper_3_Open	Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels	Solder Jumper, 3-pole, open	
+L1	10 µH	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE	SamacSys_Parts:WE-HCF_201322		
+L2	10 µH	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE	SamacSys_Parts:WE-HCF_201322		
+L3	10 µH	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE	SamacSys_Parts:WE-HCF_201322		
+L4	10 µH	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE	SamacSys_Parts:WE-HCF_201322		
+L5	150µH 	Device:L	TAS3251:L_Wuerth_74404064151_Handsolder	Inductor	
+NT1	Net-Tie_2	Device:Net-Tie_2	NetTie:NetTie-2_SMD_Pad0.5mm	Net tie, 2 pins	
+R1	22	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R2	10.0k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R3	22.0k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-0722KL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R4	10.0k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0201FR-0710KL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R5	20.0k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-0720KL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R6	30.0k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-0730KL	Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder		
+R7	5.1k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R8	499	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07499RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R9	499	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07499RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R10	499	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07499RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R11	499	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07499RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R12	100k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07100KL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R13	100k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07100KL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R14	100k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07100KL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R15	100k	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603FR-07100KL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R16	560	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603JR-07560RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R17	560	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603JR-07560RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R18	1.02k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R19	365k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R20	6.8k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R21	6.8k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R22	22	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R23	22	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R24	1.50k	AAP090A_PowerSupplies-SchDoc-rescue:RC0603FR-071K5L	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R25	499	AAP090A_PowerSupplies-SchDoc-rescue:RC0603FR-07499RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R26	22	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R27	22	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R28	560	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603JR-07560RL	Resistor_SMD:R_0603_1608Metric		
+R30	22	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R31	22	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R32	10.0k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R33	10.0k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R34	10.0k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R35	22	Device:R	Resistor_SMD:R_0603_1608Metric	Resistor	
+R36	22	Device:R	Resistor_SMD:R_0603_1608Metric	Resistor	
+R37	560	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603JR-07560RL	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder		
+R38	0	Device:R	Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder	Resistor	
+R40	100k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R41	12k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R42	3.3k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R43	20.0k	Device:R	Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder	Resistor	
+R44	NoPOP	Device:R	Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder	Resistor	
+R45	10.0k	Device:R	Resistor_SMD:R_0603_1608Metric	Resistor	
+R46	10.0k	Device:R	Resistor_SMD:R_0603_1608Metric	Resistor	
+R47	10.0k	Device:R	Resistor_SMD:R_0603_1608Metric	Resistor	
+SW1	SW_Push	Switch:SW_Push	Button_Switch_SMD:SW_SPST_TL3342	Push button switch, generic, two pins	
+U1	TAS3251	AAP090A_TAS3251DKQ-IO-SchDoc-rescue:CMP-0075392-3	TAS3251:DKQ0056A		
+U2	AMS1117-3.3	Regulator_Linear:TLV1117-33	Package_TO_SOT_SMD:SOT-223-3_TabPin2	800mA Low-Dropout Linear Regulator, 3.3V fixed output, TO-220/TO-252/TO-263/SOT-223	
+U3	LM2940-12	AAP090A_PowerSupplies-SchDoc-rescue:LM2940IMP-12_NOPB	Package_TO_SOT_SMD:SOT-223		
+U4	AT24C256C	Memory_EEPROM:24LC02	Package_SO:SOIC-8_3.9x4.9mm_P1.27mm	I2C Serial EEPROM, 2Kb, DIP-8/SOIC-8/TSSOP-8/DFN-8	
+U5	STM32F030C8Tx	MCU_ST_STM32F0:STM32F030C8Tx	Package_QFP:LQFP-48_7x7mm_P0.5mm	ARM Cortex-M0 MCU, 64KB flash, 8KB RAM, 48MHz, 2.4-3.6V, 39 GPIO, LQFP-48	

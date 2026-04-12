@@ -1,0 +1,103 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "670752d9-b643-4a78-8b5c-6f0582e4ca27")
+	(paper "A4")
+	(title_block
+		(title "JMF Neat Amp - Top Leaf ")
+		(date "2019-11-10")
+		(comment 1 "Licence: CC BY-SA 4.0")
+	)
+	(lib_symbols)
+	(sheet
+		(at 214.63 91.44)
+		(size 59.69 35.56)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-00005b793f19")
+		(property "Sheetname" "TAS3251"
+			(at 214.63 90.7284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "TAS3251.kicad_sch"
+			(at 214.63 127.5846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 135.89 111.76)
+		(size 49.53 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-00005b7d4339")
+		(property "Sheetname" "PowerSupplies"
+			(at 135.89 111.0484 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "PowerSupplies.kicad_sch"
+			(at 135.89 142.8246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
