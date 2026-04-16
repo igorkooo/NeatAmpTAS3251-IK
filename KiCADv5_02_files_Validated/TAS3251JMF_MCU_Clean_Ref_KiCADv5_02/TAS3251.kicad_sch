@@ -3239,218 +3239,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "L"
-				(at -5.334 4.064 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Value" "MA5173-AE"
-				(at -4.572 -5.08 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MA5173-AE_0_1"
-				(polyline
-					(pts
-						(xy -5.08 2.54) (xy 5.08 2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 3.81) (xy -5.08 3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -7.62 0 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-			)
-			(symbol "MA5173-AE_1_1"
-				(arc
-					(start -5.08 0)
-					(mid -4.708 0.898)
-					(end -3.81 1.27)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -3.81 1.27)
-					(mid -2.912 0.898)
-					(end -2.54 0)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.54 0)
-					(mid -2.168 0.898)
-					(end -1.27 1.27)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -1.27 1.27)
-					(mid -0.372 0.898)
-					(end 0 0)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 0)
-					(mid 0.363 0.889)
-					(end 1.2446 1.27)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 1.2446 1.27)
-					(mid 2.1592 0.9071)
-					(end 2.54 0)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 2.54 0)
-					(mid 2.903 0.889)
-					(end 3.7846 1.27)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 3.7846 1.27)
-					(mid 4.6992 0.9071)
-					(end 5.08 0)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:PEC04DAAN"
 			(pin_names
 				(offset 1.016)
@@ -7923,6 +7711,198 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "MA5172-AE:MA5172-AE"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "L"
+				(at 16.51 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "MA5172-AE"
+				(at 16.51 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "MA5172:MA5172AE"
+				(at 16.51 -96.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.mouser.it/datasheet/2/597/ma5172-463483.pdf"
+				(at 16.51 -196.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fixed Inductors 10uH Unshld 10% 6.1A 26mOhms"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "28.6"
+				(at 16.51 -396.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "994-MA5172-AE"
+				(at 16.51 -496.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Coilcraft/MA5172-AE?qs=ZYnrCdKdyedMvVvFAobk3w%3D%3D"
+				(at 16.51 -596.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "COILCRAFT"
+				(at 16.51 -696.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "MA5172-AE"
+				(at 16.51 -796.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "MA5172-AE_1_1"
+				(arc
+					(start 5.08 0)
+					(mid 6.35 1.219)
+					(end 7.62 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 7.62 0)
+					(mid 8.89 1.219)
+					(end 10.16 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 10.16 0)
+					(mid 11.43 1.219)
+					(end 12.7 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 12.7 0)
+					(mid 13.97 1.219)
+					(end 15.24 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "MCU_ST_STM32F0:STM32F030C8Tx"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -9348,6 +9328,254 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "TAS3251_project:Coilcraft_XGL1712-103MED"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "L"
+				(at -5.334 4.064 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "10uH"
+				(at 0 -2.794 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" "TAS3251:L_Coilcraft_XGL1712-103"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "kicad-embed://xgl1712.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Induction"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "SUBCKT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=port1 2=port2"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Library" "/home/igor/NeatAmpTAS3251-IK/KiCADv5_02_files_Validated/Coilcraft_pspice_XGL1712-103.lib"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Name" "XGL1712-103"
+				(at 0 -1.016 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Coilcraft_XGL1712-103MED_0_1"
+				(polyline
+					(pts
+						(xy -5.08 2.54) (xy 5.08 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 3.81) (xy -5.08 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+			)
+			(symbol "Coilcraft_XGL1712-103MED_1_1"
+				(arc
+					(start -3.81 1.27)
+					(mid -2.912 0.898)
+					(end -2.54 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -5.08 0)
+					(mid -4.708 0.898)
+					(end -3.81 1.27)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -1.27 1.27)
+					(mid -0.372 0.898)
+					(end 0 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.54 0)
+					(mid -2.168 0.898)
+					(end -1.27 1.27)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.2446 1.27)
+					(mid 2.1592 0.9071)
+					(end 2.54 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.363 0.889)
+					(end 1.2446 1.27)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.54 0)
+					(mid 2.903 0.889)
+					(end 3.7846 1.27)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 3.7846 1.27)
+					(mid 4.6992 0.9071)
+					(end 5.08 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+12V"
 			(power)
 			(pin_numbers
@@ -10405,6 +10633,26 @@
 		)
 		(uuid "e9811d5b-5dc5-4a05-88af-9f999673a55a")
 	)
+	(text_box "L1-L4 and L5-L8 are interchangable.\nPlaced here for testing purpose"
+		(exclude_from_sim no)
+		(at 441.96 85.09 0)
+		(size 44.45 7.62)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "ce514f99-bf8d-4e72-b823-33ac74d8ac6b")
+	)
 	(junction
 		(at 137.16 368.3)
 		(diameter 0)
@@ -10422,6 +10670,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0137bf19-4383-4238-99a5-64d3b9730ae2")
+	)
+	(junction
+		(at 461.01 224.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "02ce04d7-4011-42cf-87c9-d40f7e5cd0c1")
 	)
 	(junction
 		(at 341.63 290.83)
@@ -10490,6 +10744,12 @@
 		(uuid "26666d41-e7d2-42b1-9905-a58a61f12bea")
 	)
 	(junction
+		(at 461.01 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "29da1745-097a-4fd8-8520-1a5cdbde2b8d")
+	)
+	(junction
 		(at 427.99 293.37)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10538,6 +10798,12 @@
 		(uuid "3da45fd0-2b68-4faf-b43a-0b03d395f30d")
 	)
 	(junction
+		(at 471.17 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3f0d7c54-7d00-4ded-ac06-376cb9f502c9")
+	)
+	(junction
 		(at 184.15 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10560,6 +10826,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "47a0cb19-4e25-4756-b2fd-2f54f7bd1d00")
+	)
+	(junction
+		(at 449.58 224.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4a312037-276d-4b46-8849-78c511ab138e")
 	)
 	(junction
 		(at 232.41 217.17)
@@ -10604,6 +10876,12 @@
 		(uuid "5d151d9f-4d24-4e30-aad5-ce366596bda1")
 	)
 	(junction
+		(at 415.29 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5fb26daf-1ca5-4c75-adc8-f5281e257f70")
+	)
+	(junction
 		(at 232.41 227.33)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10614,6 +10892,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6199bd31-c451-4832-a9cf-e46c1d2ee4ea")
+	)
+	(junction
+		(at 471.17 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "61d691c7-68eb-45cb-b09f-9ca20accf2c3")
 	)
 	(junction
 		(at 265.43 87.63)
@@ -10646,12 +10930,6 @@
 		(uuid "6f1483d7-9f46-48d0-93f0-d77b4526fd09")
 	)
 	(junction
-		(at 450.85 224.79)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6f19dfbd-d1ab-4b5b-8848-c008efafe163")
-	)
-	(junction
 		(at 265.43 115.57)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10676,10 +10954,22 @@
 		(uuid "763a0379-74db-48dd-ad20-dc094b70f781")
 	)
 	(junction
+		(at 415.29 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7660fcec-f88b-4ec0-8445-5a7d96aeedcd")
+	)
+	(junction
 		(at 161.29 148.59)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "772c9020-5aa4-4ec2-8291-e9068ea0ecd7")
+	)
+	(junction
+		(at 461.01 184.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "789a465c-0445-4470-9bc0-47cae8756cb8")
 	)
 	(junction
 		(at 278.13 173.99)
@@ -10688,16 +10978,16 @@
 		(uuid "81a80183-6169-425a-9d95-b30cece3d863")
 	)
 	(junction
+		(at 448.31 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "81f13934-f955-4a7a-ae91-23e469fa6510")
+	)
+	(junction
 		(at 273.05 59.69)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8333fb74-5c8e-4662-9a3b-2f84b6a9f103")
-	)
-	(junction
-		(at 450.85 143.51)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8403710d-3d5a-4006-a2ac-1b83ac78db1f")
 	)
 	(junction
 		(at 171.45 44.45)
@@ -10754,16 +11044,34 @@
 		(uuid "8e01acff-bd96-4506-abd9-07e2ca13c284")
 	)
 	(junction
+		(at 459.74 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e5bd690-6264-475a-ab8a-01d69f21724b")
+	)
+	(junction
 		(at 232.41 222.25)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8f6a10da-7530-493d-a354-d7ad8fcf25d6")
 	)
 	(junction
+		(at 415.29 224.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9082cd31-68fe-49db-b2da-fde8b8bd861f")
+	)
+	(junction
 		(at 300.99 179.07)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "91c249b9-7ce9-4c95-812b-e77612999996")
+	)
+	(junction
+		(at 472.44 224.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "92272e6a-41fe-4ce4-99a7-ad2781565d03")
 	)
 	(junction
 		(at 120.65 143.51)
@@ -10796,6 +11104,12 @@
 		(uuid "ade4a039-4951-4398-a577-97e87287f6a3")
 	)
 	(junction
+		(at 472.44 184.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b16c13f9-dd69-4834-a775-fd849d4abe95")
+	)
+	(junction
 		(at 435.61 184.15)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10814,6 +11128,12 @@
 		(uuid "b65f7d85-906f-4832-9d8e-e53dac642443")
 	)
 	(junction
+		(at 415.29 184.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b748124f-a1e9-4309-ae33-432d5643b94d")
+	)
+	(junction
 		(at 262.89 158.75)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10824,6 +11144,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b9f3f8fd-cd57-4907-b1ee-3bd7e215b7a2")
+	)
+	(junction
+		(at 449.58 184.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ba06e268-094d-48ea-9007-c0c32ccbfa0d")
 	)
 	(junction
 		(at 273.05 179.07)
@@ -10844,6 +11170,12 @@
 		(uuid "c3c89ab2-cb8e-447a-ab7c-11e6b2bdf8ac")
 	)
 	(junction
+		(at 449.58 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb181dae-346b-43e2-a967-878bf7a94d3a")
+	)
+	(junction
 		(at 219.71 306.07)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10854,18 +11186,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d1a877b0-6113-4232-a801-b4f05c15663f")
-	)
-	(junction
-		(at 450.85 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "db8b1f48-4a8a-4274-bced-5ad9037fd7cb")
-	)
-	(junction
-		(at 450.85 184.15)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dbeb5b4e-0d6c-4cde-a122-0ad85547cd56")
 	)
 	(junction
 		(at 69.85 325.12)
@@ -11053,6 +11373,16 @@
 	)
 	(wire
 		(pts
+			(xy 448.31 102.87) (xy 459.74 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02010287-1aca-4988-a9bf-a53dc27d60f4")
+	)
+	(wire
+		(pts
 			(xy 138.43 151.13) (xy 138.43 161.29)
 		)
 		(stroke
@@ -11060,6 +11390,16 @@
 			(type default)
 		)
 		(uuid "022b358a-ee40-481e-a2f9-be1bfc7e4db6")
+	)
+	(wire
+		(pts
+			(xy 461.01 224.79) (xy 472.44 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02cb708d-c1da-4b57-ad6e-8f153ac5f020")
 	)
 	(wire
 		(pts
@@ -11203,7 +11543,17 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 143.51) (xy 450.85 146.05)
+			(xy 415.29 210.82) (xy 415.29 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a7512f5-9a76-4b07-89f2-f0a045ee06e2")
+	)
+	(wire
+		(pts
+			(xy 471.17 143.51) (xy 471.17 146.05)
 		)
 		(stroke
 			(width 0)
@@ -11220,6 +11570,16 @@
 			(type default)
 		)
 		(uuid "0b90c2d9-6a26-429e-ae04-5878361f8c0e")
+	)
+	(wire
+		(pts
+			(xy 459.74 102.87) (xy 471.17 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c7a5144-fad7-4a64-b0f3-b5b03f7d90ee")
 	)
 	(wire
 		(pts
@@ -11363,16 +11723,6 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 184.15) (xy 521.97 184.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "16f0d219-4ef5-4614-8a5b-47c028360479")
-	)
-	(wire
-		(pts
 			(xy 341.63 288.29) (xy 341.63 290.83)
 		)
 		(stroke
@@ -11463,6 +11813,16 @@
 	)
 	(wire
 		(pts
+			(xy 415.29 130.81) (xy 415.29 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fe5940a-5eb0-458f-ab27-7c4c9038b7a6")
+	)
+	(wire
+		(pts
 			(xy 218.44 353.06) (xy 259.08 353.06)
 		)
 		(stroke
@@ -11493,7 +11853,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 102.87) (xy 450.85 105.41)
+			(xy 471.17 102.87) (xy 471.17 105.41)
 		)
 		(stroke
 			(width 0)
@@ -11763,6 +12123,16 @@
 	)
 	(wire
 		(pts
+			(xy 459.74 113.03) (xy 459.74 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b9d1146-1de0-4bd5-8a71-dffe1f45e381")
+	)
+	(wire
+		(pts
 			(xy 73.66 184.15) (xy 73.66 199.39)
 		)
 		(stroke
@@ -11770,6 +12140,16 @@
 			(type default)
 		)
 		(uuid "2c0215b8-7b53-41f8-b81d-bb336b9f9378")
+	)
+	(wire
+		(pts
+			(xy 461.01 143.51) (xy 461.01 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c699a37-454f-42b5-8c51-19eecc2e52da")
 	)
 	(wire
 		(pts
@@ -11790,6 +12170,16 @@
 			(type default)
 		)
 		(uuid "2dcd0a56-cd6d-489a-b7b6-8dbb6471fdd6")
+	)
+	(wire
+		(pts
+			(xy 449.58 143.51) (xy 461.01 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2de263d0-de66-44e6-ac8c-fb178126c579")
 	)
 	(wire
 		(pts
@@ -11823,6 +12213,16 @@
 	)
 	(wire
 		(pts
+			(xy 461.01 234.95) (xy 461.01 237.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3073f055-d515-4d13-bb7e-beeaf1848c6a")
+	)
+	(wire
+		(pts
 			(xy 273.05 59.69) (xy 339.09 59.69)
 		)
 		(stroke
@@ -11843,7 +12243,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 143.51) (xy 435.61 143.51)
+			(xy 435.61 143.51) (xy 449.58 143.51)
 		)
 		(stroke
 			(width 0)
@@ -11890,6 +12290,16 @@
 			(type default)
 		)
 		(uuid "33b723ad-f045-4aba-a44e-25597a7ab6e6")
+	)
+	(wire
+		(pts
+			(xy 449.58 153.67) (xy 449.58 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33c47395-e7f5-4ee8-99b3-b05ce7a1db74")
 	)
 	(wire
 		(pts
@@ -12053,7 +12463,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 224.79) (xy 435.61 224.79)
+			(xy 435.61 224.79) (xy 449.58 224.79)
 		)
 		(stroke
 			(width 0)
@@ -12193,6 +12603,36 @@
 	)
 	(wire
 		(pts
+			(xy 435.61 130.81) (xy 435.61 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "418d3560-61fa-4c6d-9ddd-17a837eb7c15")
+	)
+	(wire
+		(pts
+			(xy 435.61 90.17) (xy 435.61 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41c97a02-a662-4f53-be65-834d15a40f1f")
+	)
+	(wire
+		(pts
+			(xy 449.58 234.95) (xy 449.58 237.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41e5b95c-55af-4745-8002-d3d2dbc7aa6f")
+	)
+	(wire
+		(pts
 			(xy 138.43 161.29) (xy 95.25 161.29)
 		)
 		(stroke
@@ -12213,7 +12653,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 194.31) (xy 450.85 196.85)
+			(xy 472.44 194.31) (xy 472.44 196.85)
 		)
 		(stroke
 			(width 0)
@@ -12753,6 +13193,16 @@
 	)
 	(wire
 		(pts
+			(xy 461.01 194.31) (xy 461.01 196.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f5b56f0-baf9-4a1f-beb0-12212381a576")
+	)
+	(wire
+		(pts
 			(xy 200.66 303.53) (xy 200.66 304.8)
 		)
 		(stroke
@@ -12820,6 +13270,16 @@
 			(type default)
 		)
 		(uuid "61f63df1-a976-45c2-99d5-e526d25b610a")
+	)
+	(wire
+		(pts
+			(xy 461.01 153.67) (xy 461.01 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "623d0ee6-73e8-40c3-8e68-58fcee1254e6")
 	)
 	(wire
 		(pts
@@ -13123,6 +13583,16 @@
 	)
 	(wire
 		(pts
+			(xy 415.29 171.45) (xy 415.29 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e7e379c-b766-400f-9add-5f2b6e5ea669")
+	)
+	(wire
+		(pts
 			(xy 218.44 363.22) (xy 259.08 363.22)
 		)
 		(stroke
@@ -13170,6 +13640,16 @@
 			(type default)
 		)
 		(uuid "6fa832a5-8193-4d16-9eb8-ce95afe76b26")
+	)
+	(wire
+		(pts
+			(xy 461.01 224.79) (xy 461.01 227.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "706f1a14-cd34-4d68-a891-d67d367a7d6d")
 	)
 	(wire
 		(pts
@@ -13283,6 +13763,16 @@
 	)
 	(wire
 		(pts
+			(xy 471.17 143.51) (xy 521.97 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75117297-9feb-468c-9415-9465dbf37c1c")
+	)
+	(wire
+		(pts
 			(xy 80.01 346.71) (xy 83.82 346.71)
 		)
 		(stroke
@@ -13290,6 +13780,16 @@
 			(type default)
 		)
 		(uuid "7552c472-e8bc-4029-97ce-edfe93723b85")
+	)
+	(wire
+		(pts
+			(xy 461.01 184.15) (xy 461.01 186.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "756f1134-ec7b-4a4d-94e0-d52d03085541")
 	)
 	(wire
 		(pts
@@ -13323,7 +13823,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 234.95) (xy 450.85 237.49)
+			(xy 472.44 234.95) (xy 472.44 237.49)
 		)
 		(stroke
 			(width 0)
@@ -13350,6 +13850,16 @@
 			(type default)
 		)
 		(uuid "77d23c8b-e4d8-42fe-8891-ec56769e065d")
+	)
+	(wire
+		(pts
+			(xy 461.01 143.51) (xy 471.17 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "781a2cf9-006a-47f4-b76c-b564728cb0ae")
 	)
 	(wire
 		(pts
@@ -13400,6 +13910,16 @@
 			(type default)
 		)
 		(uuid "79ad8fcc-8679-4a57-9e3a-4236406e411f")
+	)
+	(wire
+		(pts
+			(xy 448.31 102.87) (xy 448.31 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a266093-51ca-4d24-bd57-2fecd3150351")
 	)
 	(wire
 		(pts
@@ -13553,6 +14073,16 @@
 	)
 	(wire
 		(pts
+			(xy 461.01 184.15) (xy 472.44 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8745ae03-092f-42a1-b6f4-0e73e6c69014")
+	)
+	(wire
+		(pts
 			(xy 43.18 251.46) (xy 46.99 251.46)
 		)
 		(stroke
@@ -13623,7 +14153,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 184.15) (xy 435.61 184.15)
+			(xy 435.61 184.15) (xy 449.58 184.15)
 		)
 		(stroke
 			(width 0)
@@ -13763,7 +14293,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 184.15) (xy 450.85 186.69)
+			(xy 472.44 184.15) (xy 472.44 186.69)
 		)
 		(stroke
 			(width 0)
@@ -13993,7 +14523,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 224.79) (xy 450.85 227.33)
+			(xy 472.44 224.79) (xy 472.44 227.33)
 		)
 		(stroke
 			(width 0)
@@ -14020,6 +14550,16 @@
 			(type default)
 		)
 		(uuid "9d279c38-a53b-49b5-9051-9403eb6c50c5")
+	)
+	(wire
+		(pts
+			(xy 435.61 210.82) (xy 435.61 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d8f2aa1-cb14-499e-919a-5d83e3c5c656")
 	)
 	(wire
 		(pts
@@ -14163,16 +14703,6 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 102.87) (xy 521.97 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a58303e1-8046-4d78-8e5a-cbdfb5c73ee6")
-	)
-	(wire
-		(pts
 			(xy 341.63 285.75) (xy 379.73 285.75)
 		)
 		(stroke
@@ -14303,7 +14833,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 102.87) (xy 435.61 102.87)
+			(xy 435.61 102.87) (xy 448.31 102.87)
 		)
 		(stroke
 			(width 0)
@@ -14330,6 +14860,16 @@
 			(type default)
 		)
 		(uuid "ae9eaf50-5542-436e-9b1e-6eb7dc2fe368")
+	)
+	(wire
+		(pts
+			(xy 471.17 102.87) (xy 521.97 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aeca16d0-f889-4d2a-9e86-6b49ff897fad")
 	)
 	(wire
 		(pts
@@ -14370,16 +14910,6 @@
 			(type default)
 		)
 		(uuid "b005c5ea-d001-4f42-93ab-0e84c5791b10")
-	)
-	(wire
-		(pts
-			(xy 450.85 143.51) (xy 521.97 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b00f4f0e-dd70-4ad3-86f8-0854ca26fe33")
 	)
 	(wire
 		(pts
@@ -14523,6 +15053,16 @@
 	)
 	(wire
 		(pts
+			(xy 449.58 224.79) (xy 449.58 227.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8dc0131-e448-40df-b8c8-3642e21ac2a4")
+	)
+	(wire
+		(pts
 			(xy 287.02 321.31) (xy 287.02 322.58)
 		)
 		(stroke
@@ -14570,16 +15110,6 @@
 			(type default)
 		)
 		(uuid "bc3b75d4-29f0-426d-8742-65b91e45143c")
-	)
-	(wire
-		(pts
-			(xy 450.85 224.79) (xy 521.97 224.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc9619b2-9208-46d0-8881-cf41889d262e")
 	)
 	(wire
 		(pts
@@ -14673,7 +15203,7 @@
 	)
 	(wire
 		(pts
-			(xy 527.05 123.19) (xy 521.97 123.19)
+			(xy 521.97 123.19) (xy 527.05 123.19)
 		)
 		(stroke
 			(width 0)
@@ -14783,6 +15313,16 @@
 	)
 	(wire
 		(pts
+			(xy 449.58 194.31) (xy 449.58 196.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4b3460b-19b7-48cc-a57f-c42b04ec54b2")
+	)
+	(wire
+		(pts
 			(xy 346.71 59.69) (xy 351.79 59.69)
 		)
 		(stroke
@@ -14830,6 +15370,16 @@
 			(type default)
 		)
 		(uuid "c75e585a-1d6d-4643-aac8-213f052c301c")
+	)
+	(wire
+		(pts
+			(xy 449.58 224.79) (xy 461.01 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7d75fa0-07ec-4840-ada3-9d303633c3e6")
 	)
 	(wire
 		(pts
@@ -15023,6 +15573,16 @@
 	)
 	(wire
 		(pts
+			(xy 459.74 102.87) (xy 459.74 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d02a8079-1940-4b43-bd08-99cae5d285cd")
+	)
+	(wire
+		(pts
 			(xy 227.33 194.31) (xy 293.37 194.31)
 		)
 		(stroke
@@ -15153,6 +15713,16 @@
 	)
 	(wire
 		(pts
+			(xy 471.17 113.03) (xy 471.17 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3318fa2-c83f-4161-9102-71b84ce5a9ea")
+	)
+	(wire
+		(pts
 			(xy 118.11 372.11) (xy 113.03 372.11)
 		)
 		(stroke
@@ -15220,6 +15790,16 @@
 			(type default)
 		)
 		(uuid "d7084523-54af-41e5-a041-1e9dee195520")
+	)
+	(wire
+		(pts
+			(xy 415.29 90.17) (xy 415.29 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7b984ed-9e7b-4876-b840-20065996a491")
 	)
 	(wire
 		(pts
@@ -15310,6 +15890,16 @@
 			(type default)
 		)
 		(uuid "db680ce3-085e-4278-88f5-0db176ee2649")
+	)
+	(wire
+		(pts
+			(xy 472.44 224.79) (xy 521.97 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dda7397c-7c56-470d-9da1-4fbd96caf364")
 	)
 	(wire
 		(pts
@@ -15453,6 +16043,16 @@
 	)
 	(wire
 		(pts
+			(xy 449.58 184.15) (xy 461.01 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9668da0-b6b5-4072-9169-6bc71267358e")
+	)
+	(wire
+		(pts
 			(xy 43.18 186.69) (xy 57.15 186.69)
 		)
 		(stroke
@@ -15480,16 +16080,6 @@
 			(type default)
 		)
 		(uuid "e9c3c76f-7ead-4f1e-a1d5-820312f18b36")
-	)
-	(wire
-		(pts
-			(xy 450.85 113.03) (xy 450.85 115.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ea50575e-0ee7-4ee7-853c-e2b20d56549c")
 	)
 	(wire
 		(pts
@@ -15553,6 +16143,16 @@
 	)
 	(wire
 		(pts
+			(xy 472.44 184.15) (xy 521.97 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed7b1127-3a53-43d6-a7ce-9ab717affee7")
+	)
+	(wire
+		(pts
 			(xy 278.13 237.49) (xy 278.13 173.99)
 		)
 		(stroke
@@ -15573,7 +16173,7 @@
 	)
 	(wire
 		(pts
-			(xy 450.85 153.67) (xy 450.85 156.21)
+			(xy 471.17 153.67) (xy 471.17 156.21)
 		)
 		(stroke
 			(width 0)
@@ -15703,6 +16303,16 @@
 	)
 	(wire
 		(pts
+			(xy 435.61 171.45) (xy 435.61 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3e4a0ea-42b4-47cb-b79a-efbaa3cd1d4a")
+	)
+	(wire
+		(pts
 			(xy 276.86 331.47) (xy 276.86 334.01)
 		)
 		(stroke
@@ -15790,6 +16400,16 @@
 			(type default)
 		)
 		(uuid "f654c26b-015b-49b5-96b3-b47a95a4524a")
+	)
+	(wire
+		(pts
+			(xy 449.58 184.15) (xy 449.58 186.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f69c6840-59ad-4731-839a-2636754fa266")
 	)
 	(wire
 		(pts
@@ -15883,6 +16503,16 @@
 	)
 	(wire
 		(pts
+			(xy 448.31 113.03) (xy 448.31 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa19daa9-fd9d-4d56-af64-428e74aea4d3")
+	)
+	(wire
+		(pts
 			(xy 151.13 135.89) (xy 151.13 105.41)
 		)
 		(stroke
@@ -15920,6 +16550,16 @@
 			(type default)
 		)
 		(uuid "fcc11313-35a7-4b18-8a1d-4b8a6523149d")
+	)
+	(wire
+		(pts
+			(xy 449.58 143.51) (xy 449.58 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcc77199-0132-4956-afca-bf63199ddb36")
 	)
 	(wire
 		(pts
@@ -17062,212 +17702,6 @@
 		)
 	)
 	(symbol
-		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE")
-		(at 422.91 143.51 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005b69dd7f")
-		(property "Reference" "L2"
-			(at 428.244 147.574 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "10 µH"
-			(at 425.45 139.7 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "SamacSys_Parts:WE-HCF_201322"
-			(at 427.355 138.43 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxWürth 7443631000"
-			(at 427.355 138.43 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 422.91 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value2" "16A"
-			(at 801.37 130.81 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Wurth Elektronik"
-			(at 845.82 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "7443631000"
-			(at 845.82 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at 845.82 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6d760f17-e95c-4f6c-bed2-efe951ceb9f6")
-		)
-		(pin "2"
-			(uuid "ef2174e4-0e04-4f8a-b044-dd22b91d4bb1")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "L2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE")
-		(at 422.91 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005b69dd80")
-		(property "Reference" "L1"
-			(at 417.576 98.806 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "10 µH"
-			(at 420.37 106.68 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "SamacSys_Parts:WE-HCF_201322"
-			(at 426.72 93.98 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxWürth 7443631000"
-			(at 418.465 107.95 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 422.91 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value2" "16A"
-			(at 44.45 74.93 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Wurth Elektronik"
-			(at 0 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "7443631000"
-			(at 0 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at 0 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8b66ecdc-d82b-492b-81a1-ab25140f94dc")
-		)
-		(pin "2"
-			(uuid "4045b133-11da-4778-a2e9-8950a1b1ce92")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "L1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM31CR71C106KAC7L")
 		(at 344.17 115.57 180)
 		(unit 1)
@@ -17293,7 +17727,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
 			(at 344.17 115.57 0)
 			(effects
 				(font
@@ -17302,7 +17736,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "xxCAP, AL, 10 μF, 16V, ±10%, ELNA SILMIC II, TH"
+		(property "Datasheet" "xxCAP, X7R, 10 μF, 50V, ±10%, Murata, Ceramic"
 			(at 344.17 115.57 0)
 			(effects
 				(font
@@ -17328,7 +17762,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value2" "x16V"
+		(property "Value2" "x50V"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17337,7 +17771,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "ELNA"
+		(property "Manufacturer" "Murata"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17346,7 +17780,7 @@
 				(hide yes)
 			)
 		)
-		(property "PartNumber" "RFS-16V100ME3#5"
+		(property "PartNumber" "GRJ32ER71H106KE11K "
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17415,7 +17849,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
 			(at 344.17 87.63 0)
 			(effects
 				(font
@@ -17424,7 +17858,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "xxCAP, AL, 10 μF, 16V, ±10%, ELNA SILMIC II, TH"
+		(property "Datasheet" "xxCAP, X7R, 10 μF, 50V, ±10%, Murata, Ceramic"
 			(at 344.17 87.63 0)
 			(effects
 				(font
@@ -17450,7 +17884,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value2" "x16V"
+		(property "Value2" "x50V"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17459,7 +17893,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "ELNA"
+		(property "Manufacturer" "Murata"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17468,7 +17902,7 @@
 				(hide yes)
 			)
 		)
-		(property "PartNumber" "RFS-16V100ME3#5"
+		(property "PartNumber" "GRJ32ER71H106KE11K "
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17537,7 +17971,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
 			(at 344.17 59.69 0)
 			(effects
 				(font
@@ -17546,7 +17980,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "xxCAP, AL, 10 μF, 16V, ±10%, ELNA SILMIC II, TH"
+		(property "Datasheet" "xxCAP, X7R, 10 μF, 50V, ±10%, Murata, Ceramic"
 			(at 344.17 59.69 0)
 			(effects
 				(font
@@ -17572,7 +18006,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value2" "x16V"
+		(property "Value2" "x50V"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17581,7 +18015,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "ELNA"
+		(property "Manufacturer" "Murata"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17590,7 +18024,7 @@
 				(hide yes)
 			)
 		)
-		(property "PartNumber" "RFS-16V100ME3#5"
+		(property "PartNumber" "GRJ32ER71H106KE11K "
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17772,7 +18206,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
 			(at 344.17 31.75 0)
 			(effects
 				(font
@@ -17781,7 +18215,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "xxCAP, AL, 10 μF, 16V, ±10%, ELNA SILMIC II, TH"
+		(property "Datasheet" "xxCAP, X7R, 10 μF, 50V, ±10%, Murata, Ceramic"
 			(at 344.17 31.75 0)
 			(effects
 				(font
@@ -17807,7 +18241,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value2" "x16V"
+		(property "Value2" "x50V"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17816,7 +18250,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "ELNA"
+		(property "Manufacturer" "Murata"
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -17825,7 +18259,7 @@
 				(hide yes)
 			)
 		)
-		(property "PartNumber" "RFS-16V100ME3#5"
+		(property "PartNumber" "GRJ32ER71H106KE11K "
 			(at 688.34 0 0)
 			(effects
 				(font
@@ -23936,7 +24370,7 @@
 	)
 	(symbol
 		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D")
-		(at 450.85 229.87 270)
+		(at 472.44 229.87 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23944,7 +24378,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69ddf2")
 		(property "Reference" "C36"
-			(at 453.39 229.87 90)
+			(at 474.98 229.87 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -23953,7 +24387,7 @@
 			)
 		)
 		(property "Value" "1000pF"
-			(at 457.2 232.41 90)
+			(at 478.79 232.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23961,7 +24395,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
-			(at 450.85 229.87 0)
+			(at 472.44 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23970,51 +24404,7 @@
 			)
 		)
 		(property "Datasheet" "xxCAP, CERM, 1000 pF, 50 V, ±5%, C0G/NP0, 0603"
-			(at 450.85 229.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 450.85 229.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ValueDisplayed" "1000pF"
-			(at 351.79 -176.53 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value2" "x50V"
-			(at 220.98 -220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "GRM2165C1H102JA01D"
-			(at 220.98 -220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 220.98 -220.98 0)
+			(at 472.44 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24023,7 +24413,43 @@
 			)
 		)
 		(property "Description" " Not installed EVM"
-			(at 220.98 -220.98 0)
+			(at 242.57 -220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ValueDisplayed" "1000pF"
+			(at 373.38 -176.53 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x50V"
+			(at 242.57 -220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "GRM2165C1H102JA01D"
+			(at 242.57 -220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 242.57 -220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24032,7 +24458,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "CL10C102JB8NNNC"
-			(at 220.98 -220.98 0)
+			(at 242.57 -220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24041,7 +24467,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "C163508"
-			(at 220.98 -220.98 0)
+			(at 242.57 -220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24066,7 +24492,7 @@
 	)
 	(symbol
 		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D")
-		(at 450.85 189.23 270)
+		(at 472.44 189.23 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24074,7 +24500,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69ddf3")
 		(property "Reference" "C35"
-			(at 453.39 189.23 90)
+			(at 474.98 189.23 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -24083,7 +24509,7 @@
 			)
 		)
 		(property "Value" "1000pF"
-			(at 457.2 191.77 90)
+			(at 478.79 191.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24091,7 +24517,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
-			(at 450.85 189.23 0)
+			(at 472.44 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24100,51 +24526,7 @@
 			)
 		)
 		(property "Datasheet" "xxCAP, CERM, 1000 pF, 50 V, ±5%, C0G/NP0, 0603"
-			(at 450.85 189.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 450.85 189.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ValueDisplayed" "1000pF"
-			(at 392.43 -217.17 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value2" "x50V"
-			(at 261.62 -261.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "GRM2165C1H102JA01D"
-			(at 261.62 -261.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 261.62 -261.62 0)
+			(at 472.44 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24153,7 +24535,43 @@
 			)
 		)
 		(property "Description" " Not installed EVM"
-			(at 261.62 -261.62 0)
+			(at 283.21 -261.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ValueDisplayed" "1000pF"
+			(at 414.02 -217.17 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x50V"
+			(at 283.21 -261.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "GRM2165C1H102JA01D"
+			(at 283.21 -261.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 283.21 -261.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24162,7 +24580,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "CL10C102JB8NNNC"
-			(at 261.62 -261.62 0)
+			(at 283.21 -261.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24171,7 +24589,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "C163508"
-			(at 261.62 -261.62 0)
+			(at 283.21 -261.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24196,7 +24614,7 @@
 	)
 	(symbol
 		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D")
-		(at 450.85 148.59 270)
+		(at 471.17 148.59 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24204,7 +24622,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69ddf4")
 		(property "Reference" "C34"
-			(at 453.39 148.59 90)
+			(at 473.71 148.59 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -24213,7 +24631,7 @@
 			)
 		)
 		(property "Value" "1000pF"
-			(at 457.2 151.13 90)
+			(at 477.52 151.13 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24221,7 +24639,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
-			(at 450.85 148.59 0)
+			(at 471.17 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24230,51 +24648,7 @@
 			)
 		)
 		(property "Datasheet" "xxCAP, CERM, 1000 pF, 50 V, ±5%, C0G/NP0, 0603"
-			(at 450.85 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 450.85 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ValueDisplayed" "1000pF"
-			(at 433.07 -257.81 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value2" "x50V"
-			(at 302.26 -302.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "GRM2165C1H102JA01D"
-			(at 302.26 -302.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 302.26 -302.26 0)
+			(at 471.17 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24283,7 +24657,43 @@
 			)
 		)
 		(property "Description" " Not installed EVM"
-			(at 302.26 -302.26 0)
+			(at 322.58 -302.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ValueDisplayed" "1000pF"
+			(at 453.39 -257.81 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x50V"
+			(at 322.58 -302.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "GRM2165C1H102JA01D"
+			(at 322.58 -302.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 322.58 -302.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24292,7 +24702,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "CL10C102JB8NNNC"
-			(at 302.26 -302.26 0)
+			(at 322.58 -302.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24301,7 +24711,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "C163508"
-			(at 302.26 -302.26 0)
+			(at 322.58 -302.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24326,7 +24736,7 @@
 	)
 	(symbol
 		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM3195C1H102JA01D")
-		(at 450.85 107.95 270)
+		(at 471.17 107.95 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24334,7 +24744,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69ddf5")
 		(property "Reference" "C33"
-			(at 453.39 107.95 90)
+			(at 473.71 107.95 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -24343,7 +24753,7 @@
 			)
 		)
 		(property "Value" "1000pF"
-			(at 457.2 110.49 90)
+			(at 477.52 110.49 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24351,7 +24761,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
-			(at 450.85 107.95 0)
+			(at 471.17 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24360,7 +24770,7 @@
 			)
 		)
 		(property "Datasheet" "xxCAP, CERM, 1000 pF, 50 V, ±5%, C0G/NP0, 0603"
-			(at 450.85 107.95 0)
+			(at 471.17 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24368,16 +24778,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 450.85 107.95 0)
+		(property "Description" "Not installed EVM"
+			(at 363.22 -342.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "ValueDisplayed" "1000pF"
-			(at 473.71 -298.45 90)
+			(at 494.03 -298.45 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -24386,7 +24797,7 @@
 			)
 		)
 		(property "Value2" "x50V"
-			(at 342.9 -342.9 0)
+			(at 363.22 -342.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24395,7 +24806,7 @@
 			)
 		)
 		(property "PartNumber" "GRM2165C1H102JA01D"
-			(at 342.9 -342.9 0)
+			(at 363.22 -342.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24404,16 +24815,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 342.9 -342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" " Not installed EVM"
-			(at 342.9 -342.9 0)
+			(at 363.22 -342.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24422,7 +24824,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "CL10C102JB8NNNC"
-			(at 342.9 -342.9 0)
+			(at 363.22 -342.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24431,7 +24833,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "C163508"
-			(at 342.9 -342.9 0)
+			(at 363.22 -342.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25392,212 +25794,6 @@
 		)
 	)
 	(symbol
-		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE")
-		(at 422.91 224.79 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005b69de03")
-		(property "Reference" "L4"
-			(at 428.244 228.854 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "10 µH"
-			(at 425.45 220.98 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "SamacSys_Parts:WE-HCF_201322"
-			(at 427.355 219.71 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxWürth 7443631000"
-			(at 427.355 219.71 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 422.91 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value2" "16A"
-			(at 801.37 130.81 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Wurth Elektronik"
-			(at 845.82 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "7443631000"
-			(at 845.82 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at 845.82 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5b206074-ff3b-42b0-887e-f8db8bd3378c")
-		)
-		(pin "2"
-			(uuid "7f2d29a8-e268-4da9-877e-c850c1bde68e")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "L4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:MA5173-AE")
-		(at 422.91 184.15 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005b69de04")
-		(property "Reference" "L3"
-			(at 417.576 180.086 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "10 µH"
-			(at 420.37 187.96 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "SamacSys_Parts:WE-HCF_201322"
-			(at 418.465 189.23 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxWürth 7443631000"
-			(at 418.465 189.23 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 422.91 184.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value2" "16A"
-			(at 44.45 237.49 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Wurth Elektronik"
-			(at 0 368.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "7443631000"
-			(at 0 368.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at 0 368.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3c8160e6-fae8-4a6e-89cc-db55914281c7")
-		)
-		(pin "2"
-			(uuid "6da9eecb-2888-43df-b3f2-4829118b790c")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "L3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:GRM188R71C105KA12D")
 		(at 135.89 148.59 180)
 		(unit 1)
@@ -25843,7 +26039,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 450.85 237.49 0)
+		(at 472.44 237.49 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25851,7 +26047,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69de0b")
 		(property "Reference" "#GND_033"
-			(at 450.85 233.934 0)
+			(at 472.44 233.934 0)
 			(effects
 				(font
 					(size 0.508 0.508)
@@ -25859,7 +26055,7 @@
 			)
 		)
 		(property "Value" "+GND"
-			(at 450.85 234.696 0)
+			(at 472.44 234.696 0)
 			(effects
 				(font
 					(size 0.762 0.762)
@@ -25867,7 +26063,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 450.85 237.49 0)
+			(at 472.44 237.49 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -25875,7 +26071,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 450.85 237.49 0)
+			(at 472.44 237.49 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -25883,7 +26079,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 450.85 237.49 0)
+			(at 472.44 237.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25904,7 +26100,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 450.85 196.85 0)
+		(at 472.44 196.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25912,7 +26108,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69de0c")
 		(property "Reference" "#GND_032"
-			(at 450.85 193.294 0)
+			(at 472.44 193.294 0)
 			(effects
 				(font
 					(size 0.508 0.508)
@@ -25920,7 +26116,7 @@
 			)
 		)
 		(property "Value" "+GND"
-			(at 450.85 194.056 0)
+			(at 472.44 194.056 0)
 			(effects
 				(font
 					(size 0.762 0.762)
@@ -25928,7 +26124,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 450.85 196.85 0)
+			(at 472.44 196.85 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -25936,7 +26132,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 450.85 196.85 0)
+			(at 472.44 196.85 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -25944,7 +26140,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 450.85 196.85 0)
+			(at 472.44 196.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25965,7 +26161,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 450.85 156.21 0)
+		(at 471.17 156.21 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25973,7 +26169,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69de0d")
 		(property "Reference" "#GND_031"
-			(at 450.85 152.654 0)
+			(at 471.17 152.654 0)
 			(effects
 				(font
 					(size 0.508 0.508)
@@ -25981,7 +26177,7 @@
 			)
 		)
 		(property "Value" "+GND"
-			(at 450.85 153.416 0)
+			(at 471.17 153.416 0)
 			(effects
 				(font
 					(size 0.762 0.762)
@@ -25989,7 +26185,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 450.85 156.21 0)
+			(at 471.17 156.21 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -25997,7 +26193,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 450.85 156.21 0)
+			(at 471.17 156.21 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -26005,7 +26201,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 450.85 156.21 0)
+			(at 471.17 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26026,7 +26222,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 450.85 115.57 0)
+		(at 471.17 116.84 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26034,7 +26230,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005b69de0e")
 		(property "Reference" "#GND_030"
-			(at 450.85 112.014 0)
+			(at 471.17 113.284 0)
 			(effects
 				(font
 					(size 0.508 0.508)
@@ -26042,7 +26238,7 @@
 			)
 		)
 		(property "Value" "+GND"
-			(at 450.85 112.776 0)
+			(at 471.17 114.046 0)
 			(effects
 				(font
 					(size 0.762 0.762)
@@ -26050,7 +26246,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 450.85 115.57 0)
+			(at 471.17 116.84 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -26058,7 +26254,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 450.85 115.57 0)
+			(at 471.17 116.84 0)
 			(effects
 				(font
 					(size 1.778 1.778)
@@ -26066,7 +26262,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 450.85 115.57 0)
+			(at 471.17 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36286,6 +36482,2354 @@
 			(project "TAS3251JMF_MCU"
 				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
 					(reference "#PWR0161")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 449.58 237.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "135250d9-cc46-4a60-b808-09e766eb0929")
+		(property "Reference" "#GND_06"
+			(at 449.58 233.934 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 449.58 234.696 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 449.58 237.49 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 449.58 237.49 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 449.58 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3bb2b546-a0b6-4d0a-bd5e-6057eccc414f")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "MA5172-AE:MA5172-AE")
+		(at 415.29 171.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1568f12a-8a13-4e15-97fb-0c3b78d19354")
+		(property "Reference" "L7"
+			(at 425.45 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MA5172-AE"
+			(at 425.45 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MA5172:MA5172AE"
+			(at 431.8 267.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.it/datasheet/2/597/ma5172-463483.pdf"
+			(at 431.8 367.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fixed Inductors 10uH Unshld 10% 6.1A 26mOhms"
+			(at 415.29 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "28.6"
+			(at 431.8 567.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "994-MA5172-AE"
+			(at 431.8 667.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Coilcraft/MA5172-AE?qs=ZYnrCdKdyedMvVvFAobk3w%3D%3D"
+			(at 431.8 767.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "COILCRAFT"
+			(at 431.8 867.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "MA5172-AE"
+			(at 431.8 967.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "aef5da5c-4b29-4323-8c21-a7942caa32bf")
+		)
+		(pin "1"
+			(uuid "6bcfce3c-865c-4914-a646-5ced4ffefa46")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "MA5172-AE:MA5172-AE")
+		(at 415.29 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "27540d74-5c82-466f-b520-d7282ac8e193")
+		(property "Reference" "L5"
+			(at 425.45 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MA5172-AE"
+			(at 425.45 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MA5172:MA5172AE"
+			(at 431.8 186.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.it/datasheet/2/597/ma5172-463483.pdf"
+			(at 431.8 286.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fixed Inductors 10uH Unshld 10% 6.1A 26mOhms"
+			(at 415.29 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "28.6"
+			(at 431.8 486.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "994-MA5172-AE"
+			(at 431.8 586.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Coilcraft/MA5172-AE?qs=ZYnrCdKdyedMvVvFAobk3w%3D%3D"
+			(at 431.8 686.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "COILCRAFT"
+			(at 431.8 786.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "MA5172-AE"
+			(at 431.8 886.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "3d9c5b53-0d1a-4997-92f2-a8883d7b4745")
+		)
+		(pin "1"
+			(uuid "bc9d33f8-4fb9-4517-94f1-a38532421235")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TAS3251_project:Coilcraft_XGL1712-103MED")
+		(at 422.91 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "32651c0d-e8d7-46e2-8859-f702fddf6cb2")
+		(property "Reference" "L1"
+			(at 422.91 91.44 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "10uH"
+			(at 422.91 93.98 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "TAS3251:L_Coilcraft_XGL1712-103"
+			(at 422.91 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "kicad-embed://xgl1712.pdf"
+			(at 422.91 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Induction"
+			(at 422.91 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 422.91 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=port1 2=port2"
+			(at 422.91 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "/home/igor/NeatAmpTAS3251-IK/KiCADv5_02_files_Validated/Coilcraft_pspice_XGL1712-103.lib"
+			(at 422.91 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "XGL1712-103"
+			(at 422.91 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "03236e6c-b7b4-41c8-917b-5cbd8bad4d23")
+		)
+		(pin "2"
+			(uuid "aca7ed19-ed7e-423b-bc82-baf13b324804")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "MA5172-AE:MA5172-AE")
+		(at 415.29 130.81 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "383bd183-c7b2-4995-a44c-936954dfef84")
+		(property "Reference" "L6"
+			(at 425.45 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MA5172-AE"
+			(at 425.45 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MA5172:MA5172AE"
+			(at 431.8 227 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.it/datasheet/2/597/ma5172-463483.pdf"
+			(at 431.8 327 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fixed Inductors 10uH Unshld 10% 6.1A 26mOhms"
+			(at 415.29 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "28.6"
+			(at 431.8 527 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "994-MA5172-AE"
+			(at 431.8 627 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Coilcraft/MA5172-AE?qs=ZYnrCdKdyedMvVvFAobk3w%3D%3D"
+			(at 431.8 727 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "COILCRAFT"
+			(at 431.8 827 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "MA5172-AE"
+			(at 431.8 927 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a0a6b836-2736-4068-8c05-10353ce59fcd")
+		)
+		(pin "2"
+			(uuid "49d6b38f-9392-48bc-867b-95ed28704f94")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 448.31 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3ae54f32-405b-4f67-8730-d7b4f0a50fa9")
+		(property "Reference" "#GND_022"
+			(at 448.31 112.014 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 448.31 112.776 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 448.31 115.57 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 448.31 115.57 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 448.31 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d32aca84-b29c-4e72-a6d0-e7d4abfc4008")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 449.58 151.13 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "42b6c87f-a940-4b2d-9018-77f6522af2ea")
+		(property "Reference" "C56"
+			(at 452.12 148.59 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.15µF"
+			(at 455.93 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 449.58 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.15 μF, 400 V, ±5%, TH"
+			(at 449.58 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 449.58 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.15µF"
+			(at 429.26 542.29 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x400V"
+			(at 429.26 542.29 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 560.07 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A4154J "
+			(at 560.07 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 560.07 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 560.07 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c8ff2e93-90c1-4600-a759-4fbf229d7743")
+		)
+		(pin "1"
+			(uuid "a9fb49f7-a3e5-4eeb-8886-75315a32ac30")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C56")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TAS3251_project:Coilcraft_XGL1712-103MED")
+		(at 422.91 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "58c4b59f-1f3b-48b8-babf-7f0a1c57e293")
+		(property "Reference" "L2"
+			(at 422.91 132.08 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "10uH"
+			(at 422.91 134.62 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "TAS3251:L_Coilcraft_XGL1712-103"
+			(at 422.91 143.51 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "kicad-embed://xgl1712.pdf"
+			(at 422.91 143.51 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Induction"
+			(at 422.91 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 422.91 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=port1 2=port2"
+			(at 422.91 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "/home/igor/NeatAmpTAS3251-IK/KiCADv5_02_files_Validated/Coilcraft_pspice_XGL1712-103.lib"
+			(at 422.91 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "XGL1712-103"
+			(at 422.91 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a0fe10b1-3558-4ca7-8cf7-c46fe0dd0576")
+		)
+		(pin "1"
+			(uuid "50d1f195-9d92-458b-a878-93c4e65d9489")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 461.01 191.77 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6cb0bf8e-b0d2-46ef-812c-808d6edfff63")
+		(property "Reference" "C71"
+			(at 463.55 189.23 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.22µF"
+			(at 467.36 191.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 461.01 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.22 μF, 250 V, ±5%, TH"
+			(at 461.01 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 461.01 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.22µF"
+			(at 440.69 582.93 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x250V"
+			(at 440.69 582.93 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 571.5 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A3224J  "
+			(at 571.5 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 571.5 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 571.5 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "69388801-14f9-45ee-a536-c1eb04e6aa7a")
+		)
+		(pin "1"
+			(uuid "e1d6af34-4d56-42a0-8d1e-65dfd264dc40")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C71")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 448.31 110.49 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "77738dcf-f453-4e2b-bd12-46460b450595")
+		(property "Reference" "C53"
+			(at 450.85 107.95 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.15µF"
+			(at 454.66 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 448.31 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.15 μF, 400 V, ±5%, TH"
+			(at 448.31 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 448.31 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.15µF"
+			(at 427.99 501.65 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x400V"
+			(at 427.99 501.65 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 558.8 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A4154J "
+			(at 558.8 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 558.8 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 558.8 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c355181a-d5d2-4c4e-9899-7046c65b3ba9")
+		)
+		(pin "1"
+			(uuid "af2d7ca9-1ae6-402e-8599-6c203d000094")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C53")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 461.01 237.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "92d5ac39-5229-4c08-9bfc-93522ea1f882")
+		(property "Reference" "#GND_010"
+			(at 461.01 233.934 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 461.01 234.696 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 461.01 237.49 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 461.01 237.49 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 461.01 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "beccc6f8-a13c-4f3f-b138-5be922f1f273")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "MA5172-AE:MA5172-AE")
+		(at 415.29 210.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "970e9064-3e79-412f-916d-2676ac6a32af")
+		(property "Reference" "L8"
+			(at 425.45 204.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MA5172-AE"
+			(at 425.45 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MA5172:MA5172AE"
+			(at 431.8 307.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.it/datasheet/2/597/ma5172-463483.pdf"
+			(at 431.8 407.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fixed Inductors 10uH Unshld 10% 6.1A 26mOhms"
+			(at 415.29 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "28.6"
+			(at 431.8 607.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "994-MA5172-AE"
+			(at 431.8 707.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Coilcraft/MA5172-AE?qs=ZYnrCdKdyedMvVvFAobk3w%3D%3D"
+			(at 431.8 807.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "COILCRAFT"
+			(at 431.8 907.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "MA5172-AE"
+			(at 431.8 1007.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67ec369b-f2c5-4352-a86d-9748b664bbfb")
+		)
+		(pin "2"
+			(uuid "07129e38-a362-4ce0-a7e8-473fb75a4c05")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TAS3251_project:Coilcraft_XGL1712-103MED")
+		(at 422.91 184.15 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9c311771-0038-4c50-8bf0-f15af6a1bb30")
+		(property "Reference" "L3"
+			(at 422.91 172.72 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "10uH"
+			(at 422.91 175.26 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "TAS3251:L_Coilcraft_XGL1712-103"
+			(at 422.91 184.15 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "kicad-embed://xgl1712.pdf"
+			(at 422.91 184.15 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Induction"
+			(at 422.91 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 422.91 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=port1 2=port2"
+			(at 422.91 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "/home/igor/NeatAmpTAS3251-IK/KiCADv5_02_files_Validated/Coilcraft_pspice_XGL1712-103.lib"
+			(at 422.91 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "XGL1712-103"
+			(at 422.91 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "0f8fecb1-eeb7-4c83-8127-ade4991548dd")
+		)
+		(pin "1"
+			(uuid "92ecc3e2-f3b0-4e66-9868-b6bc8ed9fe0b")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 461.01 232.41 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a9957461-5823-4825-9cfd-f2cc72c06c4e")
+		(property "Reference" "C72"
+			(at 463.55 229.87 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.22µF"
+			(at 467.36 232.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 461.01 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.22 μF, 250 V, ±5%, TH"
+			(at 461.01 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 461.01 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.22µF"
+			(at 440.69 623.57 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x250V"
+			(at 440.69 623.57 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 571.5 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A3224J  "
+			(at 571.5 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 571.5 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 571.5 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "acf78484-2ead-45d4-bfa2-c59b8454e236")
+		)
+		(pin "1"
+			(uuid "c38dacf8-95d8-4ecd-a281-69780afc021d")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C72")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 459.74 110.49 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ac70f832-cc6f-4207-b3a7-1a0d8851638c")
+		(property "Reference" "C69"
+			(at 462.28 107.95 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.22µF"
+			(at 466.09 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 459.74 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.22 μF, 250 V, ±5%, TH"
+			(at 459.74 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 459.74 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.22µF"
+			(at 439.42 501.65 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x250V"
+			(at 439.42 501.65 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 570.23 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A3224J  "
+			(at 570.23 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 570.23 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 570.23 546.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "00bb76ac-c8a7-43af-ae77-c8ce0303904e")
+		)
+		(pin "1"
+			(uuid "58fcc556-b19a-4748-8723-28b52f008cdf")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C69")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TAS3251_project:Coilcraft_XGL1712-103MED")
+		(at 422.91 224.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b3cd293d-eeba-4209-a1cf-235d917bb39a")
+		(property "Reference" "L4"
+			(at 422.91 213.36 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "10uH"
+			(at 422.91 215.9 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "TAS3251:L_Coilcraft_XGL1712-103"
+			(at 422.91 224.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "kicad-embed://xgl1712.pdf"
+			(at 422.91 224.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Induction"
+			(at 422.91 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 422.91 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=port1 2=port2"
+			(at 422.91 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "/home/igor/NeatAmpTAS3251-IK/KiCADv5_02_files_Validated/Coilcraft_pspice_XGL1712-103.lib"
+			(at 422.91 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "XGL1712-103"
+			(at 422.91 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "568cf5ce-6728-41b2-afe7-7905c1b425ef")
+		)
+		(pin "1"
+			(uuid "fdc23050-2a76-49ea-b82b-cee10c6e1574")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "L4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 461.01 156.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b7ec3c44-262e-426b-ad0f-947120c09e13")
+		(property "Reference" "#GND_021"
+			(at 461.01 152.654 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 461.01 153.416 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 461.01 156.21 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 461.01 156.21 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 461.01 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "37d8ce58-6ae2-4948-9088-f2fb2dd07354")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 459.74 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bbadbfcf-9b1c-4789-aa16-a060a5cead52")
+		(property "Reference" "#GND_023"
+			(at 459.74 112.014 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 459.74 112.776 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 459.74 115.57 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 459.74 115.57 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 459.74 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "37a59150-8ae6-4339-b9c7-3a7fcac5e368")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 449.58 156.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c0fdc046-d4a9-4d1d-83f6-0f2419d14877")
+		(property "Reference" "#GND_020"
+			(at 449.58 152.654 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 449.58 153.416 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 449.58 156.21 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 449.58 156.21 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 449.58 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "abaf4d10-a419-4de0-9a62-38c65e27f18c")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_020")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 461.01 196.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d12c94e3-84be-40b7-9d9f-1efdb048123e")
+		(property "Reference" "#GND_05"
+			(at 461.01 193.294 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 461.01 194.056 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 461.01 196.85 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 461.01 196.85 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 461.01 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "10a09006-d1d1-411d-bace-d3d7b381b341")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 449.58 232.41 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "db7e3619-2956-49a3-bfc7-5a993487c50e")
+		(property "Reference" "C68"
+			(at 452.12 229.87 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.15µF"
+			(at 455.93 232.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 449.58 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.15 μF, 400 V, ±5%, TH"
+			(at 449.58 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 449.58 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.15µF"
+			(at 429.26 623.57 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x400V"
+			(at 429.26 623.57 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 560.07 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A4154J "
+			(at 560.07 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 560.07 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 560.07 668.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "97a7d80a-aee7-4156-b40e-530547aa46ca")
+		)
+		(pin "1"
+			(uuid "ff271146-3f20-408f-9a0f-2593f741d2ce")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C68")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 449.58 196.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e788cee8-c599-4e7b-80e7-868b517614ce")
+		(property "Reference" "#GND_03"
+			(at 449.58 193.294 0)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+			)
+		)
+		(property "Value" "+GND"
+			(at 449.58 194.056 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 449.58 196.85 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 449.58 196.85 0)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 449.58 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0c3b6dc9-1445-4882-86ca-e30f518c3d70")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "#GND_03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 461.01 151.13 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f73fdaa2-879a-4372-ace7-11dcd42b90c2")
+		(property "Reference" "C70"
+			(at 463.55 148.59 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.22µF"
+			(at 467.36 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 461.01 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.22 μF, 250 V, ±5%, TH"
+			(at 461.01 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 461.01 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.22µF"
+			(at 440.69 542.29 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x250V"
+			(at 440.69 542.29 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 571.5 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A3224J  "
+			(at 571.5 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 571.5 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 571.5 586.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "435663ab-2eda-4ecf-ae08-265d8fe26ac2")
+		)
+		(pin "1"
+			(uuid "6e4a9124-fa7c-4a4f-b6e7-61f4d0ec850e")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C70")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:B32652A3684J")
+		(at 449.58 191.77 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fad08eef-5749-4929-97ed-5dd9662ba04e")
+		(property "Reference" "C57"
+			(at 452.12 189.23 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify right top)
+			)
+		)
+		(property "Value" "0.15µF"
+			(at 455.93 191.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Rect_L18.0mm_W6.0mm_P15.00mm_FKS3_FKP3"
+			(at 449.58 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, Film, 0.15 μF, 400 V, ±5%, TH"
+			(at 449.58 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 449.58 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ValueDisplayed" "0.15µF"
+			(at 429.26 582.93 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value2" "x400V"
+			(at 429.26 582.93 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "EPCOS"
+			(at 560.07 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PartNumber" "B32652A4154J "
+			(at 560.07 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "NOPOP"
+			(at 560.07 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "NOPOP"
+			(at 560.07 627.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "df596f07-f123-42ab-a694-c7c3aeff9f4e")
+		)
+		(pin "1"
+			(uuid "1fb6c571-5d67-4889-8e7c-57ad93dd9ebb")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
+					(reference "C57")
 					(unit 1)
 				)
 			)

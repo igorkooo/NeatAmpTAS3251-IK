@@ -19,7 +19,7 @@
 			)
 		)
 		(property "Value" "10uH"
-			(at 0 -2.794 0)
+			(at 0 -1.778 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -59,7 +59,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Sim.Pins" "1=port1 2=port2"
@@ -68,7 +67,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Sim.Library" "/home/igor/NeatAmpTAS3251-IK/KiCADv5_02_files_Validated/Coilcraft_pspice_XGL1712-103.lib"
@@ -81,11 +79,12 @@
 			)
 		)
 		(property "Sim.Name" "XGL1712-103"
-			(at 0 -1.016 0)
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(symbol "Coilcraft_XGL1712-103MED_0_1"

@@ -1,6 +1,8 @@
 (sym_lib_table
-  (lib (name TAS3251specific)(type Legacy)(uri "C:/Users/JMF/Dropbox/Hifi/TAS3251amp/TAS3251JMF_Exec/TAS3251 Library/TAS3251specific.lib")(options "")(descr ""))
-  (lib (name AAP090A_PowerSupplies-SchDoc-rescue)(type Legacy)(uri ${KIPRJMOD}/AAP090A_PowerSupplies-SchDoc-rescue.lib)(options "")(descr ""))
-  (lib (name AAP090A_TAS3251DKQ-IO-SchDoc-rescue)(type Legacy)(uri ${KIPRJMOD}/AAP090A_TAS3251DKQ-IO-SchDoc-rescue.lib)(options "")(descr ""))
-  (lib (name TAS3251JMF_MCU-rescue)(type Legacy)(uri ${KIPRJMOD}/TAS3251JMF_MCU-rescue.lib)(options "")(descr ""))
+  (version 7)
+  (lib (name "TAS3251specific")(type "Legacy")(uri "C:/Users/JMF/Dropbox/Hifi/TAS3251amp/TAS3251JMF_Exec/TAS3251 Library/TAS3251specific.lib")(options "")(descr ""))
+  (lib (name "AAP090A_PowerSupplies-SchDoc-rescue")(type "Legacy")(uri "${KIPRJMOD}/AAP090A_PowerSupplies-SchDoc-rescue.lib")(options "")(descr ""))
+  (lib (name "AAP090A_TAS3251DKQ-IO-SchDoc-rescue")(type "KiCad")(uri "${KIPRJMOD}/AAP090A_TAS3251DKQ-IO-SchDoc-rescue.kicad_sym")(options "")(descr ""))
+  (lib (name "TAS3251_project")(type "KiCad")(uri "${KIPRJMOD}/TAS3251_project.kicad_sym")(options "")(descr ""))
+  (lib (name "TAS3251JMF_MCU-rescue")(type "Legacy")(uri "${KIPRJMOD}/TAS3251JMF_MCU-rescue.lib")(options "")(descr ""))
 )

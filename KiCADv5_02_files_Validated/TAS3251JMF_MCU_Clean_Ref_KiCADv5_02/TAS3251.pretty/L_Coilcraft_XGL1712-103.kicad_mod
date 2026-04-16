@@ -6,7 +6,7 @@
 	(descr "Inductor, Coilcraft, XAL1510-822, 15.4x16.4x10.0mm, (https://www.coilcraft.com/getmedia/cd1cef27-13f0-4568-8894-f7311475209b/xal1510.pdf), generated with kicad-footprint-generator gen_inductor.py")
 	(tags "xal")
 	(property "Reference" "REF**"
-		(at 0 -9.15 0)
+		(at -6.6 -9.9 0)
 		(layer "F.SilkS")
 		(uuid "75cfe5cc-1adc-4bf0-84ae-966d0fdcb73b")
 		(effects
@@ -17,7 +17,7 @@
 		)
 	)
 	(property "Value" "L_Coilcraft_XGL1712-103"
-		(at 0 9.15 0)
+		(at 0 10 0)
 		(layer "F.Fab")
 		(uuid "de227b46-5960-4cd1-9183-d73d737e7df1")
 		(effects
@@ -149,6 +149,18 @@
 		)
 		(rotate
 			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/TAS3251.pretty/Coilcraft-XGL1712.STEP"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -90)
 		)
 	)
 )

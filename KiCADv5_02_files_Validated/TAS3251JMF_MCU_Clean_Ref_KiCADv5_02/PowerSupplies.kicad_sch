@@ -6056,10 +6056,6 @@
 		)
 		(instances
 			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27"
-					(reference "C43")
-					(unit 1)
-				)
 				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
 					(reference "C43")
 					(unit 1)
@@ -10950,14 +10946,6 @@
 				)
 				(justify left)
 				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 217.17 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(property "Description" ""

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MA5172-AE
+D Fixed Inductors 10uH Unshld 10% 6.1A 26mOhms
+K
+F https://www.mouser.it/datasheet/2/597/ma5172-463483.pdf
+$ENDCMP
+#
+#End Doc Library
