@@ -10,9 +10,75 @@
 		(comment 1 "Licence: CC BY-SA 4.0")
 	)
 	(lib_symbols)
+	(hierarchical_label "CLIP_OTW_TAS"
+		(shape input)
+		(at 186.69 59.69 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0b2b0f92-95fa-4919-987e-5525f713f441")
+	)
+	(hierarchical_label "FAULT_TAS"
+		(shape input)
+		(at 186.69 55.88 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "19c27d46-58b1-4fea-8d65-ebb429dfb56f")
+	)
+	(hierarchical_label "SCL_TAS"
+		(shape output)
+		(at 186.69 39.37 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "65ec8f17-f42b-42d6-a409-ceee2fa833dc")
+	)
+	(hierarchical_label "RESET_TAS"
+		(shape output)
+		(at 186.69 45.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8f121a41-f459-4378-80d5-7f47e52a86dc")
+	)
+	(hierarchical_label "SDA_TAS"
+		(shape bidirectional)
+		(at 186.69 35.56 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9c0a910a-1d9e-43ad-a106-09a30b8a2ff3")
+	)
+	(hierarchical_label "DAC_MUTE_TAS"
+		(shape output)
+		(at 186.69 49.53 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ec075e1f-15a3-4bf5-89a1-9c9bfa9a17a3")
+	)
 	(sheet
-		(at 214.63 91.44)
-		(size 59.69 35.56)
+		(at 218.44 31.75)
+		(size 59.69 95.25)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -27,7 +93,7 @@
 		)
 		(uuid "00000000-0000-0000-0000-00005b793f19")
 		(property "Sheetname" "TAS3251"
-			(at 214.63 90.7284 0)
+			(at 218.44 31.0384 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36,7 +102,7 @@
 			)
 		)
 		(property "Sheetfile" "TAS3251.kicad_sch"
-			(at 214.63 127.5846 0)
+			(at 218.44 127.5846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -132,6 +198,48 @@
 			(project "TAS3251JMF_MCU"
 				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27"
 					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 133.35 31.75)
+		(size 53.34 53.34)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "a2629598-7e85-4a5d-b7b4-6c62942d6d74")
+		(property "Sheetname" "microcontroler_new"
+			(at 133.35 31.0384 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "untitled.kicad_sch"
+			(at 133.35 85.6746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27"
+					(page "5")
 				)
 			)
 		)

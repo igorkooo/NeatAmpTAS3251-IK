@@ -1249,6 +1249,14 @@
     [
       "00000000-0000-0000-0000-00005b793f19",
       "TAS3251"
+    ],
+    [
+      "44c527e1-a2a8-4dfe-aed9-f450de736f9c",
+      "Microcontroler"
+    ],
+    [
+      "a2629598-7e85-4a5d-b7b4-6c62942d6d74",
+      "microcontroler_new"
     ]
   ],
   "text_variables": {}
