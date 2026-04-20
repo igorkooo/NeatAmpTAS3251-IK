@@ -6,5 +6,5 @@ The idea is to take great project explained here (https://github.com/jmf13/NeatA
 
 * Use ESP32 Wifi
 * Replace L with different provider
-* Make everything ready for DSP
+* Make everything ready for DSP ADAU1466
 * Use KiCad v9
