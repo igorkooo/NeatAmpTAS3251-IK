@@ -10,7 +10,7 @@
 		(comment 1 "Licence: CC BY-SA 4.0")
 	)
 	(lib_symbols)
-	(hierarchical_label "CLIP_OTW_TAS"
+	(hierarchical_label "\\CLIP_OTW"
 		(shape input)
 		(at 186.69 59.69 180)
 		(effects
@@ -21,7 +21,7 @@
 		)
 		(uuid "0b2b0f92-95fa-4919-987e-5525f713f441")
 	)
-	(hierarchical_label "FAULT_TAS"
+	(hierarchical_label "\\FAULT"
 		(shape input)
 		(at 186.69 55.88 180)
 		(effects

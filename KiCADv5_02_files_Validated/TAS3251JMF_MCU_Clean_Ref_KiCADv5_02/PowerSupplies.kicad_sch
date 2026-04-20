@@ -1962,6 +1962,247 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:D_Schottky_x2_Serial_AKC"
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 1.27 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Device_D_Schottky_x2_Serial_AKC"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_Schottky_x2_Serial_AKC_0_1"
+				(polyline
+					(pts
+						(xy -3.81 1.27) (xy -1.27 0) (xy -3.81 -1.27) (xy -3.81 1.27) (xy -3.81 1.27) (xy -3.81 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 0) (xy 3.81 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 1.016) (xy -1.778 1.27) (xy -1.27 1.27) (xy -1.27 1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -0.762 -1.27) (xy -0.762 -1.016) (xy -0.762 -1.016)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 3.81 0) (xy 1.27 -1.27) (xy 1.27 1.27) (xy 1.27 1.27) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 1.27) (xy 3.81 -1.27) (xy 3.81 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 1.27) (xy 3.302 1.27) (xy 3.302 1.016) (xy 3.302 1.016)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -1.27) (xy 4.318 -1.27) (xy 4.318 -1.016) (xy 4.318 -1.016)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.35 0) (xy 7.62 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "common"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 3.81)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:L"
 			(pin_numbers
 				(hide yes)
@@ -4048,6 +4289,17 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "Voltage measurement"
+		(exclude_from_sim no)
+		(at 345.44 66.04 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "0b9fbcc9-6d38-4d6d-b908-16f388486e57")
+	)
 	(text "PVDD MAX = 36V"
 		(exclude_from_sim no)
 		(at 50.8 21.59 0)
@@ -4069,6 +4321,17 @@
 			(justify left bottom)
 		)
 		(uuid "aa6054ba-bb70-454a-9caf-8e3b788e1d65")
+	)
+	(text "for Reset function"
+		(exclude_from_sim no)
+		(at 345.44 69.85 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "d49426d0-4e8f-4dd0-94e6-6ee53c0aaffa")
 	)
 	(junction
 		(at 152.4 43.18)
@@ -4105,6 +4368,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "422b3854-b564-48f3-8150-22a3199ce222")
+	)
+	(junction
+		(at 358.14 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "48ddc3f3-b7cb-4892-a294-272f1ff87799")
 	)
 	(junction
 		(at 269.24 40.64)
@@ -4189,6 +4458,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cca34712-9cf3-493a-8937-a76e8400eb36")
+	)
+	(junction
+		(at 347.98 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d5d4b632-ec9a-4b1d-986f-d91f2151b43a")
 	)
 	(junction
 		(at 40.64 25.4)
@@ -4324,6 +4599,26 @@
 	)
 	(wire
 		(pts
+			(xy 325.12 104.14) (xy 325.12 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a4dcbb4-1e1d-407b-b1cd-0d8482dee330")
+	)
+	(wire
+		(pts
+			(xy 358.14 106.68) (xy 358.14 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b7be926-cd08-41a1-8bf7-f7eff581bad2")
+	)
+	(wire
+		(pts
 			(xy 218.44 26.67) (xy 222.25 26.67)
 		)
 		(stroke
@@ -4351,6 +4646,16 @@
 			(type default)
 		)
 		(uuid "0ce3b600-7632-4609-a653-33b818f71001")
+	)
+	(wire
+		(pts
+			(xy 358.14 86.36) (xy 358.14 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10a7354b-0340-4bde-976e-bc1b08a514f9")
 	)
 	(wire
 		(pts
@@ -4634,6 +4939,26 @@
 	)
 	(wire
 		(pts
+			(xy 358.14 96.52) (xy 363.22 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57897fdf-23ef-40f2-8578-c209c0d945ca")
+	)
+	(wire
+		(pts
+			(xy 330.2 96.52) (xy 347.98 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b6e00ae-2910-4fd3-a662-e8086af40bba")
+	)
+	(wire
+		(pts
 			(xy 55.88 43.18) (xy 40.64 43.18)
 		)
 		(stroke
@@ -4674,6 +4999,16 @@
 	)
 	(wire
 		(pts
+			(xy 358.14 96.52) (xy 347.98 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f2846d3-dbdf-482c-8f63-96d51f96421e")
+	)
+	(wire
+		(pts
 			(xy 30.48 25.4) (xy 35.56 25.4)
 		)
 		(stroke
@@ -4681,6 +5016,16 @@
 			(type default)
 		)
 		(uuid "60c3eb20-0ed1-47ce-87f0-0e0047d0889d")
+	)
+	(wire
+		(pts
+			(xy 358.14 96.52) (xy 358.14 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "623222d8-06c2-4b9f-b24f-62464e1186e0")
 	)
 	(wire
 		(pts
@@ -4744,6 +5089,16 @@
 	)
 	(wire
 		(pts
+			(xy 325.12 85.09) (xy 325.12 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74044b1a-c5d7-455f-be57-ed850ddae01d")
+	)
+	(wire
+		(pts
 			(xy 55.88 43.18) (xy 55.88 38.1)
 		)
 		(stroke
@@ -4754,6 +5109,16 @@
 	)
 	(wire
 		(pts
+			(xy 358.14 95.25) (xy 358.14 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76ed9fd0-a618-4212-9c23-4c151ad76299")
+	)
+	(wire
+		(pts
 			(xy 55.88 80.01) (xy 35.56 80.01)
 		)
 		(stroke
@@ -4761,6 +5126,16 @@
 			(type default)
 		)
 		(uuid "780d2be3-d408-4377-b82e-88da1b9c571d")
+	)
+	(wire
+		(pts
+			(xy 347.98 106.68) (xy 347.98 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7acb7ddb-462d-400b-a1d2-575ccacd268e")
 	)
 	(wire
 		(pts
@@ -4861,6 +5236,16 @@
 			(type default)
 		)
 		(uuid "915568ee-53cd-4a3c-adc3-1ad449e83874")
+	)
+	(wire
+		(pts
+			(xy 347.98 88.9) (xy 347.98 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "925e3094-5d2c-4c31-bfc6-b499927cd4fb")
 	)
 	(wire
 		(pts
@@ -5184,6 +5569,16 @@
 	)
 	(wire
 		(pts
+			(xy 347.98 96.52) (xy 347.98 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d32dd576-ef2b-4c7d-9242-28bbdc4b42c9")
+	)
+	(wire
+		(pts
 			(xy 320.04 30.48) (xy 339.09 30.48)
 		)
 		(stroke
@@ -5334,6 +5729,16 @@
 	)
 	(wire
 		(pts
+			(xy 347.98 78.74) (xy 347.98 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcd5885a-6bcf-40aa-8d5a-83cc3f4c640f")
+	)
+	(wire
+		(pts
 			(xy 20.32 80.01) (xy 20.32 82.55)
 		)
 		(stroke
@@ -5371,6 +5776,17 @@
 			(justify left bottom)
 		)
 		(uuid "32831869-f446-4bb3-bd7d-8682bfbcca45")
+	)
+	(hierarchical_label "POWER UP"
+		(shape output)
+		(at 363.22 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b036316a-d285-4a31-9687-c932c15c1d18")
 	)
 	(symbol
 		(lib_id "Device:CP")
@@ -12592,6 +13008,910 @@
 			(project "TAS3251JMF_MCU"
 				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
 					(reference "C59")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 358.14 82.55 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e10faea")
+		(property "Reference" "R40"
+			(at 356.362 81.3816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 356.362 83.693 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 359.918 82.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxRES, 100.0k,1%, 0.125 W, 0805"
+			(at 358.14 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 358.14 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_Part_Number" "C17407"
+			(at 755.65 346.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0c7a7abe-3aa8-4a1a-a1eb-71a77506a78a")
+		)
+		(pin "2"
+			(uuid "b63fab2b-742d-4803-b388-9c1b7a1872fb")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "R40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 347.98 85.09 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e10fc30")
+		(property "Reference" "R41"
+			(at 346.202 83.9216 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "12k"
+			(at 346.202 86.233 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 349.758 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxRES, 12k, 1%, 0.125 W, 0805"
+			(at 347.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 347.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "0805W8F1202T5E"
+			(at 755.65 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "C17444"
+			(at 755.65 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f6fa5b45-fd19-45d4-b143-7a39973ac765")
+		)
+		(pin "2"
+			(uuid "2574fab2-e0d2-47d2-8e70-ddf185319a5a")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "R41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 347.98 102.87 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e10fd78")
+		(property "Reference" "R42"
+			(at 346.202 101.7016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3.3k"
+			(at 346.202 104.013 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 349.758 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxRES, 3.3k, 1%, 0.125 W, 0805"
+			(at 347.98 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 347.98 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "0805W8F3301T5E"
+			(at 755.65 387.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "C26010"
+			(at 755.65 387.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab6f5b84-f0fd-4473-b356-1f3a51621636")
+		)
+		(pin "2"
+			(uuid "fd554b68-8ed7-4ef6-a339-8c704a0e9d3e")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "R42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 358.14 91.44 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e10fecb")
+		(property "Reference" "C54"
+			(at 355.219 90.2716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1µF"
+			(at 355.219 92.583 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 357.1748 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, CERM, 1 μF, 50 V, ±10%, X7R, 0805"
+			(at 358.14 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 358.14 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "CL21B105KBFNNNE"
+			(at 755.65 364.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "C28323"
+			(at 755.65 364.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "72a950c9-e790-4b64-8248-3d34d1e80855")
+		)
+		(pin "2"
+			(uuid "3c46965d-5508-4cc4-a1f4-6f1bfefa9ded")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "C54")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 358.14 102.87 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e110011")
+		(property "Reference" "C55"
+			(at 355.219 101.7016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1µF"
+			(at 355.219 104.013 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 357.1748 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "xxCAP, CERM, 1 μF, 50 V, ±10%, X7R, 0805"
+			(at 358.14 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 358.14 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "CL21B105KBFNNNE"
+			(at 755.65 387.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "C28323"
+			(at 755.65 387.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "17578c6a-6499-4c2b-9d49-16d497986426")
+		)
+		(pin "2"
+			(uuid "01e145af-0f83-43aa-87de-a6c2a97cbb40")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "C55")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 358.14 109.22 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e1103e9")
+		(property "Reference" "#PWR0143"
+			(at 358.14 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 358.013 113.6142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 358.14 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 358.14 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 358.14 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "89b7cf44-20a7-46eb-9800-2e642f7324b2")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "#PWR0143")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 347.98 109.22 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e11051f")
+		(property "Reference" "#PWR0144"
+			(at 347.98 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 347.853 113.6142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 347.98 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 347.98 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 347.98 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "25dc82c5-1732-44d5-9c22-7ea694b3f523")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "#PWR0144")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 325.12 107.95 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e11078b")
+		(property "Reference" "#PWR0146"
+			(at 325.12 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 324.993 112.3442 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 325.12 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 325.12 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 325.12 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fdad5280-a884-430f-9341-0201aea8bdec")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "#PWR0146")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 325.12 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e1b0f00")
+		(property "Reference" "#PWR026"
+			(at 325.12 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 325.501 80.6958 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 325.12 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 325.12 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 325.12 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "02f88090-e13e-4c6c-9fbc-f1f9e4271190")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "#PWR026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky_x2_Serial_AKC")
+		(at 325.12 96.52 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e1fa592")
+		(property "Reference" "D7"
+			(at 323.1388 95.3516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "D_Schottky_x2_Serial_AKC"
+			(at 340.36 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 325.12 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "BAS40-04"
+			(at 325.12 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 325.12 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "BAS40-04,215"
+			(at 651.51 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "C255581"
+			(at 651.51 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "628bab4c-778c-44fe-adba-2c912fe5dc32")
+		)
+		(pin "3"
+			(uuid "f7683f51-396b-43ce-8559-b27d8daff84f")
+		)
+		(pin "2"
+			(uuid "32309343-af07-411e-89f0-9d57a6f187ea")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 347.98 78.74 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e33d141")
+		(property "Reference" "#PWR0147"
+			(at 347.98 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 347.599 74.3458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 347.98 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 347.98 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 347.98 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9150537d-09d4-4531-8f54-a2920cc6631c")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "#PWR0147")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VDD")
+		(at 358.14 78.74 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005e36bcc2")
+		(property "Reference" "#PWR0148"
+			(at 358.14 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 357.7082 74.3458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 358.14 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 358.14 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 358.14 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6011e57d-3a45-4e7e-9818-f7d5041d9b12")
+		)
+		(instances
+			(project "TAS3251JMF_MCU"
+				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b7d4339"
+					(reference "#PWR0148")
 					(unit 1)
 				)
 			)

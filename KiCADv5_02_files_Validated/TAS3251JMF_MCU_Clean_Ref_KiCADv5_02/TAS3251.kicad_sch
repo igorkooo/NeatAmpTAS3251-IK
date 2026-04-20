@@ -5262,380 +5262,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector_Generic:Conn_02x05_Odd_Even"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 1.27 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_02x05_Odd_Even"
-				(at 1.27 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_2x??_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_02x05_Odd_Even_1_1"
-				(rectangle
-					(start -1.27 6.35)
-					(end 3.81 -6.35)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 5.207)
-					(end 0 4.953)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -4.953)
-					(end 0 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 3.81 5.207)
-					(end 2.54 4.953)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 3.81 2.667)
-					(end 2.54 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 3.81 0.127)
-					(end 2.54 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 3.81 -2.413)
-					(end 2.54 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 3.81 -4.953)
-					(end 2.54 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 5.08 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 2.54 0)
-					(length 3.81)
-					(name "Pin_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 3.81)
-					(name "Pin_9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 5.08 180)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 2.54 180)
-					(length 3.81)
-					(name "Pin_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 3.81)
-					(name "Pin_6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 -2.54 180)
-					(length 3.81)
-					(name "Pin_8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 -5.08 180)
-					(length 3.81)
-					(name "Pin_10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -5757,146 +5383,6 @@
 				(pin passive line
 					(at 0 -3.81 90)
 					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Device:C_Small"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.254 1.778 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C_Small"
-				(at 0.254 -2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Unpolarized capacitor, small symbol"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "capacitor cap"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_Small_0_1"
-				(polyline
-					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
-					)
-					(stroke
-						(width 0.3048)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
-					)
-					(stroke
-						(width 0.3302)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_Small_1_1"
-				(pin passive line
-					(at 0 2.54 270)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 90)
-					(length 2.032)
 					(name "~"
 						(effects
 							(font
@@ -6489,254 +5975,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Jumper:SolderJumper_3_Open"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "JP"
-				(at -2.54 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SolderJumper_3_Open"
-				(at 0 2.794 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Solder Jumper, 3-pole, open"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Solder Jumper SPDT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SolderJumper*Open*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SolderJumper_3_Open_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy -2.032 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.016 1.016) (xy -1.016 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -1.016 -1.016)
-					(mid -2.0276 0)
-					(end -1.016 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -1.016 -1.016)
-					(mid -2.0276 0)
-					(end -1.016 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -0.508 1.016)
-					(end 0.508 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.27) (xy 0 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 1.016 1.016)
-					(mid 2.0276 0)
-					(end 1.016 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 1.016 1.016)
-					(mid 2.0276 0)
-					(end 1.016 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 1.016) (xy 1.016 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy 2.032 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SolderJumper_3_Open_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "MA5172-AE:MA5172-AE"
 			(pin_names
 				(hide yes)
@@ -6919,231 +6157,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Memory_EEPROM:24LC02"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at -6.35 6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "24LC02"
-				(at 1.27 6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21709c.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "I2C Serial EEPROM, 2Kb, DIP-8/SOIC-8/TSSOP-8/DFN-8"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "I2C Serial EEPROM"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "DIP*W7.62mm* SOIC*3.9x4.9mm* TSSOP*4.4x3mm*P0.65mm* DFN*3x2mm*P0.5mm*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "24LC02_1_1"
-				(rectangle
-					(start -7.62 5.08)
-					(end 7.62 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin input line
-					(at -10.16 2.54 0)
-					(length 2.54)
-					(name "A0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -10.16 0 0)
-					(length 2.54)
-					(name "A1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -10.16 -2.54 0)
-					(length 2.54)
-					(name "A2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 7.62 270)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 10.16 2.54 180)
-					(length 2.54)
-					(name "SDA"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 10.16 0 180)
-					(length 2.54)
-					(name "SCL"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 10.16 -2.54 180)
-					(length 2.54)
-					(name "WP"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -8464,12 +7477,6 @@
 		(uuid "00b0b6bf-ba3a-4263-86a8-c715209ff125")
 	)
 	(junction
-		(at 41.91 325.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0137bf19-4383-4238-99a5-64d3b9730ae2")
-	)
-	(junction
 		(at 461.01 224.79)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8902,12 +7909,6 @@
 		(uuid "d1a877b0-6113-4232-a801-b4f05c15663f")
 	)
 	(junction
-		(at 69.85 325.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dc7df2f9-8788-4934-a952-54e7b7345079")
-	)
-	(junction
 		(at 87.63 186.69)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8930,12 +7931,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ecf6fa7d-cc5a-4c8d-8bba-501b0a52b206")
-	)
-	(junction
-		(at 52.07 325.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f4d0ece7-9043-46bc-80f5-3610290c4987")
 	)
 	(junction
 		(at 153.67 100.33)
@@ -8972,26 +7967,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ff5b9c8f-4ff0-4cd2-aad7-fb31c8600788")
-	)
-	(no_connect
-		(at 62.23 294.64)
-		(uuid "1b788daf-c60a-44d0-8ee7-ffe952f935af")
-	)
-	(no_connect
-		(at 74.93 302.26)
-		(uuid "8740312e-ecdf-4f81-926f-036c961bc2a8")
-	)
-	(no_connect
-		(at 62.23 297.18)
-		(uuid "879ce010-f045-4336-a67f-06a75a245f8e")
-	)
-	(no_connect
-		(at 74.93 304.8)
-		(uuid "8d349522-57f7-4a23-9cf2-154834370e36")
-	)
-	(no_connect
-		(at 62.23 304.8)
-		(uuid "984b3b96-a2a0-4688-b05f-fdfd2a5364d6")
 	)
 	(wire
 		(pts
@@ -9225,16 +8200,6 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 326.39) (xy 41.91 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0d85827d-803e-4f9d-84cb-7f0e8c43c11e")
-	)
-	(wire
-		(pts
 			(xy 43.18 199.39) (xy 73.66 199.39)
 		)
 		(stroke
@@ -9425,16 +8390,6 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 341.63) (xy 59.69 341.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "20d64342-4e60-4823-8f5d-3dcdd15d27b9")
-	)
-	(wire
-		(pts
 			(xy 471.17 102.87) (xy 471.17 105.41)
 		)
 		(stroke
@@ -9442,16 +8397,6 @@
 			(type default)
 		)
 		(uuid "217044af-35cd-460f-9b08-52f91a7cf4a0")
-	)
-	(wire
-		(pts
-			(xy 31.75 326.39) (xy 31.75 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "227de448-9729-4c7c-8924-c9450b8dbfe4")
 	)
 	(wire
 		(pts
@@ -9622,16 +8567,6 @@
 			(type default)
 		)
 		(uuid "29a76b9e-a848-4221-b699-b9250c1761bd")
-	)
-	(wire
-		(pts
-			(xy 85.09 299.72) (xy 85.09 300.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "29e42a97-7632-4b01-aff0-1570c6ef7fa4")
 	)
 	(wire
 		(pts
@@ -9895,16 +8830,6 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 302.26) (xy 55.88 302.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "38815bb1-624f-4210-afa6-9b9d4ae14c54")
-	)
-	(wire
-		(pts
 			(xy 43.18 207.01) (xy 46.99 207.01)
 		)
 		(stroke
@@ -9973,16 +8898,6 @@
 		)
 		(uuid "3b19de20-f22c-4755-9afe-d73a60a10884")
 	)
-	(wire
-		(pts
-			(xy 74.93 297.18) (xy 77.47 297.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3b2f9d87-b429-494f-bc95-9cd2b106119e")
-	)
 	(polyline
 		(pts
 			(xy 303.53 267.97) (xy 354.33 267.97)
@@ -10022,16 +8937,6 @@
 			(type default)
 		)
 		(uuid "3dc3c15d-138e-485e-ac94-bc8d3d3c7b27")
-	)
-	(wire
-		(pts
-			(xy 38.1 346.71) (xy 35.56 346.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e616b26-4d9c-484b-bac4-6e5cb94bf9c1")
 	)
 	(wire
 		(pts
@@ -10235,16 +9140,6 @@
 	)
 	(wire
 		(pts
-			(xy 31.75 351.79) (xy 31.75 355.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "48dbfaac-0c76-4244-927e-f652028d2a82")
-	)
-	(wire
-		(pts
 			(xy 252.73 59.69) (xy 242.57 59.69)
 		)
 		(stroke
@@ -10285,16 +9180,6 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 346.71) (xy 57.15 351.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4abe8e2a-4a66-4b60-be88-662d611b04a2")
-	)
-	(wire
-		(pts
 			(xy 273.05 87.63) (xy 273.05 90.17)
 		)
 		(stroke
@@ -10322,16 +9207,6 @@
 			(type default)
 		)
 		(uuid "4c08cbf5-9bab-4065-85e8-5258bfd217ec")
-	)
-	(wire
-		(pts
-			(xy 74.93 299.72) (xy 85.09 299.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c977881-6ee4-40d1-896b-8b3ecb12093e")
 	)
 	(wire
 		(pts
@@ -10522,16 +9397,6 @@
 			(type default)
 		)
 		(uuid "579533ad-0436-4fb6-a3e9-953bb73a1512")
-	)
-	(wire
-		(pts
-			(xy 59.69 344.17) (xy 45.72 344.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "579f338f-4202-4665-a2ca-adad6edb3a53")
 	)
 	(wire
 		(pts
@@ -10745,16 +9610,6 @@
 	)
 	(wire
 		(pts
-			(xy 80.01 341.63) (xy 83.82 341.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "66f66a42-c99b-4f28-bea1-678e37dd972c")
-	)
-	(wire
-		(pts
 			(xy 40.64 223.52) (xy 38.1 223.52)
 		)
 		(stroke
@@ -10855,16 +9710,6 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 346.71) (xy 52.07 355.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6b259723-6b03-4a38-8b0b-75b6d4bea0e4")
-	)
-	(wire
-		(pts
 			(xy 146.05 158.75) (xy 153.67 158.75)
 		)
 		(stroke
@@ -10885,16 +9730,6 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 302.26) (xy 55.88 306.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6bfdb3e7-3a2b-4aee-8273-28c78de54e8e")
-	)
-	(wire
-		(pts
 			(xy 40.64 220.98) (xy 38.1 220.98)
 		)
 		(stroke
@@ -10912,16 +9747,6 @@
 			(type default)
 		)
 		(uuid "6de0c862-e809-41b6-9c79-52321561100c")
-	)
-	(wire
-		(pts
-			(xy 38.1 351.79) (xy 38.1 346.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e3b0f06-6344-4020-9d11-fb90fe7f6e6b")
 	)
 	(wire
 		(pts
@@ -10962,16 +9787,6 @@
 			(type default)
 		)
 		(uuid "6f16f551-b8c3-402c-8621-9075332e132a")
-	)
-	(wire
-		(pts
-			(xy 52.07 325.12) (xy 69.85 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6fa832a5-8193-4d16-9eb8-ce95afe76b26")
 	)
 	(wire
 		(pts
@@ -11035,16 +9850,6 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 306.07) (xy 41.91 306.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73a08d27-5f89-4203-b9bc-a3663eb5d11f")
-	)
-	(wire
-		(pts
 			(xy 435.61 224.79) (xy 435.61 227.33)
 		)
 		(stroke
@@ -11062,16 +9867,6 @@
 			(type default)
 		)
 		(uuid "75117297-9feb-468c-9415-9465dbf37c1c")
-	)
-	(wire
-		(pts
-			(xy 80.01 346.71) (xy 83.82 346.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7552c472-e8bc-4029-97ce-edfe93723b85")
 	)
 	(wire
 		(pts
@@ -11232,16 +10027,6 @@
 			(type default)
 		)
 		(uuid "7f99ea08-d4c9-439a-8175-b23a5ad4f1e4")
-	)
-	(wire
-		(pts
-			(xy 44.45 299.72) (xy 62.23 299.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7fabf3d1-2821-4009-81b6-182c849601e3")
 	)
 	(wire
 		(pts
@@ -11425,16 +10210,6 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 351.79) (xy 38.1 351.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b01d0d2-21f3-4864-a24b-bf98dd47f4b5")
-	)
-	(wire
-		(pts
 			(xy 300.99 184.15) (xy 293.37 184.15)
 		)
 		(stroke
@@ -11452,16 +10227,6 @@
 			(type default)
 		)
 		(uuid "8bbcad26-daa9-4dd5-86ff-246cbff1b04a")
-	)
-	(wire
-		(pts
-			(xy 41.91 325.12) (xy 52.07 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8ceb65b3-272f-44b5-b69b-ee551e105436")
 	)
 	(wire
 		(pts
@@ -11523,16 +10288,6 @@
 		)
 		(uuid "91417556-02e9-4fab-8801-ef2ab4b0ce37")
 	)
-	(wire
-		(pts
-			(xy 26.67 306.07) (xy 34.29 306.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "91a4d609-678e-495a-9701-4dc7945e8ba5")
-	)
 	(polyline
 		(pts
 			(xy 349.25 92.71) (xy 349.25 82.55)
@@ -11542,16 +10297,6 @@
 			(type dash)
 		)
 		(uuid "921f64dd-5f0a-4796-b0e5-46c7d3ab3942")
-	)
-	(wire
-		(pts
-			(xy 31.75 334.01) (xy 31.75 341.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "925859da-e687-41eb-817c-756beaed54a1")
 	)
 	(wire
 		(pts
@@ -11685,16 +10430,6 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 349.25) (xy 41.91 355.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "987b1313-a9d4-4435-875e-c361b260b043")
-	)
-	(wire
-		(pts
 			(xy 262.89 151.13) (xy 255.27 151.13)
 		)
 		(stroke
@@ -11782,16 +10517,6 @@
 			(type default)
 		)
 		(uuid "9eec8131-f97c-498c-b2cf-01f801b586c2")
-	)
-	(wire
-		(pts
-			(xy 80.01 344.17) (xy 83.82 344.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9fab2e7f-2eab-4dd1-8740-2ee054833286")
 	)
 	(wire
 		(pts
@@ -11935,16 +10660,6 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 346.71) (xy 57.15 346.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a9efa7d6-7a20-4c51-a887-d3fea82f123f")
-	)
-	(wire
-		(pts
 			(xy 105.41 115.57) (xy 105.41 118.11)
 		)
 		(stroke
@@ -12042,16 +10757,6 @@
 			(type default)
 		)
 		(uuid "af644e91-c2c6-4401-8bfc-bef53b2bdc78")
-	)
-	(wire
-		(pts
-			(xy 26.67 307.34) (xy 26.67 306.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b005c5ea-d001-4f42-93ab-0e84c5791b10")
 	)
 	(wire
 		(pts
@@ -12155,16 +10860,6 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 330.2) (xy 76.2 332.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b699a1c2-4752-4f60-a358-0edb1147a64a")
-	)
-	(wire
-		(pts
 			(xy 163.83 68.58) (xy 166.37 68.58)
 		)
 		(stroke
@@ -12232,16 +10927,6 @@
 			(type default)
 		)
 		(uuid "bc3b75d4-29f0-426d-8742-65b91e45143c")
-	)
-	(wire
-		(pts
-			(xy 31.75 325.12) (xy 41.91 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bcdc2789-7d2d-4c5d-8e47-c00073b9ab5a")
 	)
 	(wire
 		(pts
@@ -12545,16 +11230,6 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 334.01) (xy 41.91 339.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ccd96e57-8c42-448f-ba27-4fa482ef7edf")
-	)
-	(wire
-		(pts
 			(xy 184.15 44.45) (xy 196.85 44.45)
 		)
 		(stroke
@@ -12662,16 +11337,6 @@
 			(type default)
 		)
 		(uuid "d102289c-29ee-4204-bf8d-cfc8f2286e7d")
-	)
-	(wire
-		(pts
-			(xy 74.93 294.64) (xy 77.47 294.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d130f59b-9161-49fe-ab17-6ba02730dfc0")
 	)
 	(wire
 		(pts
@@ -12915,16 +11580,6 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 351.79) (xy 69.85 355.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e22eed34-4179-415e-b32c-782dda757b7e")
-	)
-	(wire
-		(pts
 			(xy 304.8 179.07) (xy 323.85 179.07)
 		)
 		(stroke
@@ -12955,16 +11610,6 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 326.39) (xy 52.07 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e6526ccd-2fae-4d2e-a8a0-7449b8a92449")
-	)
-	(wire
-		(pts
 			(xy 412.75 298.45) (xy 400.05 298.45)
 		)
 		(stroke
@@ -12982,16 +11627,6 @@
 			(type default)
 		)
 		(uuid "e6eee8bb-44d8-4a20-aa40-d9e5862848dd")
-	)
-	(wire
-		(pts
-			(xy 52.07 334.01) (xy 52.07 336.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e7e6f2b6-f6d1-4e6c-8431-afb587906c48")
 	)
 	(wire
 		(pts
@@ -13175,16 +11810,6 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 325.12) (xy 69.85 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f10a52d0-f426-48ff-9cb1-491a3229b218")
-	)
-	(wire
-		(pts
 			(xy 232.41 227.33) (xy 227.33 227.33)
 		)
 		(stroke
@@ -13202,16 +11827,6 @@
 			(type default)
 		)
 		(uuid "f23e0088-21b6-40ea-96ef-57d2c3d09de0")
-	)
-	(wire
-		(pts
-			(xy 83.82 346.71) (xy 83.82 349.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f241b00a-96b1-40c7-8b72-0bd3aba825fd")
 	)
 	(wire
 		(pts
@@ -13355,16 +11970,6 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 336.55) (xy 69.85 325.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f7efddb6-d131-47f0-831a-c535111b8c3b")
-	)
-	(wire
-		(pts
 			(xy 81.28 176.53) (xy 81.28 175.26)
 		)
 		(stroke
@@ -13503,16 +12108,6 @@
 		)
 		(uuid "046aab80-d421-41b5-82ae-6478b7f60802")
 	)
-	(label "SWCLK"
-		(at 85.09 294.64 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "15157c45-b5fe-4264-80aa-af980448c036")
-	)
 	(label "MCLK"
 		(at 151.13 186.69 0)
 		(effects
@@ -13603,16 +12198,6 @@
 		)
 		(uuid "3f55decb-5c71-4c95-b6cd-d782dd5f1d5e")
 	)
-	(label "SWDIO"
-		(at 85.09 297.18 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3fd30bb9-7cde-4a50-99da-992db910b2a7")
-	)
 	(label "\\FAULT"
 		(at 229.87 179.07 0)
 		(effects
@@ -13622,16 +12207,6 @@
 			(justify left bottom)
 		)
 		(uuid "3ff1c931-6477-4903-9c88-efcd30e8cfbf")
-	)
-	(label "\\CLIP_OTW"
-		(at 323.85 173.99 0)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left bottom)
-		)
-		(uuid "43c56a51-f090-4313-8392-4371780f2442")
 	)
 	(label "INB-"
 		(at 306.07 31.75 0)
@@ -13752,16 +12327,6 @@
 			(justify left bottom)
 		)
 		(uuid "70378a29-8261-42a6-ac1c-c053b8752e9a")
-	)
-	(label "SCL-Conn"
-		(at 83.82 344.17 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "72093388-8e66-4040-a5f1-71fddbfc92f2")
 	)
 	(label "SPK_OUTA+"
 		(at 394.97 140.97 0)
@@ -14053,15 +12618,15 @@
 		)
 		(uuid "f37c05dd-fbcb-4b3d-9b1e-67c74fca3ac5")
 	)
-	(label "SDA-Conn"
-		(at 83.82 341.63 0)
+	(label "\\FAULT"
+		(at 40.64 228.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "f9c69912-1808-43f3-b8df-adc8818f1845")
+		(uuid "f69c219f-0ac1-4d8a-b855-cefed50806b1")
 	)
 	(label "SPK_OUTB-"
 		(at 229.87 158.75 0)
@@ -14113,26 +12678,6 @@
 			)
 		)
 	)
-	(global_label "\\FAULT"
-		(shape input)
-		(at 44.45 228.6 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "9d0a62d0-bf69-43e7-83c6-c8419df7b023")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 44.45 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SPK_INA-"
 		(shape output)
 		(at 351.79 87.63 0)
@@ -14149,6 +12694,28 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "\\CLP_OTW"
+		(shape output)
+		(at 323.85 173.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c311120f-6e9a-4992-a61d-ce3988bcf0be")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 335.3129 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -27449,70 +26016,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 83.82 349.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e18b0d7")
-		(property "Reference" "#PWR024"
-			(at 83.82 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 83.947 353.6442 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 83.82 349.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 83.82 349.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 83.82 349.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ee61c736-7173-4982-96a9-1e8bffe52eb8")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR024")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_01x06")
 		(at 33.02 228.6 180)
 		(unit 1)
@@ -27602,220 +26105,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 52.07 330.2 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e1c6ecb")
-		(property "Reference" "R47"
-			(at 53.848 329.0316 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10.0k"
-			(at 53.848 331.343 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 50.292 330.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxRES, 20.0k,1%, 0.1 W, 0603"
-			(at 52.07 330.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 52.07 330.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Name" "0603WAF1002T5E"
-			(at 0 660.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C25804"
-			(at 0 660.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f83f09fd-8c14-44ac-b1f4-115c31e319b1")
-		)
-		(pin "2"
-			(uuid "1475c8c9-e9cf-482f-9565-66a0f0b58fa7")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "R47")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 52.07 355.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e1c77b7")
-		(property "Reference" "#PWR023"
-			(at 52.07 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 52.197 359.9942 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 52.07 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 52.07 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 52.07 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8f7ad8ad-6ecd-45d6-987e-59360960a361")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR023")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 85.09 300.99 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e1f63c2")
-		(property "Reference" "#PWR0152"
-			(at 85.09 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 85.09 304.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 85.09 300.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 85.09 300.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 85.09 300.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "780caadf-3c7c-4cc1-b034-7956dca985ad")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR0152")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 40.64 220.98 180)
 		(unit 1)
@@ -27874,306 +26163,6 @@
 			(project "TAS3251JMF_MCU"
 				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
 					(reference "#PWR0155")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 41.91 330.2 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e2b9d89")
-		(property "Reference" "R46"
-			(at 43.688 329.0316 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10.0k"
-			(at 43.688 331.343 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 40.132 330.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxRES, 20.0k,1%, 0.1 W, 0603"
-			(at 41.91 330.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 41.91 330.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Name" "0603WAF1002T5E"
-			(at 0 660.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C25804"
-			(at 0 660.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "00f1eb94-1350-480b-8425-510fad00fa6d")
-		)
-		(pin "2"
-			(uuid "e2e16cc9-5873-41e2-a098-3849402cb950")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "R46")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 31.75 330.2 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e2b9ee1")
-		(property "Reference" "R45"
-			(at 33.528 329.0316 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10.0k"
-			(at 33.528 331.343 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 29.972 330.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxRES, 20.0k,1%, 0.1 W, 0603"
-			(at 31.75 330.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 31.75 330.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Name" "0603WAF1002T5E"
-			(at 0 660.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C25804"
-			(at 0 660.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "84a9338f-b08a-4762-ae87-0ca3905ab7b8")
-		)
-		(pin "2"
-			(uuid "77b43adc-1750-4b7f-a580-3ea0f97cdcf7")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "R45")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 41.91 355.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e2ba03b")
-		(property "Reference" "#PWR022"
-			(at 41.91 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 42.037 359.9942 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 41.91 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 41.91 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 41.91 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ca6e626c-5be8-4c02-a881-a368dc593d62")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 31.75 355.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e2ba184")
-		(property "Reference" "#PWR021"
-			(at 31.75 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 31.877 359.9942 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 31.75 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 31.75 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 31.75 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "eeb8b5a5-1dbc-4c44-86e3-d80fceb075fa")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -28308,233 +26297,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_02x05_Odd_Even")
-		(at 67.31 299.72 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e32300c")
-		(property "Reference" "J15"
-			(at 65.278 310.515 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Conn_02x05"
-			(at 67.31 312.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical"
-			(at 67.31 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 67.31 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 67.31 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at -40.64 596.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "92ad84a7-0edd-43c3-b704-b5e6ba47e60f")
-		)
-		(pin "3"
-			(uuid "181e94ef-1b3b-4a38-a576-6a7cf5a8fc1e")
-		)
-		(pin "5"
-			(uuid "68ecdd2f-b3b5-4e55-84bb-93b2b8c4237e")
-		)
-		(pin "7"
-			(uuid "989dad12-5aa7-44ce-acc6-e08aa6c686d4")
-		)
-		(pin "9"
-			(uuid "8f4c899d-5040-448a-93a1-473543e97179")
-		)
-		(pin "2"
-			(uuid "038c6596-73ac-4d1a-92fd-b81ffdab73c5")
-		)
-		(pin "4"
-			(uuid "4f9e2705-2674-4e67-9967-ad565ca089cc")
-		)
-		(pin "6"
-			(uuid "6b4bb718-0a06-418c-9816-f0a1ccfd2083")
-		)
-		(pin "8"
-			(uuid "dc78426c-2a54-4fda-aeb7-1af9243183ee")
-		)
-		(pin "10"
-			(uuid "20511796-f231-4e03-9484-79158522d54c")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "J15")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 44.45 299.72 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e323463")
-		(property "Reference" "#PWR0157"
-			(at 44.45 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 44.45 303.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 44.45 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 44.45 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 44.45 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3f1488ce-a9f8-4790-8c7c-1e27eee50def")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR0157")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 26.67 307.34 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e356f45")
-		(property "Reference" "#PWR0158"
-			(at 26.67 303.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 26.289 311.7342 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 26.67 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 26.67 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 26.67 307.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "17abbce0-e648-4f65-8c5b-040a7bd7662e")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR0158")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 132.08 213.36 0)
 		(unit 1)
@@ -28609,564 +26371,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 81.28 294.64 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e3c95d5")
-		(property "Reference" "R35"
-			(at 81.28 289.3822 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22"
-			(at 81.28 294.64 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 81.28 292.862 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxRES, 22,1%, 0.125 W, 0605"
-			(at 81.28 294.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 81.28 294.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C23345"
-			(at -210.82 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2d820fd4-f718-47e9-96c5-63430bc94cd4")
-		)
-		(pin "2"
-			(uuid "2b7b1bd0-6c1f-49fe-9b99-fb84703cd54a")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "R35")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 81.28 297.18 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e3c97d1")
-		(property "Reference" "R36"
-			(at 81.28 291.9222 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22"
-			(at 81.28 297.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 81.28 295.402 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxRES, 22,1%, 0.125 W, 0605"
-			(at 81.28 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 81.28 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C23345"
-			(at -213.36 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c38af586-46f6-4931-b943-0c9e6aef42a3")
-		)
-		(pin "2"
-			(uuid "c9a36b2d-8ec3-4d43-b527-71f3197ef7f0")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "R36")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 38.1 306.07 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e3d1d66")
-		(property "Reference" "D6"
-			(at 38.3286 311.5564 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Green"
-			(at 38.3286 309.245 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 38.1 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxLED, Green, SMD"
-			(at 38.1 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 38.1 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C2297"
-			(at 116.84 2.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1f973450-69d8-43c5-b728-98b67f7e7f6a")
-		)
-		(pin "2"
-			(uuid "9118edbb-e567-451c-9e15-c0b3774471a0")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "D6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AAP090A_TAS3251DKQ-IO-SchDoc-rescue:RC0603JR-07560RL")
-		(at 50.8 306.07 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e3d27f9")
-		(property "Reference" "R37"
-			(at 48.006 305.308 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "560"
-			(at 50.8 308.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 50.8 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxRES, 560,1%, 0.125 W, 0805"
-			(at 50.8 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 50.8 306.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ValueDisplayed" "560"
-			(at -243.84 427.99 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YAGEO"
-			(at -288.29 558.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartNumber" "RC0805FR-07560RL"
-			(at -288.29 558.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C28636"
-			(at -288.29 558.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8b77586d-34e0-4475-8bf1-c6cd38e4b1ad")
-		)
-		(pin "2"
-			(uuid "104b5184-b7ca-4cc5-b94e-ef2c5edccbb2")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "R37")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Memory_EEPROM:24LC02")
-		(at 69.85 344.17 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e44e178")
-		(property "Reference" "U4"
-			(at 64.77 331.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AT24C256C"
-			(at 63.5 334.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 69.85 344.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://datasheet.lcsc.com/szlcsc/Microchip-Tech-AT24C256C-SSHL-T_C6482.pdf"
-			(at 69.85 344.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 69.85 344.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Name" "AT24C256C-SSHL-T"
-			(at 0 688.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C6482"
-			(at 0 688.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "26ef525d-76f2-4c90-b99a-c25dec285bf7")
-		)
-		(pin "2"
-			(uuid "e6a38ebc-2c68-4786-95fd-0dc2f2fc865f")
-		)
-		(pin "3"
-			(uuid "ca8f0f98-b7b8-468b-a577-90549e2747fb")
-		)
-		(pin "8"
-			(uuid "f63b4f49-fce2-4ef4-b654-2e7ebc649d09")
-		)
-		(pin "4"
-			(uuid "41068953-54fc-4fcf-9bc2-5cda662ae1c5")
-		)
-		(pin "5"
-			(uuid "02c37a4b-9c2e-4802-9581-e1ccc7b262b7")
-		)
-		(pin "6"
-			(uuid "c6a18b21-07ac-457a-a14f-9134aa59c3f1")
-		)
-		(pin "7"
-			(uuid "dd355a22-f916-41b5-ba22-7af70a877067")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "U4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 69.85 355.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e4c48f9")
-		(property "Reference" "#PWR020"
-			(at 69.85 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 69.977 359.9942 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 69.85 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 69.85 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 69.85 355.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2c3792c6-12f9-4a77-aa11-b518223477d3")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR020")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 69.85 325.12 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e4c4a6d")
-		(property "Reference" "#PWR019"
-			(at 69.85 328.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 70.231 320.7258 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 69.85 325.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 69.85 325.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 69.85 325.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "36231b2d-becb-48a6-8594-6b4427fe1ee3")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR019")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 53.34 204.47 180)
 		(unit 1)
@@ -29225,387 +26429,6 @@
 			(project "TAS3251JMF_MCU"
 				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
 					(reference "#PWR0151")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 52.07 341.63 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e531e5c")
-		(property "Reference" "JP8"
-			(at 50.3428 340.4616 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SolderJumper_3_Open"
-			(at 57.15 336.55 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels"
-			(at 52.07 341.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 52.07 341.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 52.07 341.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at 393.7 393.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "28d1916a-93e4-4d9b-bc17-d6573d901e29")
-		)
-		(pin "2"
-			(uuid "fcbba377-32f0-4845-bb5b-5fff3e5f0dc4")
-		)
-		(pin "3"
-			(uuid "7a8d604d-e8eb-40b6-865e-b7272d5c6ea1")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "JP8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 41.91 344.17 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e573121")
-		(property "Reference" "JP7"
-			(at 40.1828 343.0016 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SolderJumper_3_Open"
-			(at 46.99 339.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels"
-			(at 41.91 344.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 41.91 344.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 41.91 344.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at 386.08 386.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "40c3a09d-3162-4e15-b6e1-364bd8ad6ecf")
-		)
-		(pin "2"
-			(uuid "f81da504-678c-4a0a-8e0e-497428f2dd2d")
-		)
-		(pin "3"
-			(uuid "833f61b6-7d7c-4a95-809e-33218befeb5b")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "JP7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 31.75 346.71 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e573279")
-		(property "Reference" "JP6"
-			(at 30.0228 345.5416 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SolderJumper_3_Open"
-			(at 36.83 342.9 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels"
-			(at 31.75 346.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 31.75 346.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 31.75 346.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "NOPOP"
-			(at 378.46 378.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5baaa352-96ee-4120-8fff-9a1f6078daa5")
-		)
-		(pin "2"
-			(uuid "51e84011-97ee-4bc0-8c7f-ed98e58aff28")
-		)
-		(pin "3"
-			(uuid "8b8f84b6-d196-49d7-a559-cc3f4668b9b1")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "JP6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C_Small")
-		(at 76.2 327.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e6024a7")
-		(property "Reference" "C67"
-			(at 78.5368 326.4916 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0.1µF"
-			(at 78.5368 328.803 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 76.2 327.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "xxCAP, CERM, 0.1 μF, 50V, ±10%, X7R, 0805"
-			(at 76.2 327.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 76.2 327.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "C49678"
-			(at 0 655.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "07c95a04-4245-426f-833c-1cee59c07825")
-		)
-		(pin "2"
-			(uuid "2a01f489-051b-4f6a-96cf-66624b1a39e3")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "C67")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 76.2 332.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005e60262b")
-		(property "Reference" "#PWR025"
-			(at 76.2 339.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 76.327 337.1342 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 76.2 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 76.2 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 76.2 332.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "59888663-2820-4823-bd4d-acd86bd11bec")
-		)
-		(instances
-			(project "TAS3251JMF_MCU"
-				(path "/670752d9-b643-4a78-8b5c-6f0582e4ca27/00000000-0000-0000-0000-00005b793f19"
-					(reference "#PWR025")
 					(unit 1)
 				)
 			)
