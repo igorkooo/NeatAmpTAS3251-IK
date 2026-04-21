@@ -4333,7 +4333,7 @@
 		)
 		(uuid "d49426d0-4e8f-4dd0-94e6-6ee53c0aaffa")
 	)
-	(text_box "PVDD 36V\n  ├── LM5010 → 15V\n  │     ├── LM2940-12 → 12V → GVDD_A, GVDD_B\n  │     └── (headroom for future if needed)\n  │\n  ├── LMR33630 (buck #1) → 5V\n  │     ├── TPS7A20-3.3 → 3.3V analog → TAS DAC_AVDD only\n  │     ├── USB-C VBUS power OR node\n  │     ├── spare 5V header/connector\n  │     └── fan connector (optional)\n  │\n  └── LMR33630 (buck #2) → 3.3V digital\n        ├── ESP32-S3\n        ├── STM32F030\n        ├── ADAU1466\n        └── TAS DAC_DVDD\n"
+	(text_box "PVDD 36V\n  ├── LM5010 → 15V - unchanged\n  │     ├── LM2940-12 → 12V → GVDD_A, GVDD_B\n  │     └── (headroom for future if needed)\n  │\n  ├── LMQ66430 (buck #1) → 5V\n  │     ├── TPS7A20-3.3 → 3.3V analog → TAS DAC_AVDD only\n  │     ├── USB-C VBUS power OR node\n  │     ├── spare 5V header/connector\n  │     └── fan connector (optional)\n  │\n  └── LMQ66430 (buck #2) → 3.3V digital\n        ├── ESP32-S3\n        ├── STM32F030\n        ├── ADAU1466\n        └── TAS DAC_DVDD\n"
 		(exclude_from_sim no)
 		(at 200.66 193.04 0)
 		(size 146.05 71.12)
