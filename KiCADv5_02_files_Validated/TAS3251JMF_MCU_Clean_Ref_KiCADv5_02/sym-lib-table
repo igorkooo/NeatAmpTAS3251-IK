@@ -5,4 +5,5 @@
   (lib (name "AAP090A_TAS3251DKQ-IO-SchDoc-rescue")(type "KiCad")(uri "${KIPRJMOD}/AAP090A_TAS3251DKQ-IO-SchDoc-rescue.kicad_sym")(options "")(descr ""))
   (lib (name "TAS3251_project")(type "KiCad")(uri "${KIPRJMOD}/TAS3251_project.kicad_sym")(options "")(descr ""))
   (lib (name "TAS3251JMF_MCU-rescue")(type "Legacy")(uri "${KIPRJMOD}/TAS3251JMF_MCU-rescue.lib")(options "")(descr ""))
+  (lib (name "LMQ66430R5RXBR")(type "KiCad")(uri "/Users/igor/NeatAmpTAS3251-IK/KiCADv5_02_files_Validated/LMQ66430R5RXBR.kicad_sym")(options "")(descr ""))
 )
