@@ -3405,6 +3405,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 106.68) (xy 139.7 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd8e5950-d391-4d44-9209-9a43d0ef4fbf")
+	)
+	(wire
+		(pts
 			(xy 116.84 124.46) (xy 128.27 124.46)
 		)
 		(stroke
@@ -3596,6 +3606,28 @@
 		(uuid "b87675ad-086a-4734-82b8-3de2288ae01e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 202.2653 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "15V_PGOOD"
+		(shape input)
+		(at 139.7 106.68 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f0cbbea6-54dd-4693-b53e-bb9e16545d0e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 152.9772 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
