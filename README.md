@@ -1,10 +1,264 @@
-# NeatAmpTAS3251 - 2x170W - I2S input + DSP
+# NeatAmpTAS3251 — 2×170W Class D Amplifier with I2S Input & DSP
 
-This is still a hobby projects - do not expect deadlines or any reponsibility for the stuff published here.
+> ⚠️ **Hobby project** — no deadlines, no warranties, no guarantees. Use at your own risk.
 
-The idea is to take great project explained here (https://github.com/jmf13/NeatAmpTAS3251/tree/master) and:
+---
 
-* Use ESP32 Wifi
-* Replace L with different provider
-* Make everything ready for DSP ADAU1466
-* Use KiCad v9
+## Overview
+
+This project builds on the excellent [NeatAmpTAS3251](https://github.com/jmf13/NeatAmpTAS3251/tree/master)
+design by jmf13 and extends it with:
+
+- **ESP32-S3** — WiFi control, I2C management of TAS3251 (volume, EQ, fault monitoring)
+- **Output inductors** — dual footprint for Coilcraft XGL1712-103MED and Würth 7443631000
+  for comparative distortion testing
+- **ADAU1466 DSP ready** — I2S input connector, power supply, and I2C interface prepared
+  for future DSP integration
+- **Revised power supply** — fully redesigned for lower noise and better thermal performance
+- **EasyEDA Pro** — migrated from KiCad v9 for simplified JLCPCB prototyping workflow
+
+---
+
+## Status
+
+🚧 Work in progress — schematic phase
+
+---
+
+## Power Supply Architecture
+
+The power supply is a multi-rail design optimised for low noise on sensitive analog paths
+while keeping thermal dissipation manageable across all operating conditions.
+
+### Rail Overview
+
+| Rail | Voltage | Chip | Purpose |
+|------|---------|------|---------|
+| PVDD | 36V | External PSU | TAS3251 output stage (H-bridges) |
+| 13.2V | Buck | LMQ66410 | Intermediate rail for GVDD chain |
+| 12V GVDD | LDO | TPS7A4701 | TAS3251 gate drive (GVDD_A, GVDD_B, VDD) |
+| 5V | Buck | LMQ66430 | System 5V bus, USB-C OR node |
+| 3.3V digital | Buck | AP63203 | ESP32-S3, STM32, ADAU1466, TAS DAC_DVDD |
+| 3.3V analog | LDO | TPS7A2033 | TAS3251 DAC_AVDD only |
+
+### 12V GVDD Chain — LMQ66410 → TPS7A4701
+
+The gate drive supply uses a two-stage approach: a switching regulator handles the large
+36V→13.2V step efficiently, followed by a low-noise LDO for the final 13.2V→12V drop.
+
+```
+PVDD (36V) → LMQ66410 (buck, 1.25MHz) → 13.2V → TPS7A4701 (LDO) → 12V GVDD
+```
+
+- **LMQ66410**: 36V input, 1.25MHz switching frequency (RT = 39.2kΩ), feedback
+  R_FBT = 49.9kΩ / R_FBB = 4.12kΩ
+- **TPS7A4701**: 1A LDO, 4µVrms noise, 82dB PSRR @ 100Hz, output set via ANY-OUT
+  pin programming to 12.0V (pins 0P2V + 0P8V + 3P2V + 6P4V1 → GND)
+- A ferrite bead (BLM31PG121SN1L) is placed between the 13.2V rail and TPS7A4701
+  input for additional HF noise isolation
+
+> **Why two stages?** A direct linear regulator from 36V to 12V at even 50mA load
+> would dissipate ~1.2W in a small SMD package. The buck + LDO combination keeps
+> total dissipation under 0.8W while achieving better noise performance than a
+> single-stage buck alone.
+
+### 5V Rail — LMQ66430
+
+```
+PVDD (36V) → LMQ66430 (buck, 1.25MHz) → 5V
+```
+
+- Feedback: R_FBT = 49.9kΩ / R_FBB = 24.9kΩ
+- Feeds the 5V OR node (see USB-C section)
+- Sources the 3.3V digital buck and 3.3V analog LDO
+
+### 3.3V Digital Rail — AP63203
+
+```
+5V OR rail → AP63203 (fixed 3.3V buck) → 3.3V digital
+```
+
+- Fixed 3.3V output — no external feedback resistors
+- Powers: ESP32-S3, STM32F030, ADAU1466 digital, TAS3251 DAC_DVDD
+- Starts automatically on power-up (EN tied to VIN)
+- Output: 2× 10µF ceramic + 1× 47µF electrolytic
+
+### 3.3V Analog Rail — TPS7A2033
+
+```
+5V OR rail → TPS7A2033 (LDO) → 3.3VA
+```
+
+- Ultra-low noise LDO: 7µVrms, 95dB PSRR
+- Feeds **only** TAS3251 DAC_AVDD — kept isolated from noisy digital loads
+- Enabled by default via 100kΩ pull-up to 3.3V digital; ESP32-S3 can disable via
+  ENABLE_3.3VA GPIO for controlled power sequencing
+- Input/output decoupling: 1µF Samsung CL10B105KB8NQNC (C5199872) on both pins
+
+### USB-C Power OR
+
+The board supports powering the digital section from either the main 36V supply
+or a USB-C connection, enabling ESP32-S3 programming without the main supply present.
+
+```
+PVDD (36V) → LMQ66430 → 5V → Schottky D1 ─┐
+                                             ├─ 5V OR rail → AP63203 → 3.3V digital
+USB-C VBUS (5V) ────────→ 1N5819 D2 ────────┘
+```
+
+- When 36V is present: LMQ66430 supplies the 5V OR rail; USB-C Schottky is
+  reverse-biased
+- When USB-C only (programming mode): USB VBUS supplies 3.3V digital via AP63203;
+  TAS3251 analog section remains unpowered
+- 1MΩ discharge resistor on VBUS for clean hot-plug behaviour
+
+---
+
+## Microcontroller — ESP32-S3 controlling TAS3251
+
+The ESP32-S3-WROOM-1U-N8 acts as the system controller, handling WiFi connectivity,
+TAS3251 configuration, real-time monitoring, and user interface.
+
+### Interface to TAS3251
+
+All TAS3251 runtime control is via I2C (400kHz Fast Mode). The I2C bus is shared
+with the ADAU1466 when fitted.
+
+| Signal | ESP32-S3 GPIO | TAS3251 Pin | Notes |
+|--------|--------------|-------------|-------|
+| SDA | GPIO any | SDA (54) | 4.7kΩ pull-up to 3.3V |
+| SCL | GPIO any | SCL (53) | 4.7kΩ pull-up to 3.3V |
+| RESET_AMP | GPIO out | /RESET_AMP (27) | Active low; 10kΩ pull-up to 3.3V (default: not in reset) |
+| DAC_MUTE | GPIO out | DAC_MUTE (45) | Active low; 10kΩ pull-down to GND (default: muted at boot) |
+| /FAULT | GPIO in + IRQ | /FAULT (28) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
+| /CLIP_OTW | GPIO in + IRQ | /CLIP_OTW (29) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
+
+### TAS3251 I2C Address
+
+Set by ADR pin (46):
+- ADR → GND: address **0x90**
+- ADR → 3.3V: address **0x92**
+
+### What ESP32-S3 Controls via I2C
+
+| Function | Register | Notes |
+|----------|----------|-------|
+| Power on/off | B0-P0-R2 | Startup/shutdown sequence |
+| Volume (per channel) | B0-P0-R61/R62 | 0.5dB steps, −103dB to +24dB |
+| Soft mute | B0-P0-R3 | Or via DAC_MUTE pin |
+| EQ / crossover biquads | Book 0x8C pages | 15× BiQuad per channel; crossover HPF/LPF |
+| Safeload (atomic update) | B0x8C-P5-R7C | Write 5 coefficients then set flag = 0x01 |
+| Fault status read | B0-P0-R94/R95 | OC, UV, OTE, clock error — read after /FAULT IRQ |
+| Volume ramp speed | B0-P0-R64 | Controls startup/shutdown ramp to prevent pops |
+
+### Fault Handling
+
+Both /FAULT and /CLIP_OTW are open-drain active-low outputs wired to ESP32-S3
+interrupt-capable GPIOs. The recommended firmware flow:
+
+1. /FAULT asserts → falling-edge ISR fires → read B0-P0-R94/R95 for fault detail
+2. If OTE (over-temperature): wait for thermal recovery, then toggle RESET_AMP to
+   clear the latched fault before resuming
+3. /CLIP_OTW is non-latching — monitor for sustained clipping and reduce volume
+4. Report fault status to Home Assistant via WiFi MQTT
+
+### Visual Indicators
+
+| LED | Colour | Condition |
+|-----|--------|-----------|
+| D_FAULT | Red | /FAULT asserted (hardware, no firmware needed) |
+| D_CLIP | Yellow/Orange | /CLIP_OTW asserted (hardware, no firmware needed) |
+| D_STATUS | WS2812B RGB | ESP32-S3 controlled: boot, WiFi, mute, active states |
+
+Fault and clip LEDs are driven directly from the open-drain output through a 560Ω
+resistor — they light up regardless of firmware state.
+
+### Startup Sequence
+
+```
+Power applied
+  → AP63203 starts → 3.3V digital available
+  → ESP32-S3 boots (~150ms)
+  → ESP32 initialises I2C
+  → ESP32 asserts ENABLE_12V → TPS7A4701 enables → 12V GVDD available
+  → TAS3251 comes out of reset (RESET_AMP released)
+  → ESP32 writes TAS3251 configuration via I2C (volume, EQ, crossover)
+  → ESP32 drives DAC_MUTE high → audio path unmuted
+  → System ready
+```
+
+---
+
+## I2S Audio Input
+
+The board accepts I2S audio from either:
+
+- **LHY Audio DIR9001 module** (SPDIF → I2S, 24-bit 96kHz) via 6-pin 2.54mm connector
+- **ADAU1466 DSP board** (future) via the same I2S connector
+- **ESP32-S3 directly** (for testing/streaming) via the same GPIO pins
+
+I2S connector pinout (2.54mm, 6-pin vertical):
+
+| Pin | Signal |
+|-----|--------|
+| 1 | DATA (SDIN) |
+| 2 | BCLK |
+| 3 | LRCK |
+| 4 | MCLK |
+| 5 | +5V |
+| 6 | GND |
+
+27Ω series resistors are placed on all four signal lines between the connector and
+TAS3251/ESP32-S3 for signal integrity and EMI reduction.
+
+---
+
+## Known Issues from Original Design
+
+> As noted by the original author:
+> - Silkscreen polarity for **C25, C26, C27, C28** was inverted — caps replaced with
+>   non-polarised X7R ceramics in this revision, resolving the issue entirely.
+> - Heatsink footprint required rework — addressed in PCB revision.
+
+---
+
+## Original Project
+
+- Original design: [jmf13/NeatAmpTAS3251](https://github.com/jmf13/NeatAmpTAS3251/tree/master)
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) —
+  this project inherits the same license.
+
+---
+
+## EasyEDA Pro Setup
+
+This repository includes a custom component library. To use it, create a symbolic
+link inside your EasyEDA Pro libraries directory.
+
+### macOS / Linux
+
+```bash
+# Navigate to your EasyEDA Pro libraries directory
+cd ~/Documents/EasyEDA-Pro/libraries
+
+# Create symlink to files from there so that app recognizes it
+ln -s /path/to/git/NeatAmpTAS3251/EasyEDA-Pro/libraries/* .
+```
+
+### Windows
+
+```cmd
+:: Run Command Prompt as Administrator
+cd %USERPROFILE%\EasyEDA-Pro\libraries
+
+:: Create directory symlink
+mklink /D NeatAmpTAS3251-lib C:\path\to\NeatAmpTAS3251\library
+```
+
+After creating the symlink, restart EasyEDA Pro. The library will appear in the
+**Libraries** panel under `NeatAmpTAS3251-lib`.
+
+> **Note:** Replace `/path/to/NeatAmpTAS3251/library` with the actual path where
+> you cloned this repository. The EasyEDA Pro libraries directory location may vary
+> by OS version — check your EasyEDA Pro installation settings if the default path
+> above does not exist.
