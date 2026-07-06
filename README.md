@@ -19,9 +19,22 @@ design by jmf13 and extends it with:
 
 ---
 
+## Release Notes
+
+### Version 1.0
+- PCB routing completed for the first prototype revision.
+- EasyEDA Pro project migrated to the new `.eprj2` project format.
+- Development performed using **EasyEDA Pro V3.2.149**.
+- Latest layout improvements include routing optimisation, power distribution refinement, grounding improvements, and thermal optimisation.
+
+---
+
 ## Status
 
-🚧 Work in progress — schematic phase
+**Version:** 1.0 (Prototype)
+
+⚠️ This is the first public prototype release. The hardware has **not yet been validated in real-world operation**. It should be considered experimental until prototype testing is completed.
+
 
 ---
 
@@ -222,6 +235,12 @@ TAS3251/ESP32-S3 for signal integrity and EMI reduction.
 
 ---
 
+## Enclosure
+
+⚠️ The supplied enclosure / 3D shell has **not passed the JLCPCB manufacturing review** and is **not recommended for fabrication** in its current state. It is included for reference only and requires redesign before production.
+
+---
+
 ## Original Project
 
 - Original design: [jmf13/NeatAmpTAS3251](https://github.com/jmf13/NeatAmpTAS3251/tree/master)
@@ -231,6 +250,9 @@ TAS3251/ESP32-S3 for signal integrity and EMI reduction.
 ---
 
 ## EasyEDA Pro Setup
+
+**Recommended EasyEDA Pro version:** **V3.2.149**.
+
 
 This repository includes a custom component library. To use it, create a symbolic
 link inside your EasyEDA Pro libraries directory.
