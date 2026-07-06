@@ -2,6 +2,14 @@
 
 > ⚠️ **Hobby project** — no deadlines, no warranties, no guarantees. Use at your own risk.
 
+<p align="center">
+
+  <img src="Pictures/PCB_3D.png" width="900">
+
+</p>
+
+2×170 W Class-D amplifier based on the Texas Instruments TAS3251, featuring an ESP32-S3 controller, DSP-ready architecture, USB-C programming, and a low-noise multi-rail power supply.
+
 ---
 
 ## Overview
