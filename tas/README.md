@@ -61,14 +61,27 @@ then creates the ESP-IDF I2C master bus on `I2C_NUM_0` at 400 kHz.
 |--------|-------------|-----------------------|---------|---------------|
 | I2C SDA | IO0 | I2C data | Shared I2C data line for TAS3251 and optional ADAU1466 | No |
 | I2C SCL | IO45 | I2C clock | Shared I2C clock line for TAS3251 and optional ADAU1466 | No |
-| AMP RESET | IO42 | GPIO output | Releases or holds the TAS3251 in reset; active low | Yes |
-| DAC MUTE | IO1 | GPIO output | Hardware mute control for the TAS3251; active low | Yes |
-| AMP FAULT | IO41 | GPIO input / interrupt | Receives latched TAS3251 fault indications | Yes |
-| AMP CLIP/OTW | IO2 | GPIO input / interrupt | Receives clipping or over-temperature warning indications | Yes |
-| AMP ADDRESS | IO12 | GPIO input | Reads the TAS3251 ADR strap state for I2C address selection | Yes |
-| GOOD 13.2V | IO39 | GPIO input | Confirms that the 13.2 V intermediate rail is ready through jumper U15 | Yes |
-| ENABLE 12V | IO38 | GPIO output | Enables the 12 V GVDD analog supply after 13.2 V is good through jumper U15 | Yes |
-| ENABLE 3.3V analog | IO40 | GPIO output | Enables the isolated 3.3 V analog rail for TAS3251 DAC_AVDD | Yes |
+| AMP RESET | IO42 | GPIO output | Releases or holds the TAS3251 in reset; active low | Yes — U14 pins 5-6 (IO42 to TAS_RESET) |
+| DAC MUTE | IO1 | GPIO output | Hardware mute control for the TAS3251; active low | Yes — U14 pins 1-2 (IO1 to TAS_MUTE) |
+| AMP FAULT | IO41 | GPIO input / interrupt | Receives latched TAS3251 fault indications | Yes — U14 pins 7-8 (IO41 to TAS_FAULT) |
+| AMP CLIP/OTW | IO2 | GPIO input / interrupt | Receives clipping or over-temperature warning indications | Yes — U14 pins 3-4 (IO2 to TAS_CLIP) |
+| AMP ADDRESS | IO12 | GPIO input | Reads the TAS3251 ADR strap state for I2C address selection | Yes — H2 pins 13-14 (TAS_ADR to ESP_TAS_ADR) |
+| GOOD 13.2V | IO39 | GPIO input | Confirms that the 13.2 V intermediate rail is ready through jumper U15 | Yes — U15 pins 5-6 (IO39 to GOOD_13.2V) |
+| ENABLE 12V | IO38 | GPIO output | Enables the 12 V GVDD analog supply after 13.2 V is good through jumper U15 | Yes — U15 pins 7-8 (IO38 to ENABLE_12V) |
+| ENABLE 3.3V analog | IO40 | GPIO output | Enables the isolated 3.3 V analog rail for TAS3251 DAC_AVDD | Yes — U15 pins 3-4 (IO40 to ENABLE_3.3V) |
+
+Header U14 (2x4, 2.54 mm) carries the amplifier control/status lines between
+the ESP32-S3 and the TAS3251, and header U15 (2x4, 2.54 mm) carries the power
+sequencing lines between the ESP32-S3 and the rail-good/enable signals; on
+both, each ESP32-S3 GPIO net and its counterpart signal are broken out to
+adjacent pins in the same column so that a 2-pin shunt bridges them. Header
+H2 (2x12) is the main board-to-board connector, and only its pins 13-14 need
+a jumper to route the TAS3251 ADR strap to the ESP32-S3. None of these
+headers ship with shunts populated by default, so populate the pin pairs
+above per the current firmware pin mapping in [tas_pins.h](main/tas_pins.h)
+before relying on these signals; per the netlist
+(`Netlist_Class_D_amp_2026-07-23.enet` at the repository root), leaving a
+pair open floats that signal instead of connecting it.
 
 At startup, the amplifier reset is released, DAC mute remains asserted, the
 12 V rail remains disabled until the power sequencing code enables it, and the
