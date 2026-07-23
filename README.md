@@ -72,7 +72,7 @@ while keeping thermal dissipation manageable across all operating conditions.
 ### 12V GVDD Chain — LMQ66410 → TPS7A4701
 
 The gate drive supply uses a two-stage approach: a switching regulator handles the large
-36V→13.2V step efficiently, followed by a low-noise LDO for the final 13.2V→12V drop.
+36V→13.2V step efficiently, followed by a low-noise LDO for the final 13.2V→12V drop. ESP32 senses GOOD_13.2V on IO39 and once stable, it triggers 12V analog power via IO38.
 
 ```
 PVDD (36V) → LMQ66410 (buck, 1.25MHz) → 13.2V → TPS7A4701 (LDO) → 12V GVDD
@@ -120,7 +120,7 @@ PVDD (36V) → LMQ66430 (buck, 1.25MHz) → 5V
 - Ultra-low noise LDO: 7µVrms, 95dB PSRR
 - Feeds **only** TAS3251 DAC_AVDD — kept isolated from noisy digital loads
 - Enabled by default via 100kΩ pull-up to 3.3V digital; ESP32-S3 can disable via
-  ENABLE_3.3VA GPIO for controlled power sequencing
+  ENABLE_3.3V GPIO IO40 for controlled power sequencing
 - Input/output decoupling: 1µF Samsung CL10B105KB8NQNC (C5199872) on both pins
 
 ### USB-C Power OR
@@ -159,18 +159,20 @@ with the ADAU1466 when fitted.
 
 | Signal | ESP32-S3 GPIO | TAS3251 Pin | Notes |
 |--------|--------------|-------------|-------|
-| SDA | GPIO any | SDA (54) | 4.7kΩ pull-up to 3.3V |
-| SCL | GPIO any | SCL (53) | 4.7kΩ pull-up to 3.3V |
-| RESET_AMP | GPIO out | /RESET_AMP (27) | Active low; 10kΩ pull-up to 3.3V (default: not in reset) |
-| DAC_MUTE | GPIO out | DAC_MUTE (45) | Active low; 10kΩ pull-down to GND (default: muted at boot) |
-| /FAULT | GPIO in + IRQ | /FAULT (28) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
-| /CLIP_OTW | GPIO in + IRQ | /CLIP_OTW (29) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
+| SDA | GPIO IO0 | SDA (54) | 4.7kΩ pull-up to 3.3V |
+| SCL | GPIO IO45 | SCL (53) | 4.7kΩ pull-up to 3.3V |
+| RESET_AMP | GPIO out IO42 | /RESET_AMP (27) | Active low; 10kΩ pull-up to 3.3V (default: not in reset) |
+| DAC_MUTE | GPIO out IO1 | DAC_MUTE (45) | Active low; 10kΩ pull-down to GND (default: muted at boot) |
+| /FAULT | GPIO in + IRQ IO41 | /FAULT (28) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
+| /CLIP_OTW | GPIO in + IRQ IO2 | /CLIP_OTW (29) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
 
 ### TAS3251 I2C Address
 
 Set by ADR pin (46):
 - ADR → GND: address **0x90**
 - ADR → 3.3V: address **0x92**
+
+This pin is connected to ESP32 IO12.
 
 ### What ESP32-S3 Controls via I2C
 

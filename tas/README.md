@@ -50,6 +50,31 @@ python -m pip install pytest pytest-embedded-idf pytest-embedded-qemu
 python -m pytest -q pytest_tas.py
 ```
 
+## ESP32-S3 Hardware IO
+
+The firmware pin definitions are kept in [tas_pins.h](main/tas_pins.h), and
+the startup initialization is implemented in [tas_pins.c](main/tas_pins.c).
+The initialization configures the GPIO directions and default power-up states,
+then creates the ESP-IDF I2C master bus on `I2C_NUM_0` at 400 kHz.
+
+| Signal | ESP32-S3 IO | Direction / interface | Purpose | Jumper needed |
+|--------|-------------|-----------------------|---------|---------------|
+| I2C SDA | IO0 | I2C data | Shared I2C data line for TAS3251 and optional ADAU1466 | No |
+| I2C SCL | IO45 | I2C clock | Shared I2C clock line for TAS3251 and optional ADAU1466 | No |
+| AMP RESET | IO42 | GPIO output | Releases or holds the TAS3251 in reset; active low | Yes |
+| DAC MUTE | IO1 | GPIO output | Hardware mute control for the TAS3251; active low | Yes |
+| AMP FAULT | IO41 | GPIO input / interrupt | Receives latched TAS3251 fault indications | Yes |
+| AMP CLIP/OTW | IO2 | GPIO input / interrupt | Receives clipping or over-temperature warning indications | Yes |
+| AMP ADDRESS | IO12 | GPIO input | Reads the TAS3251 ADR strap state for I2C address selection | Yes |
+| GOOD 13.2V | IO39 | GPIO input | Confirms that the 13.2 V intermediate rail is ready through jumper U15 | Yes |
+| ENABLE 12V | IO38 | GPIO output | Enables the 12 V GVDD analog supply after 13.2 V is good through jumper U15 | Yes |
+| ENABLE 3.3V analog | IO40 | GPIO output | Enables the isolated 3.3 V analog rail for TAS3251 DAC_AVDD | Yes |
+
+At startup, the amplifier reset is released, DAC mute remains asserted, the
+12 V rail remains disabled until the power sequencing code enables it, and the
+3.3 V analog rail is enabled. The I2C lines rely on the board-level 4.7 kOhm
+pull-ups.
+
 (See the README.md file in the upper level 'examples' directory for more information about examples.)
 
 ## How to use example

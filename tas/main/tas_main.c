@@ -11,10 +11,16 @@
 #include "esp_flash.h"
 #include "esp_rom_sys.h"
 #include "esp_system.h"
+#include "tas_pins.h"
 
 void app_main(void)
 {
     printf("Tas!\n");
+
+    if (tas_pins_init() != ESP_OK) {
+        printf("TAS pin initialization failed\n");
+        return;
+    }
 
     /* Print chip information */
     esp_chip_info_t chip_info;
