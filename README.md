@@ -147,6 +147,11 @@ USB-C VBUS (5V) ────────→ 1N5819 D2 ────────�
 The ESP32-S3-WROOM-1U-N8 acts as the system controller, handling WiFi connectivity,
 TAS3251 configuration, real-time monitoring, and user interface.
 
+For the ESP32-S3 firmware workspace, including the Python environment, ESP-IDF
+6.0.2 setup, build commands, and editor configuration, see the
+[ESP32-S3 firmware README](tas/README.md) before continuing with the hardware
+interface details below.
+
 ### Interface to TAS3251
 
 All TAS3251 runtime control is via I2C (400kHz Fast Mode). The I2C bus is shared
