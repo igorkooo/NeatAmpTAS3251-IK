@@ -5,6 +5,51 @@
 
 Starts a FreeRTOS task to print "Tas".
 
+This project targets the ESP32-S3 and is configured for ESP-IDF 6.0.2.
+
+## Local setup
+
+The repository uses a local Python virtual environment for project-side Python
+commands. Create it once from the project directory:
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Initialize the ESP-IDF toolchain in each new shell. This sets `IDF_PATH`, adds
+`idf.py` to `PATH`, and selects the ESP-IDF tools and its compatible managed
+Python environment required by the build:
+
+```sh
+export IDF_PATH=/Users/iko/.espressif/v6.0.2/esp-idf
+source "$IDF_PATH/export.sh"
+```
+
+Run the ESP-IDF commands after `export.sh`; ESP-IDF may replace the active
+`.venv` interpreter with its managed environment so all ESP-IDF dependencies
+match the installed ESP-IDF release.
+
+Select the target and build:
+
+```sh
+idf.py set-target esp32s3
+idf.py build
+```
+
+The generated `build/compile_commands.json` is used by clangd and C/C++
+IntelliSense. Keeping the project build configured ensures ESP-IDF headers
+such as `esp_system.h` and `esp_flash.h` resolve without missing-include
+warnings.
+
+The test dependencies are listed by `pytest_tas.py`. Install them into the
+active virtual environment when PyPI access is available:
+
+```sh
+python -m pip install pytest pytest-embedded-idf pytest-embedded-qemu
+python -m pytest -q pytest_tas.py
+```
+
 (See the README.md file in the upper level 'examples' directory for more information about examples.)
 
 ## How to use example
