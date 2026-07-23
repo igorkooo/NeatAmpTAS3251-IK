@@ -25,6 +25,8 @@ design by jmf13 and extends it with:
 - **Revised power supply** — fully redesigned for lower noise and better thermal performance
 - **EasyEDA Pro** — migrated from KiCad v9 for simplified JLCPCB prototyping workflow
 
+The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
+
 ---
 
 ## Release Notes
