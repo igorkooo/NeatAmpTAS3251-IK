@@ -29,6 +29,13 @@ design by jmf13 and extends it with:
 
 ## Release Notes
 
+### Version 1.1
+- **Important fix** — ESP32 USB-C connector was rotated 180° in V1.0, making the
+  connector unusable when assembled. Now fixed.
+- Added complete JLCPCB production specifications (see
+  [Production Details](#production-details-jlcpcb)) as used for the first
+  prototype batch.
+
 ### Version 1.0
 - PCB routing completed for the first prototype revision.
 - EasyEDA Pro project migrated to the new `.eprj2` project format.
@@ -240,6 +247,83 @@ TAS3251/ESP32-S3 for signal integrity and EMI reduction.
 > - Silkscreen polarity for **C25, C26, C27, C28** was inverted — caps replaced with
 >   non-polarised X7R ceramics in this revision, resolving the issue entirely.
 > - Heatsink footprint required rework — addressed in PCB revision.
+
+---
+
+## Production Details (JLCPCB)
+
+The first prototype batch (5 boards, V1.0/V1.1) was manufactured and assembled by
+JLCPCB with the settings below. These are provided as a validated reference for
+anyone reproducing the board.
+
+### PCB Fabrication
+
+| Parameter | Value |
+|-----------|-------|
+| Layers | 4 |
+| Base Material | FR-4, TG155 |
+| Dimensions | 155.45 × 134.33 mm |
+| PCB Thickness | 1.6 mm |
+| PCB Color / Silkscreen | Blue / White |
+| Outer Copper Weight | 2 oz |
+| Inner Copper Weight | 1 oz |
+| Surface Finish | ENIG, Gold Thickness 1U" |
+| Via Covering | Plugged |
+| Min Via Hole/Diameter | 0.3 mm / (0.4/0.45 mm) |
+| Electrical Test | Flying Probe Fully Test |
+| Mark on PCB | Remove Mark |
+| Appearance Quality | IPC Class 2 Standard |
+| Board Outline Tolerance | ±0.2 mm (Regular) |
+| Delivery Format | Single PCB |
+| Silkscreen Technology | Ink-jet Printing |
+| Build Time | 3 days (PCB only) |
+| Weight (5 pcs) | 0.89 kg |
+
+> **Why these choices:** TG155 handles output-stage heat better than standard
+> TG135. ENIG provides flat pads which significantly improves assembly yield on
+> the fine-pitch QFN packages (TAS3251 VQFN-56, LMQ66430 VQFN-14, TPS7A4701
+> VQFN-20). Plugged vias are required for the via-in-pad thermal grid under the
+> TAS3251 exposed pad. 2 oz outer copper carries the high-current speaker output
+> and PVDD paths.
+
+### SMT Assembly
+
+| Parameter | Value |
+|-----------|-------|
+| PCBA Type | Standard |
+| Assembly Side | Top Side |
+| PCBA Qty | 5 |
+| Edge Rails/Fiducials | Added by JLCPCB |
+| Confirm Parts Placement | Yes |
+| Bake Components | Yes |
+| Photo Confirmation | Yes |
+| Board Cleaning | Yes |
+| Depanel & remove edge rails before delivery | Yes |
+| Solder Paste | High temp. |
+| Nitrogen Reflow Soldering | No |
+| Flying Probe Test (post-assembly) | No |
+| Function Test | No |
+| Conformal Coating | No |
+| Packaging | Antistatic bubble film |
+| Panel Format | 1 × 1 |
+| Build Time | 5–6 days (+4 days) |
+| Product Classification | Audio Amplifiers — HS Code 851890 |
+| Weight (5 assembled boards) | 2.29 kg |
+
+> **Recommended for first runs:** *Confirm Parts Placement* and *Photo
+> Confirmation* let you verify component orientation before reflow — worth it on
+> any board with polarised or directional parts. *Board Cleaning* removes flux
+> residue that could otherwise cause leakage currents on the high-impedance
+> analog nodes (DAC_AVDD, AGND area).
+
+### Not Assembled by JLCPCB (manual population)
+
+The following components are excluded from the SMT order
+(`Add into BOM = No` in EasyEDA) and must be hand-soldered:
+
+- **L7–L14** — output filter inductors (Coilcraft XGL1712-103MED and
+  Würth/Codaca MA5172-AE dual footprints) — order from Mouser
+- **TP1–TP30** — test points (optional)
 
 ---
 
