@@ -5,9 +5,11 @@
 # Tas — ESP32-S3 Controller Firmware
 
 ESP32-S3 firmware for the [NeatAmpTAS3251](../README.md) Class-D amplifier
-board: initializes the TAS3251/DSP control pins on boot (see
-[ESP32-S3 Hardware IO](#esp32-s3-hardware-io) below) and reports chip info
-over the console.
+board: a C++ class-based driver stack (see
+[Firmware Architecture](#firmware-architecture) below) that sequences the
+power rails, brings the TAS3251 out of reset, configures it over I2C, and
+monitors /FAULT, /CLIP_OTW and the 13.2V rail — see
+[ESP32-S3 Hardware IO](#esp32-s3-hardware-io) for the underlying pin map.
 
 This firmware targets the ESP32-S3 only — the board and this project are not
 built for any other Espressif chip.
@@ -99,12 +101,35 @@ of the connected board): `/dev/tty.usbmodem*` on macOS, `/dev/ttyUSB*` or
 `/dev/ttyACM*` on Linux, `COM*` on Windows. Update it to match your board
 before flashing or monitoring from VSCode.
 
+## Debugging (OpenOCD)
+
+The `gdbtarget` debug configuration in `.vscode/launch.json` has
+`runOpenOCD` default to `true` (see the extension's `package.json`), so
+**every** "Start Debugging" tries to spawn a fresh OpenOCD server. If a
+previous session was force-stopped, crashed, or otherwise didn't shut its
+OpenOCD process down cleanly, that old server keeps holding ports 3333
+(GDB), 4444 (telnet) and 6666 (Tcl) — the new one then fails to bind them,
+which is what "server already started" / can't-start-debug means.
+
+`.vscode/launch.json`'s debug configuration now runs a `preLaunchTask`
+("Reset OpenOCD", defined in `.vscode/tasks.json`) before every debug
+session, which kills any leftover OpenOCD process first
+(`pkill -f 'bin/openocd'` on macOS/Linux, `taskkill /IM openocd.exe` on
+Windows) so the new one always gets a clean set of ports. If you ever need
+to do this by hand instead: **Terminal → Run Task… → Reset OpenOCD**, or
+directly:
+
+```sh
+pkill -f 'bin/openocd'    # macOS / Linux
+```
+
 ## ESP32-S3 Hardware IO
 
-The firmware pin definitions are kept in [tas_pins.h](main/tas_pins.h), and
-the startup initialization is implemented in [tas_pins.c](main/tas_pins.c).
-The initialization configures the GPIO directions and default power-up states,
-then creates the ESP-IDF I2C master bus on `I2C_NUM_0` at 400 kHz.
+The firmware pin definitions are kept in [tas_pins.h](main/tas_pins.h). GPIO
+configuration and default power-up states are owned by
+[PowerSupplies](main/power_supplies.cpp) and [Tas3251](main/tas3251.cpp) (see
+[Firmware Architecture](#firmware-architecture)); the shared I2C master bus
+(`I2C_NUM_0`, 400 kHz) is created by [I2cBus](main/i2c_bus.cpp).
 
 | Signal | ESP32-S3 IO | Direction / interface | Purpose | Jumper needed |
 |--------|-------------|-----------------------|---------|---------------|
@@ -132,9 +157,11 @@ before relying on these signals; per the netlist
 (`Netlist_Class_D_amp_2026-07-23.enet` at the repository root), leaving a
 pair open floats that signal instead of connecting it.
 
-At startup, the amplifier reset is released, DAC mute remains asserted, the
-12 V rail remains disabled until the power sequencing code enables it, and the
-3.3 V analog rail is enabled. The I2C lines rely on the board-level 4.7 kOhm
+At GPIO configuration time (`Tas3251::init()`), RESET_AMP and DAC_MUTE are
+driven to their safe defaults — reset asserted, muted — and both the 12 V and
+3.3 V analog rails start disabled; `SystemController::startup()` then runs
+the sequence in [Firmware Architecture](#firmware-architecture) to bring
+everything up in order. The I2C lines rely on the board-level 4.7 kOhm
 pull-ups.
 
 ## Potential DSP (ADAU1466) Connectivity
@@ -153,17 +180,166 @@ rather than a separate bus.
 
 U10 pins 1 and 2 carry GND and 3.3V respectively for powering the DSP module.
 
+## Firmware Architecture
+
+The firmware is C++ (`gnu++26`, exceptions and RTTI disabled per
+`sdkconfig`, matching the rest of ESP-IDF). Each hardware concern is owned by
+one class; `tas_pins.h` remains the single source of truth for GPIO numbers.
+
+| Class | Files | Owns |
+|-------|-------|------|
+| `tas::I2cBus` | [i2c_bus.hpp](main/i2c_bus.hpp) / [.cpp](main/i2c_bus.cpp) | The shared I2C master bus (SDA/SCL), device attach/probe |
+| `tas::Tas3251` | [tas3251.hpp](main/tas3251.hpp) / [.cpp](main/tas3251.cpp) | RESET_AMP, DAC_MUTE, /FAULT + /CLIP_OTW IRQs, AMP ADDRESS strap, book/page I2C register access |
+| `tas::Dsp` | [dsp_adau1466.hpp](main/dsp_adau1466.hpp) / [.cpp](main/dsp_adau1466.cpp) | DSP_RESET, DSP_SELFBOOT, I2C presence probe for the optional ADAU1466 |
+| `tas::PowerSupplies` | [power_supplies.hpp](main/power_supplies.hpp) / [.cpp](main/power_supplies.cpp) | GOOD_13.2V sense, ENABLE_12V, ENABLE_3.3V analog |
+| `tas::I2sBus` | [i2s_bus.hpp](main/i2s_bus.hpp) / [.cpp](main/i2s_bus.cpp) | ESP-IDF I2S std-mode TX channel for the shared TAS3251/DSP audio bus |
+| `tas::SystemController` | [system_controller.hpp](main/system_controller.hpp) / [.cpp](main/system_controller.cpp) | Startup sequencing and the steady-state monitor loop, composing the classes above |
+
+`main/tas_main.cpp` (`app_main`) only constructs a `SystemController` and
+calls `startup()` then `runForever()`.
+
+⚠️ **`I2sPins` in `i2s_bus.hpp` has no wired GPIOs on the current board.**
+Per `Netlist_Class_D_amp_2026-07-23.enet` (repository root), connector U11
+(MCLK/LRCK/SCLK/SDIN) only reaches the TAS3251 — the ESP32-S3 has no *PCB*
+net in common with the I2S bus on this revision, despite the top-level
+README's "ESP32-S3 directly (for testing/streaming)" bullet. `I2sBus` is a
+working scaffold for a future revision (or rework) that does wire it up; it
+isn't used by `SystemController` yet. See
+[I2S Test Tone (H2-to-U11 Patch)](#i2s-test-tone-h2-to-u11-patch) below for a
+way to exercise it today with a manual patch instead of a board respin.
+
+### Startup sequence
+
+`SystemController::startup()` runs the following states, logging each
+transition at `ESP_LOGI` and any failure at `ESP_LOGE` (aborting the sequence
+on failure, leaving the amplifier held in reset and muted):
+
+```
+INIT                    → I2C bus, GPIOs, /FAULT + /CLIP_OTW IRQs, DSP probe
+AMP_RESET               → RESET_AMP asserted, DAC_MUTE asserted
+WAIT_POWER_STABLE       → 100 ms delay (see ⚠️ below)
+CHECK_13V2              → poll GOOD_13.2V; abort if not good
+ENABLE_12V              → enable the 12V GVDD analog rail
+ENABLE_3V3_ANALOG       → enable the 3.3V analog (DAC_AVDD) rail
+WAIT_PRE_RESET_RELEASE  → 50 ms delay (see ⚠️ below)
+RELEASE_RESET           → RESET_AMP released
+CONFIGURE               → power on (B0-P0-R2), set a conservative low startup volume
+UNMUTE                  → DAC_MUTE released
+READY                   → hand off to runForever()
+```
+
+`SystemController::runForever()` then polls `/FAULT`, `/CLIP_OTW` and
+GOOD_13.2V every 50 ms, logging state changes.
+
+⚠️ **Open questions carried over from architecture review, marked `TODO` in
+the code (`system_controller.cpp`, `tas3251.hpp`) — verify against the actual
+TAS3251 datasheet before trusting them in the field:**
+
+- The 100 ms `WAIT_POWER_STABLE` and 50 ms `WAIT_PRE_RESET_RELEASE` delays
+  are placeholders, not datasheet-derived timings. If `GOOD_13.2V` already
+  guarantees the rails have settled, the first delay may be unnecessary; the
+  second should be checked against the TAS3251's minimum reset/supply
+  sequencing spec.
+- Whether the 3.3V analog (AVDD) rail must be enabled a fixed time
+  before/after the 12V (GVDD) rail, rather than immediately after it as
+  implemented, is unconfirmed.
+- `Tas3251::powerOn()`'s DEVICE_CTRL_2 (B0-P0-R2) bit encoding and
+  `Tas3251::setVolumeDb()`'s dB-to-register-code formula both follow common
+  TI PurePath conventions but are **unverified for TAS3251 specifically**.
+  The startup sequence deliberately uses a conservative low volume
+  regardless, so a wrong-but-quiet result is the worst case today — confirm
+  both against the datasheet before writing arbitrary volumes in the field.
+- `Dsp`'s placeholder I2C address (`0x38`) is unconfirmed; harmless today
+  since no board has the ADAU1466 populated.
+
+### Generating documentation
+
+All classes are commented for Doxygen (`@file`/`@brief`/`@param`/`@return`/
+`@note`/`@warning`). Generate HTML docs from the `tas/` directory:
+
+```sh
+doxygen Doxyfile
+open docs/html/index.html
+```
+
+## I2S Test Tone (H2-to-U11 Patch)
+
+**Status: proposed / not yet implemented in firmware.** This is a bring-up
+idea for exercising the audio path without a board respin, recorded here
+before writing the code.
+
+Connector H2 (2x12, the main board-to-board header) breaks out several
+ESP32-S3 GPIOs that this firmware does not otherwise use. Checked against
+`Netlist_Class_D_amp_2026-07-23.enet`, the following H2 pins are genuinely
+spare (not assigned to any signal in [ESP32-S3 Hardware IO](#esp32-s3-hardware-io)
+or [Potential DSP (ADAU1466) Connectivity](#potential-dsp-adau1466-connectivity)):
+
+| H2 pin | ESP32-S3 IO | Notes |
+|--------|-------------|-------|
+| 16 | IO13 | free |
+| 18 | IO14 | free |
+| 20 | IO21 | free |
+| 4 | IO3 | free, but an ESP32-S3 strapping pin (JTAG source select) — avoid |
+| 6 | IO46 | free, but an ESP32-S3 strapping pin (ROM print control) — avoid |
+| 7 | IO8 | free |
+| 8 | IO9 | free |
+| 10 | IO10 | free |
+| 12 | IO11 | free |
+
+Since connector U11 (the I2S input header, see
+[Firmware Architecture](#firmware-architecture) above) only reaches the
+TAS3251 and nothing else drives it, a user-installed patch from three of the
+free H2 pins to U11 lets the ESP32-S3 act as a temporary I2S source for the
+amplifier — no board respin needed:
+
+| U11 pin | Signal | Patch to H2 pin | ESP32-S3 IO |
+|---------|--------|------------------|-------------|
+| 4 | LRCK (WS) | 18 | IO14 |
+| 5 | SCLK (BCLK) | 16 | IO13 |
+| 6 | SDIN (DOUT, ESP32 → TAS3251) | 20 | IO21 |
+| 3 | MCLK | *TBD* | — |
+| 1 | GND | any H2 GND pin (15/17/19/21-24) | — |
+
+MCLK is left open for now: it's unconfirmed whether the TAS3251's I2S input
+requires an external MCLK or can derive its clock from BCLK/LRCK alone
+(`I2sBus`/`i2s_std` do support MCLK-less operation). If bring-up shows MCLK
+is required, H2 pin 7 (IO8), 8 (IO9), 10 (IO10) or 12 (IO11) are the next
+free candidates — avoid IO3/IO46 (H2 pins 4/6) since they're ESP32-S3
+strapping pins.
+
+⚠️ **Do not patch H2 to U11 while a DIR9001 module (or anything else) is also
+connected to U11** — the ESP32-S3 would then be driving LRCK/SCLK/SDIN into
+whatever else is driving those same lines.
+
+### Planned firmware behavior
+
+Once implemented: 5 seconds after `SystemController::startup()` reaches the
+`READY` state (i.e. after the amplifier is configured and unmuted), the
+firmware logs a new state (e.g. `TEST_TONE_START`) and starts writing a
+continuous 1 kHz sine wave to both channels via `I2sBus::writeSamples()` —
+same 16-bit/48 kHz stereo interleaved format `I2sBus` already assumes. This
+would likely live in a small new class (e.g. `TestToneGenerator`) that owns
+the sample buffer and reuses `I2sBus` rather than being folded into
+`SystemController` directly, so it can be compiled out entirely once no
+longer needed for bring-up.
+
 ## Project folder contents
 
 ```
 ├── CMakeLists.txt
-├── sdkconfig                   Board-specific build configuration (see Configuration above)
-├── pytest_tas.py                Automated test entry point
+├── Doxyfile                     Doxygen config (see Generating documentation above)
+├── sdkconfig                    Board-specific build configuration (see Configuration above)
+├── pytest_tas.py                 Automated test entry point
 ├── main
 │   ├── CMakeLists.txt
-│   ├── tas_main.c               App entry point (app_main)
-│   ├── tas_pins.h                Pin definitions for the hardware IO tables above
-│   └── tas_pins.c                GPIO/I2C init using those pin definitions
+│   ├── tas_main.cpp               App entry point (app_main)
+│   ├── tas_pins.h                 GPIO/I2C pin definitions, single source of truth
+│   ├── i2c_bus.hpp / .cpp          tas::I2cBus
+│   ├── tas3251.hpp / .cpp          tas::Tas3251
+│   ├── dsp_adau1466.hpp / .cpp     tas::Dsp
+│   ├── power_supplies.hpp / .cpp   tas::PowerSupplies
+│   ├── i2s_bus.hpp / .cpp          tas::I2sBus
+│   └── system_controller.hpp / .cpp  tas::SystemController
 └── README.md
 ```
 
@@ -173,3 +349,7 @@ U10 pins 1 and 2 carry GND and 3.3V respectively for powering the DSP module.
 
     * Hardware connection is not correct: run `idf.py -p PORT monitor`, and reboot your board to see if there are any output logs.
     * The baud rate for downloading is too high: lower your baud rate via [Configuration (menuconfig)](#configuration-menuconfig), and try again.
+
+
+
+
