@@ -11,6 +11,7 @@
 #include "esp_err.h"
 #include "i2c_bus.hpp"
 #include "power_supplies.hpp"
+#include "status_led.hpp"
 #include "tas3251.hpp"
 
 namespace tas {
@@ -25,6 +26,20 @@ namespace tas {
  */
 class SystemController {
 public:
+    /**
+     * @brief Overall device status, also reflected on the U8 status LED.
+     *        /CLIP_OTW does NOT change this — it is logged only (see
+     *        runForever()). /FAULT moves this to Fault, mutes the amp at a
+     *        conservative low volume, and stays there (no automatic
+     *        recovery yet — see the runForever() TODO).
+     */
+    enum class Status {
+        Booting,       ///< startup() is running. LED: blue.
+        Ready,         ///< startup() succeeded, amp unmuted and nominal. LED: green.
+        Fault,         ///< /FAULT latched: amp muted at low volume. LED: red.
+        StartupFailed, ///< startup() aborted before reaching Ready. LED: amber.
+    };
+
     SystemController() = default;
 
     /**
@@ -41,11 +56,20 @@ public:
      */
     void runForever();
 
+    /** @brief Current status (see Status). */
+    Status status() const { return status_; }
+
 private:
+    esp_err_t fail(esp_err_t err);
+    void handleFault();
+    void handleClipOtw();
+
     I2cBus i2cBus_;
     PowerSupplies power_;
     Tas3251 amp_;
     Dsp dsp_;
+    StatusLed statusLed_;
+    Status status_ = Status::Booting;
 };
 
 } // namespace tas

@@ -5,7 +5,7 @@
     "board/esp32s3-builtin.cfg"
   ],
   "idf.port": "/dev/tty.usbmodem2101",
-  "idf.currentSetup": "esp-idf-e21ebf59e9414206958fda81c02c09af",
+  "idf.currentSetup": "/Users/iko/.espressif/v6.0/esp-idf",
   "idf.customExtraVars": {
     "IDF_TARGET": "esp32s3"
   },

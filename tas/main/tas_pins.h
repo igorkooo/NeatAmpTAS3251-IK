@@ -46,6 +46,17 @@
 ///@}
 
 /**
+ * @name Status LED chain (U8, U9 — SK9822, APA102-compatible clocked RGB)
+ * U8 is first in the chain (data/clock in from the ESP32-S3), its CKO/SDO
+ * feed U9's CKI/SDI. Both lines are ESP32-S3 outputs through 27 Ohm series
+ * resistors (R17 on CKI, R18 on SDI, per Netlist_Class_D_amp_2026-07-23.enet).
+ */
+///@{
+#define TAS_PIN_STATUS_LED_SDI GPIO_NUM_36
+#define TAS_PIN_STATUS_LED_CKI GPIO_NUM_37
+///@}
+
+/**
  * @note I2S audio bus (MCLK/BCLK/LRCK/SDIN) is NOT currently wired to any
  * ESP32-S3 GPIO. Per Netlist_Class_D_amp_2026-07-23.enet (repository root),
  * connector U11 (the external DIR9001/DSP I2S header) only connects to the

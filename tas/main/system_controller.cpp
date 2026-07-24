@@ -7,13 +7,92 @@
 
 #include <cinttypes>
 
+#include "esp_app_desc.h"
+#include "esp_chip_info.h"
+#include "esp_flash.h"
 #include "esp_log.h"
+#include "esp_mac.h"
+#include "esp_system.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
 namespace tas {
 namespace {
 constexpr char kTag[] = "SystemController";
+
+const char *resetReasonToString(esp_reset_reason_t reason)
+{
+    switch (reason) {
+        case ESP_RST_POWERON:
+            return "power-on";
+        case ESP_RST_EXT:
+            return "external pin";
+        case ESP_RST_SW:
+            return "software (esp_restart)";
+        case ESP_RST_PANIC:
+            return "panic/exception";
+        case ESP_RST_INT_WDT:
+            return "interrupt watchdog";
+        case ESP_RST_TASK_WDT:
+            return "task watchdog";
+        case ESP_RST_WDT:
+            return "other watchdog";
+        case ESP_RST_DEEPSLEEP:
+            return "deep sleep wakeup";
+        case ESP_RST_BROWNOUT:
+            return "brownout";
+        case ESP_RST_SDIO:
+            return "SDIO";
+        case ESP_RST_USB:
+            return "USB";
+        case ESP_RST_JTAG:
+            return "JTAG";
+        case ESP_RST_EFUSE:
+            return "efuse error";
+        case ESP_RST_PWR_GLITCH:
+            return "power glitch";
+        case ESP_RST_CPU_LOCKUP:
+            return "CPU lockup (double exception)";
+        case ESP_RST_UNKNOWN:
+        default:
+            return "unknown";
+    }
+}
+
+/**
+ * @brief Log everything readily available about the running chip and
+ *        firmware image, so a serial capture always identifies exactly
+ *        what is on the board (target, revision, flash, firmware version,
+ *        MAC, why it last reset) without needing a debugger attached.
+ */
+void logChipInfo()
+{
+    esp_chip_info_t chipInfo;
+    esp_chip_info(&chipInfo);
+
+    uint32_t flashSizeBytes = 0;
+    esp_flash_get_size(nullptr, &flashSizeBytes);
+
+    uint8_t mac[6] = {0};
+    esp_read_mac(mac, ESP_MAC_WIFI_STA);
+
+    const esp_app_desc_t *app = esp_app_get_description();
+
+    ESP_LOGI(kTag, "Chip: %s, %d core(s), silicon revision v%d.%d, %s%s%s%sflash %" PRIu32 " MB (%s)",
+             CONFIG_IDF_TARGET, chipInfo.cores, chipInfo.revision / 100, chipInfo.revision % 100,
+             (chipInfo.features & CHIP_FEATURE_WIFI_BGN) ? "WiFi/" : "",
+             (chipInfo.features & CHIP_FEATURE_BT) ? "BT/" : "",
+             (chipInfo.features & CHIP_FEATURE_BLE) ? "BLE/" : "",
+             (chipInfo.features & CHIP_FEATURE_IEEE802154) ? "802.15.4/" : "",
+             flashSizeBytes / (1024 * 1024),
+             (chipInfo.features & CHIP_FEATURE_EMB_FLASH) ? "embedded" : "external");
+    ESP_LOGI(kTag, "MAC (WiFi STA): %02X:%02X:%02X:%02X:%02X:%02X", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+    ESP_LOGI(kTag, "Heap: %" PRIu32 " bytes free now, %" PRIu32 " bytes minimum free since boot",
+             esp_get_free_heap_size(), esp_get_minimum_free_heap_size());
+    ESP_LOGI(kTag, "Firmware: project \"%s\" v%s, built %s %s, ESP-IDF %s", app->project_name, app->version,
+             app->date, app->time, app->idf_ver);
+    ESP_LOGI(kTag, "Last reset reason: %s", resetReasonToString(esp_reset_reason()));
+}
 
 /**
  * @note Placeholder value suggested during architecture review, to let the
@@ -34,30 +113,60 @@ constexpr uint32_t kPowerStabilizeDelayMs = 100;
 constexpr uint32_t kPreResetReleaseDelayMs = 50;
 
 /**
- * @note Conservative startup volume ("Volume - low" in the architecture
- *       review). Deliberately chosen independently of whether
- *       Tas3251::setVolumeDb()'s dB-to-register-code formula is correct
- *       (see its @warning) — a wrong-but-quiet startup level is safe, a
- *       wrong-and-loud one is not.
+ * @note Conservative "low" volume, used both as the startup default and as
+ *       the volume applied when a fault mutes the amp. Deliberately chosen
+ *       independently of whether Tas3251::setVolumeDb()'s dB-to-register-code
+ *       formula is correct (see its @warning) — a wrong-but-quiet result is
+ *       safe, a wrong-and-loud one is not.
  */
-constexpr float kStartupVolumeDb = -60.0f;
+constexpr float kLowVolumeDb = -60.0f;
 
 constexpr uint32_t kMonitorLoopPeriodMs = 50;
+
+/** @note How long the CLIP/OTW visual flash (LED index 1, U9) stays lit.
+ *  Purely cosmetic — see SystemController::handleClipOtw(). */
+constexpr uint32_t kClipFlashMs = 120;
+
+/** @name Status LED colors (see SystemController::Status) */
+///@{
+constexpr RgbColor kColorBooting{0, 0, 255};
+constexpr RgbColor kColorReady{0, 255, 0};
+constexpr RgbColor kColorFault{255, 0, 0};
+constexpr RgbColor kColorStartupFailed{255, 140, 0};
+constexpr RgbColor kColorClipFlash{255, 180, 0};
+constexpr RgbColor kColorOff{0, 0, 0};
+///@}
 } // namespace
+
+esp_err_t SystemController::fail(esp_err_t err)
+{
+    status_ = Status::StartupFailed;
+    statusLed_.setColor(0, kColorStartupFailed);
+    return err;
+}
 
 esp_err_t SystemController::startup()
 {
+    logChipInfo();
+
+    esp_err_t err = statusLed_.init();
+    if (err != ESP_OK) {
+        ESP_LOGE(kTag, "StatusLed init failed: %s", esp_err_to_name(err));
+        return fail(err);
+    }
+    statusLed_.setColor(0, kColorBooting);
+
     ESP_LOGI(kTag, "State: INIT — configuring I2C bus, GPIOs and interrupts");
-    esp_err_t err = i2cBus_.init();
+    err = i2cBus_.init();
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "I2C bus init failed: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     err = power_.init();
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "PowerSupplies init failed: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     /* Tas3251::init() also drives RESET_AMP and DAC_MUTE to their safe
@@ -65,13 +174,13 @@ esp_err_t SystemController::startup()
     err = amp_.init(i2cBus_);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Tas3251 init failed: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     err = dsp_.init(i2cBus_);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Dsp init failed: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
     if (!dsp_.isPresent()) {
         ESP_LOGI(kTag, "ADAU1466 DSP not detected on the I2C bus — continuing without it "
@@ -82,12 +191,12 @@ esp_err_t SystemController::startup()
     err = amp_.reset(true);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to assert RESET_AMP: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
     err = amp_.mute(true);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to assert DAC_MUTE: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     ESP_LOGI(kTag, "State: WAIT_POWER_STABLE — waiting %" PRIu32 " ms for supplies to settle",
@@ -97,7 +206,7 @@ esp_err_t SystemController::startup()
     ESP_LOGI(kTag, "State: CHECK_13V2 — polling GOOD_13.2V");
     if (!power_.isRail13V2Good()) {
         ESP_LOGE(kTag, "13.2V rail not good — aborting startup, amplifier stays in reset and muted");
-        return ESP_ERR_INVALID_STATE;
+        return fail(ESP_ERR_INVALID_STATE);
     }
     ESP_LOGI(kTag, "13.2V rail confirmed good");
 
@@ -105,7 +214,7 @@ esp_err_t SystemController::startup()
     err = power_.enable12VAnalog(true);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to enable 12V GVDD rail: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     /* @note Enabled immediately after the 12V rail rather than with an
@@ -117,7 +226,7 @@ esp_err_t SystemController::startup()
     err = power_.enable3V3Analog(true);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to enable 3.3V analog rail: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     ESP_LOGI(kTag, "State: WAIT_PRE_RESET_RELEASE — waiting %" PRIu32 " ms before releasing RESET_AMP",
@@ -128,22 +237,22 @@ esp_err_t SystemController::startup()
     err = amp_.reset(false);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to release RESET_AMP: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     ESP_LOGI(kTag, "State: CONFIGURE — writing TAS3251 configuration via I2C");
     err = amp_.powerOn(true);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to power on TAS3251 (B0-P0-R2): %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
-    err = amp_.setVolumeDb(Channel::Left, kStartupVolumeDb);
+    err = amp_.setVolumeDb(Channel::Left, kLowVolumeDb);
     if (err == ESP_OK) {
-        err = amp_.setVolumeDb(Channel::Right, kStartupVolumeDb);
+        err = amp_.setVolumeDb(Channel::Right, kLowVolumeDb);
     }
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to set startup volume: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
     /* TODO: EQ / crossover biquad configuration (Book 0x8C pages, safeload
      * via B0x8C-P5-R7C) goes here once coefficients are finalized — see
@@ -153,11 +262,58 @@ esp_err_t SystemController::startup()
     err = amp_.mute(false);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to release DAC_MUTE: %s", esp_err_to_name(err));
-        return err;
+        return fail(err);
     }
 
     ESP_LOGI(kTag, "State: READY — startup sequence complete");
+    status_ = Status::Ready;
+    statusLed_.setColor(0, kColorReady);
     return ESP_OK;
+}
+
+void SystemController::handleFault()
+{
+    FaultStatus faultStatus{};
+    esp_err_t err = amp_.readFaultStatus(faultStatus);
+    if (err == ESP_OK) {
+        ESP_LOGE(kTag, "AMP FAULT latched: B0-P0-R94=0x%02X R95=0x%02X", faultStatus.reg94, faultStatus.reg95);
+    } else {
+        ESP_LOGE(kTag, "AMP FAULT latched, and fault status read failed: %s", esp_err_to_name(err));
+    }
+    amp_.clearFaultLatch();
+
+    ESP_LOGE(kTag, "State: FAULT — muting at low volume");
+    err = amp_.mute(true);
+    if (err != ESP_OK) {
+        ESP_LOGE(kTag, "Failed to assert DAC_MUTE after fault: %s", esp_err_to_name(err));
+    }
+    err = amp_.setVolumeDb(Channel::Left, kLowVolumeDb);
+    if (err == ESP_OK) {
+        err = amp_.setVolumeDb(Channel::Right, kLowVolumeDb);
+    }
+    if (err != ESP_OK) {
+        ESP_LOGE(kTag, "Failed to lower volume after fault: %s", esp_err_to_name(err));
+    }
+
+    status_ = Status::Fault;
+    statusLed_.setColor(0, kColorFault);
+    /* TODO: recovery policy — e.g. wait for thermal recovery then toggle
+     * RESET_AMP to clear a latched OTE fault, per the hardware README
+     * "Fault Handling" section. Status intentionally stays Fault (muted,
+     * red LED) until that recovery path exists. */
+}
+
+void SystemController::handleClipOtw()
+{
+    ESP_LOGW(kTag, "AMP CLIP/OTW asserted");
+    amp_.clearClipOtwLatch();
+
+    /* Log-only by design: no mute, no volume change, no Status change.
+     * The second LED (U9) gets a brief flash purely as a "clipping just
+     * happened" visual cue, independent of the persistent status on U8. */
+    statusLed_.setColor(1, kColorClipFlash);
+    vTaskDelay(pdMS_TO_TICKS(kClipFlashMs));
+    statusLed_.setColor(1, kColorOff);
 }
 
 void SystemController::runForever()
@@ -167,22 +323,11 @@ void SystemController::runForever()
 
     for (;;) {
         if (amp_.isFaultLatched()) {
-            FaultStatus status{};
-            esp_err_t err = amp_.readFaultStatus(status);
-            if (err == ESP_OK) {
-                ESP_LOGE(kTag, "AMP FAULT latched: B0-P0-R94=0x%02X R95=0x%02X", status.reg94, status.reg95);
-            } else {
-                ESP_LOGE(kTag, "AMP FAULT latched, and fault status read failed: %s", esp_err_to_name(err));
-            }
-            amp_.clearFaultLatch();
-            /* TODO: recovery policy — e.g. wait for thermal recovery then
-             * toggle RESET_AMP to clear a latched OTE fault, per the
-             * hardware README "Fault Handling" section. */
+            handleFault();
         }
 
         if (amp_.isClipOtwLatched()) {
-            ESP_LOGW(kTag, "AMP CLIP/OTW asserted");
-            amp_.clearClipOtwLatch();
+            handleClipOtw();
         }
 
         const bool rail13V2Good = power_.isRail13V2Good();

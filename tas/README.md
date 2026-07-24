@@ -53,6 +53,17 @@ IntelliSense. Keeping the project build configured ensures ESP-IDF headers
 such as `esp_system.h` and `esp_flash.h` resolve without missing-include
 warnings.
 
+`sdkconfig.defaults` sets the flash size (8 MB) and PSRAM (8 MB Quad) to
+match the ESP32-S3-WROOM-1U-N8R8 module actually used on this board. If a
+fresh `sdkconfig` ever comes up as 2 MB flash / no PSRAM again (check the
+boot log — see
+[Chip and firmware info logging](#chip-and-firmware-info-logging) — or
+`grep CONFIG_SPIRAM sdkconfig`), run `idf.py reconfigure`; if it's still
+missing, confirm `esp_psram` is still in `main`'s `PRIV_REQUIRES` in
+`main/CMakeLists.txt` — this project builds with `MINIMAL_BUILD ON`
+(root `CMakeLists.txt`), which silently drops `CONFIG_SPIRAM` from the
+Kconfig tree entirely if nothing depends on `esp_psram`.
+
 The test dependencies are listed by `pytest_tas.py`. Install them into the
 active virtual environment when PyPI access is available:
 
@@ -121,6 +132,29 @@ directly:
 
 ```sh
 pkill -f 'bin/openocd'    # macOS / Linux
+```
+
+### Debug launches an old binary / doesn't flash first
+
+The `gdbtarget` `attach` config's `buildFlashMonitor` option (build, flash
+and monitor before attaching) defaults to `false`. With it unset, clicking
+Debug just attaches GDB via OpenOCD to **whatever is already on the
+chip** — it does not build or flash your current source first. If the
+serial log shown by a debug/monitor session doesn't match your code (e.g.
+still shows the stock `hello_world` example, an old project name, or an old
+compile timestamp in the `app_init:` banner lines — see
+[Chip and firmware info logging](#chip-and-firmware-info-logging) below for
+where to check that), this is almost always why: the board was never
+actually reflashed with the current build, only attached to.
+
+`.vscode/launch.json`'s debug configuration now sets `"buildFlashMonitor":
+true`, so every Debug launch builds, flashes and monitors before attaching.
+If you ever want to attach without reflashing (e.g. to inspect a crash
+without touching the board's current state), temporarily set it back to
+`false` for that session, or flash explicitly first instead:
+
+```sh
+idf.py -p PORT flash
 ```
 
 ## ESP32-S3 Hardware IO
@@ -193,7 +227,8 @@ one class; `tas_pins.h` remains the single source of truth for GPIO numbers.
 | `tas::Dsp` | [dsp_adau1466.hpp](main/dsp_adau1466.hpp) / [.cpp](main/dsp_adau1466.cpp) | DSP_RESET, DSP_SELFBOOT, I2C presence probe for the optional ADAU1466 |
 | `tas::PowerSupplies` | [power_supplies.hpp](main/power_supplies.hpp) / [.cpp](main/power_supplies.cpp) | GOOD_13.2V sense, ENABLE_12V, ENABLE_3.3V analog |
 | `tas::I2sBus` | [i2s_bus.hpp](main/i2s_bus.hpp) / [.cpp](main/i2s_bus.cpp) | ESP-IDF I2S std-mode TX channel for the shared TAS3251/DSP audio bus |
-| `tas::SystemController` | [system_controller.hpp](main/system_controller.hpp) / [.cpp](main/system_controller.cpp) | Startup sequencing and the steady-state monitor loop, composing the classes above |
+| `tas::StatusLed` | [status_led.hpp](main/status_led.hpp) / [.cpp](main/status_led.cpp) | Bit-banged SK9822 (APA102-compatible) driver for the U8/U9 status LED chain |
+| `tas::SystemController` | [system_controller.hpp](main/system_controller.hpp) / [.cpp](main/system_controller.cpp) | Startup sequencing, fault/clip handling, and the steady-state monitor loop, composing the classes above |
 
 `main/tas_main.cpp` (`app_main`) only constructs a `SystemController` and
 calls `startup()` then `runForever()`.
@@ -215,7 +250,7 @@ transition at `ESP_LOGI` and any failure at `ESP_LOGE` (aborting the sequence
 on failure, leaving the amplifier held in reset and muted):
 
 ```
-INIT                    → I2C bus, GPIOs, /FAULT + /CLIP_OTW IRQs, DSP probe
+INIT                    → status LED (blue), I2C bus, GPIOs, /FAULT + /CLIP_OTW IRQs, DSP probe
 AMP_RESET               → RESET_AMP asserted, DAC_MUTE asserted
 WAIT_POWER_STABLE       → 100 ms delay (see ⚠️ below)
 CHECK_13V2              → poll GOOD_13.2V; abort if not good
@@ -225,11 +260,17 @@ WAIT_PRE_RESET_RELEASE  → 50 ms delay (see ⚠️ below)
 RELEASE_RESET           → RESET_AMP released
 CONFIGURE               → power on (B0-P0-R2), set a conservative low startup volume
 UNMUTE                  → DAC_MUTE released
-READY                   → hand off to runForever()
+READY                   → status LED (green), hand off to runForever()
 ```
 
+Any failure along the way aborts the sequence, sets `SystemController::status()`
+to `StartupFailed`, and turns the status LED amber (see
+[Status LED (U8/U9)](#status-led-u8u9) below) — the amplifier stays held in
+reset and muted.
+
 `SystemController::runForever()` then polls `/FAULT`, `/CLIP_OTW` and
-GOOD_13.2V every 50 ms, logging state changes.
+GOOD_13.2V every 50 ms, logging state changes and reacting to `/FAULT` and
+`/CLIP_OTW` as described in [Status LED (U8/U9)](#status-led-u8u9).
 
 ⚠️ **Open questions carried over from architecture review, marked `TODO` in
 the code (`system_controller.cpp`, `tas3251.hpp`) — verify against the actual
@@ -251,6 +292,60 @@ TAS3251 datasheet before trusting them in the field:**
   both against the datasheet before writing arbitrary volumes in the field.
 - `Dsp`'s placeholder I2C address (`0x38`) is unconfirmed; harmless today
   since no board has the ADAU1466 populated.
+
+### Status LED (U8/U9)
+
+U8 and U9 are SK9822 (APA102-compatible) addressable RGB LEDs, chained in
+series and driven from the ESP32-S3 over a bit-banged two-wire link:
+IO36 → 27 Ω → `L_SDI` (data, into U8) and IO37 → 27 Ω → `L_CKI` (clock); U8's
+CKO/SDO feed U9's CKI/SDI. This is **not** a WS2812B (single-wire) — see the
+correction in the top-level [README.md](../README.md#visual-indicators).
+`tas::StatusLed` treats the chain as two independently-addressable LEDs and
+gives them different jobs:
+
+- **LED 0 (U8) — persistent `SystemController::Status`:**
+
+  | Status | Color | Meaning |
+  |--------|-------|---------|
+  | `Booting` | Blue | `startup()` is running |
+  | `Ready` | Green | Startup succeeded; amp unmuted, nominal volume |
+  | `Fault` | Red | `/FAULT` latched; amp muted at low volume (see below) |
+  | `StartupFailed` | Amber | `startup()` aborted before reaching `Ready` |
+
+- **LED 1 (U9) — transient `/CLIP_OTW` indicator:** off normally; flashes
+  amber for ~120 ms each time `/CLIP_OTW` fires, then returns to off. Purely
+  a visual cue — it does not reflect or change `Status`.
+
+**Fault vs. clip handling** (`SystemController::handleFault()` /
+`handleClipOtw()`, called from `runForever()`):
+
+- **`/FAULT`**: logs the latched fault bytes (B0-P0-R94/R95), re-asserts
+  `DAC_MUTE` and sets both channels to the same conservative low volume used
+  at startup, sets `Status` to `Fault` (LED 0 red), and **stays there** —
+  there's no automatic recovery yet (see the `TODO` in
+  `SystemController::handleFault()` and the existing "Fault Handling"
+  section in the top-level README for the intended recovery policy: wait for
+  thermal recovery, then toggle `RESET_AMP`).
+- **`/CLIP_OTW`**: logs only (`ESP_LOGW`) and flashes LED 1 — no mute, no
+  volume change, no `Status` change. This is a deliberate design choice:
+  clipping is common/non-latching and shouldn't itself silence the amp,
+  unlike a real `/FAULT`.
+
+### Chip and firmware info logging
+
+Before the `INIT` state, `startup()` logs everything readily available about
+the running chip and firmware image at `ESP_LOGI`: target/core
+count/silicon revision/radio features, flash size and type, WiFi-STA MAC
+address, current and minimum-ever free heap, the firmware's project
+name/version/build timestamp/ESP-IDF version (from `esp_app_get_description()`,
+i.e. this project's actual name/version, not a stale one), and the reason
+for the last reset (power-on, software, watchdog, brownout, etc.). This is
+the first thing to check in a serial capture — the project name and compile
+timestamp there is the ground truth for what's actually running on the
+board, e.g. if it still says `hello_world` instead of `tas`, the board was
+never flashed with this project's build; see
+[Debug launches an old binary / doesn't flash first](#debug-launches-an-old-binary--doesnt-flash-first)
+above.
 
 ### Generating documentation
 

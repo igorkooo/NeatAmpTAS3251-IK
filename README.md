@@ -205,13 +205,22 @@ highest switching frequency.
 ### Fault Handling
 
 Both /FAULT and /CLIP_OTW are open-drain active-low outputs wired to ESP32-S3
-interrupt-capable GPIOs. The recommended firmware flow:
+interrupt-capable GPIOs. Implemented in `tas::SystemController` — see the
+[ESP32-S3 firmware README](tas/README.md#status-led-u8u9) for the full
+state/color breakdown:
 
-1. /FAULT asserts → falling-edge ISR fires → read B0-P0-R94/R95 for fault detail
-2. If OTE (over-temperature): wait for thermal recovery, then toggle RESET_AMP to
-   clear the latched fault before resuming
-3. /CLIP_OTW is non-latching — monitor for sustained clipping and reduce volume
-4. Report fault status to Home Assistant via WiFi MQTT
+1. /FAULT asserts → falling-edge ISR fires → read B0-P0-R94/R95 for fault
+   detail, re-assert DAC_MUTE, and drop both channels to a conservative low
+   volume — **implemented**
+2. If OTE (over-temperature): wait for thermal recovery, then toggle
+   RESET_AMP to clear the latched fault before resuming — **not yet
+   implemented** (tracked as a `TODO` in `SystemController::handleFault()`;
+   the amp currently just stays muted at low volume until manually reset)
+3. /CLIP_OTW is non-latching — current firmware logs each occurrence only
+   (no mute, no volume change); revisit if sustained clipping in practice
+   turns out to warrant automatic volume reduction
+4. Report fault status to Home Assistant via WiFi MQTT — **not yet
+   implemented** (no WiFi/MQTT in the firmware yet)
 
 ### Visual Indicators
 
@@ -219,7 +228,7 @@ interrupt-capable GPIOs. The recommended firmware flow:
 |-----|--------|-----------|
 | D_FAULT | Red | /FAULT asserted (hardware, no firmware needed) |
 | D_CLIP | Yellow/Orange | /CLIP_OTW asserted (hardware, no firmware needed) |
-| D_STATUS | WS2812B RGB | ESP32-S3 controlled: boot, WiFi, mute, active states |
+| D_STATUS | 2× SK9822 (U8, U9), chained | ESP32-S3 controlled over a bit-banged 2-wire link (IO36 data / IO37 clock, not WS2812B) — see [Status LED (U8/U9)](tas/README.md#status-led-u8u9) in the firmware README for the color scheme |
 
 Fault and clip LEDs are driven directly from the open-drain output through a 560Ω
 resistor — they light up regardless of firmware state.
