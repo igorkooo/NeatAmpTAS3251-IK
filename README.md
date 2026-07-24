@@ -176,6 +176,20 @@ Set by ADR pin (46):
 
 This pin is connected to ESP32 IO12.
 
+### Switching Frequency Select — U13
+
+The TAS3251 PWM switching frequency is set by a resistor from FREQ_ADJ (pin 18)
+to AGND, broken out on jumper header **U13** (2x4, 2.54mm). Bridge exactly one
+pin pair with a shunt; the current default is **pins 3-4 (10kΩ)**, giving the
+highest switching frequency.
+
+| U13 pins | R to AGND | Switching frequency |
+|----------|-----------|----------------------|
+| 3-4 | 10kΩ only | 768kHz ← highest (default) |
+| 5-6 | 20kΩ only | 576kHz |
+| 7-8 | 30kΩ only | 384kHz |
+| 1-2 | Pulled to 3.3V | Target/slave mode (external sync via OSC_IOP/IOM) |
+
 ### What ESP32-S3 Controls via I2C
 
 | Function | Register | Notes |

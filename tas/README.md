@@ -88,6 +88,22 @@ At startup, the amplifier reset is released, DAC mute remains asserted, the
 3.3 V analog rail is enabled. The I2C lines rely on the board-level 4.7 kOhm
 pull-ups.
 
+## Potential DSP (ADAU1466) Connectivity
+
+The board breaks out a DSP interface on connector U10 (1x6, 2.54 mm) for a
+future ADAU1466 DSP module. RESET and SELFBOOT are direct GPIO connections;
+the I2C lines join the shared TAS3251 bus through 22 Ohm series resistors
+rather than a separate bus.
+
+| Signal | ESP32-S3 IO | U10 pin | Direction / interface | Purpose | Jumper needed |
+|--------|-------------|---------|-----------------------|---------|---------------|
+| DSP_RESET | IO47 | 3 | GPIO output | Resets the ADAU1466 DSP | No |
+| DSP_SELFBOOT | IO48 | 6 | GPIO output | Sets the ADAU1466 self-boot mode strap | No |
+| DSP SDA | IO0 | 4 | I2C data | Joins the shared I2C data line via 22 Ohm series resistor R19 | No |
+| DSP SCL | IO45 | 5 | I2C clock | Joins the shared I2C clock line via 22 Ohm series resistor R20 | No |
+
+U10 pins 1 and 2 carry GND and 3.3V respectively for powering the DSP module.
+
 (See the README.md file in the upper level 'examples' directory for more information about examples.)
 
 ## How to use example
