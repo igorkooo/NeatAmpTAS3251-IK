@@ -1,11 +1,16 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C5 | ESP32-C6 | ESP32-C61 | ESP32-H2 | ESP32-H21 | ESP32-H4 | ESP32-P4 | ESP32-S2 | ESP32-S3 | Linux |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | --------- | -------- | --------- | -------- | -------- | -------- | -------- | ----- |
+| Target | ESP-IDF |
+| ------ | ------- |
+| ESP32-S3 (ESP32-S3-WROOM-1U-N8R8) | 6.0.2 |
 
-# Tas Example
+# Tas — ESP32-S3 Controller Firmware
 
-Starts a FreeRTOS task to print "Tas".
+ESP32-S3 firmware for the [NeatAmpTAS3251](../README.md) Class-D amplifier
+board: initializes the TAS3251/DSP control pins on boot (see
+[ESP32-S3 Hardware IO](#esp32-s3-hardware-io) below) and reports chip info
+over the console.
 
-This project targets the ESP32-S3 and is configured for ESP-IDF 6.0.2.
+This firmware targets the ESP32-S3 only — the board and this project are not
+built for any other Espressif chip.
 
 ## Local setup
 
@@ -22,9 +27,13 @@ Initialize the ESP-IDF toolchain in each new shell. This sets `IDF_PATH`, adds
 Python environment required by the build:
 
 ```sh
-export IDF_PATH=/Users/iko/.espressif/v6.0.2/esp-idf
+export IDF_PATH=~/.espressif/v6.0.2/esp-idf
 source "$IDF_PATH/export.sh"
 ```
+
+`~/.espressif/v6.0.2/esp-idf` is where the ESP-IDF Installation Manager
+(`eim`) installs ESP-IDF 6.0.2 by default on any machine/user; adjust the
+path only if you installed it somewhere else.
 
 Run the ESP-IDF commands after `export.sh`; ESP-IDF may replace the active
 `.venv` interpreter with its managed environment so all ESP-IDF dependencies
@@ -49,6 +58,46 @@ active virtual environment when PyPI access is available:
 python -m pip install pytest pytest-embedded-idf pytest-embedded-qemu
 python -m pytest -q pytest_tas.py
 ```
+
+## Configuration (menuconfig)
+
+The portable way to open the config menu, on any machine, once the toolchain
+is exported as above:
+
+```sh
+idf.py menuconfig
+```
+
+### VSCode SDK Configuration Editor
+
+If the ESP-IDF extension's "SDK Configuration Editor" (GUI menuconfig) does
+not open, it is almost always because `.vscode/settings.json`'s
+`idf.currentSetup` does not match an installation known to the ESP-IDF
+Installation Manager (`eim`) on this machine. That setting must hold an
+**install ID** (e.g. `esp-idf-<hash>`), not a filesystem path — a path there
+looks plausible but silently fails to resolve.
+
+To fix it on any machine after installing ESP-IDF via `eim`:
+
+```sh
+cat ~/.espressif/tools/eim_idf.json
+```
+
+Copy the `idfSelectedId` value (or the `id` of the entry matching the ESP-IDF
+version you want) into `.vscode/settings.json`:
+
+```json
+"idf.currentSetup": "esp-idf-<hash-from-eim_idf.json>"
+```
+
+This ID is generated per machine by `eim`, so it will differ on every
+computer — re-run this step after cloning the repo onto a new machine or
+after reinstalling ESP-IDF. Reload the VSCode window afterwards.
+
+`idf.port` in the same file is also machine-specific (the serial device path
+of the connected board): `/dev/tty.usbmodem*` on macOS, `/dev/ttyUSB*` or
+`/dev/ttyACM*` on Linux, `COM*` on Windows. Update it to match your board
+before flashing or monitoring from VSCode.
 
 ## ESP32-S3 Hardware IO
 
@@ -104,49 +153,23 @@ rather than a separate bus.
 
 U10 pins 1 and 2 carry GND and 3.3V respectively for powering the DSP module.
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
-
-## How to use example
-
-Follow detailed instructions provided specifically for this example.
-
-Select the instructions depending on Espressif chip installed on your development board:
-
-- [ESP32 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/index.html)
-- [ESP32-S2 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/index.html)
-
-
-## Example folder contents
-
-The project **tas** contains one source file in C language [tas_main.c](main/tas_main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt` files that provide set of directives and instructions describing the project's source files and targets (executable, library, or both).
-
-Below is short explanation of remaining files in the project folder.
+## Project folder contents
 
 ```
 ├── CMakeLists.txt
-├── pytest_tas.py               Python script used for automated testing
+├── sdkconfig                   Board-specific build configuration (see Configuration above)
+├── pytest_tas.py                Automated test entry point
 ├── main
 │   ├── CMakeLists.txt
-│   └── tas_main.c
-└── README.md                  This is the file you are currently reading
+│   ├── tas_main.c               App entry point (app_main)
+│   ├── tas_pins.h                Pin definitions for the hardware IO tables above
+│   └── tas_pins.c                GPIO/I2C init using those pin definitions
+└── README.md
 ```
-
-For more information on structure and contents of ESP-IDF projects, please refer to Section [Build System](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html) of the ESP-IDF Programming Guide.
 
 ## Troubleshooting
 
 * Program upload failure
 
     * Hardware connection is not correct: run `idf.py -p PORT monitor`, and reboot your board to see if there are any output logs.
-    * The baud rate for downloading is too high: lower your baud rate in the `menuconfig` menu, and try again.
-
-## Technical support and feedback
-
-Please use the following feedback channels:
-
-* For technical queries, go to the [esp32.com](https://esp32.com/) forum
-* For a feature request or bug report, create a [GitHub issue](https://github.com/espressif/esp-idf/issues)
-
-We will get back to you as soon as possible.
+    * The baud rate for downloading is too high: lower your baud rate via [Configuration (menuconfig)](#configuration-menuconfig), and try again.
