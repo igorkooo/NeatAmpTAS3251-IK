@@ -448,5 +448,23 @@ longer needed for bring-up.
     * The baud rate for downloading is too high: lower your baud rate via [Configuration (menuconfig)](#configuration-menuconfig), and try again.
 
 
+### Hardware issue on V 1.0
 
+If you (like me) have V1.0 hardware, then USB-C is 180 deg rotated from what it should be. This has been **fixed in V 1.1** of hardware. But in order to flash and use this HW anyway, please follow the steps:
 
+1. Power the board independently of USB-C — e.g. the main 36V input. The broken connector can't supply power either, so this has to be sorted first regardless of the UART wiring.
+2. Wire the UART adapter (3.3V-logic only): adapter TXD → H2 pin 5, adapter RXD → H2 pin 3, adapter GND → H2 pin 15/17/19/21-24. Don't wire the adapter's 3.3V/5V output — see the caution in my last message.
+3. Enter the ROM bootloader manually:
+- Jumper U10 pin 4 to U10 pin 1 (IO0 → GND) and hold it there.
+- Press and release SW1 (resets the chip) while that jumper is still in place.
+- Wait about 200 ms after releasing SW1, then remove the IO0→GND jumper.
+- The chip is now sitting in the UART download bootloader, listening on UART0.
+4. Flash: point ESP-IDF at the adapter's port instead of the old native-USB one:
+
+``` idf.py -p /dev/tty.usbserial-XXXX flash monitor ```
+
+(run `ls /dev/tty.*` before/after plugging the adapter in to find its name — it won't be `/dev/tty.usbmodem2101`, that was the native USB device on the broken connector). esptool will still attempt its normal DTR/RTS reset pulses and fail silently since nothing's wired to them — that's fine, since the chip's already parked in the bootloader waiting, esptool will sync and flash normally.
+- In VS Code, also update .vscode/settings.json: idf.port to the new device path, and idf.flashType from "JTAG" to "UART" so the extension's own Flash/Monitor buttons use this path instead of the (now dead) JTAG/native-USB route.
+5. After flashing, power-cycle or press SW1 again (with IO0 not grounded this time) to boot the new firmware normally, then reopen the monitor at 115200 to watch logs.
+
+One thing this doesn't restore: live JTAG debugging (breakpoints, register inspection via the gdbtarget launch config) — that goes over the same broken USB-C native-USB-JTAG peripheral, so it's unavailable until the connector is fixed. 
