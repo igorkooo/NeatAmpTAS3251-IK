@@ -280,6 +280,8 @@ TAS3251/ESP32-S3 for signal integrity and EMI reduction.
 >   non-polarised X7R ceramics in this revision, resolving the issue entirely.
 > - Heatsink footprint required rework — addressed in PCB revision.
 
+- Current propsed heatsink 
+
 ---
 
 ## Production Details (JLCPCB)
@@ -403,6 +405,12 @@ mklink /D NeatAmpTAS3251-lib C:\path\to\NeatAmpTAS3251\library
 
 After creating the symlink, restart EasyEDA Pro. The library will appear in the
 **Libraries** panel under `NeatAmpTAS3251-lib`.
+
+## Next versions updates to consider
+
+- removing 3.3V power output as big connector with screws - keep it on headers only
+- ensure cooling space around TAS chip to be 32x32mm or 40x40mm. Presently it is 23x27mm
+- (to be checked) add extra electrolyt capacitors in power line
 
 > **Note:** Replace `/path/to/NeatAmpTAS3251/library` with the actual path where
 > you cloned this repository. The EasyEDA Pro libraries directory location may vary

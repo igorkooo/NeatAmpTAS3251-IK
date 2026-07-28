@@ -23,21 +23,6 @@ constexpr char kTag[] = "Tas3251";
 constexpr uint8_t kAddress7BitAdrLow = 0x90 >> 1;
 constexpr uint8_t kAddress7BitAdrHigh = 0x92 >> 1;
 
-/** B0-P0 register numbers, per the hardware README register map. */
-constexpr uint8_t kRegPageSelect = 0x00;
-constexpr uint8_t kRegBookSelect = 0x7F;
-constexpr uint8_t kRegDeviceCtrl2 = 0x02;
-constexpr uint8_t kRegSoftMute = 0x03;
-constexpr uint8_t kRegVolumeLeft = 61;
-constexpr uint8_t kRegVolumeRight = 62;
-constexpr uint8_t kRegVolumeRampSpeed = 64;
-constexpr uint8_t kRegFaultStatus1 = 94;
-constexpr uint8_t kRegFaultStatus2 = 95;
-
-/** @warning Unverified against the TAS3251 datasheet, see Tas3251::powerOn(). */
-constexpr uint8_t kDeviceCtrl2Play = 0x03;
-constexpr uint8_t kDeviceCtrl2DeepSleep = 0x00;
-
 constexpr int kI2cTimeoutMs = 1000;
 } // namespace
 
@@ -69,26 +54,11 @@ esp_err_t Tas3251::init(const I2cBus &bus)
         return err;
     }
 
-    const gpio_config_t outputConfig = {
-        .pin_bit_mask = (1ULL << TAS_PIN_AMP_RESET) | (1ULL << TAS_PIN_DAC_MUTE),
-        .mode = GPIO_MODE_OUTPUT,
-        .pull_up_en = GPIO_PULLUP_DISABLE,
-        .pull_down_en = GPIO_PULLDOWN_DISABLE,
-        .intr_type = GPIO_INTR_DISABLE,
-    };
-    err = gpio_config(&outputConfig);
-    if (err != ESP_OK) {
-        ESP_LOGE(kTag, "gpio_config(RESET_AMP, DAC_MUTE) failed: %s", esp_err_to_name(err));
-        return err;
-    }
-
     /* Safe power-up defaults: held in reset, muted, until SystemController
-     * runs the sequence in tas/README.md. */
-    err = reset(true);
-    if (err != ESP_OK) {
-        return err;
-    }
-    err = mute(true);
+     * runs the sequence in tas/README.md. SystemController::startup() also
+     * calls this directly, earlier, before this init() runs — see its
+     * @note. */
+    err = assertSafeState();
     if (err != ESP_OK) {
         return err;
     }
@@ -129,6 +99,30 @@ uint8_t Tas3251::resolveI2cAddress() const
     return gpio_get_level(TAS_PIN_AMP_ADDRESS) ? kAddress7BitAdrHigh : kAddress7BitAdrLow;
 }
 
+esp_err_t Tas3251::assertSafeState()
+{
+    const gpio_config_t outputConfig = {
+        .pin_bit_mask = (1ULL << TAS_PIN_AMP_RESET) | (1ULL << TAS_PIN_DAC_MUTE),
+        .mode = GPIO_MODE_OUTPUT,
+        .pull_up_en = GPIO_PULLUP_DISABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_DISABLE,
+    };
+    esp_err_t err = gpio_config(&outputConfig);
+    if (err != ESP_OK) {
+        ESP_LOGE(kTag, "gpio_config(RESET_AMP, DAC_MUTE) failed: %s", esp_err_to_name(err));
+        return err;
+    }
+
+    /* Both are active low, and per hardware bring-up spec must go down
+     * together, as early as this call runs. */
+    err = reset(true);
+    if (err != ESP_OK) {
+        return err;
+    }
+    return mute(true);
+}
+
 esp_err_t Tas3251::reset(bool assertReset)
 {
     /* Active low: asserted (in reset) = 0, released = 1. */
@@ -147,16 +141,16 @@ esp_err_t Tas3251::setSoftMuteRegister(bool muteOn)
     if (err != ESP_OK) {
         return err;
     }
-    return writeRegister(kRegSoftMute, muteOn ? 0x01 : 0x00);
+    return writeRegister(kRegDacMute, muteOn ? kMuteBothChannelsMask : 0x00);
 }
 
-esp_err_t Tas3251::powerOn(bool on)
+esp_err_t Tas3251::setDspStandby(bool exitStandby)
 {
     esp_err_t err = selectBookPage(0, 0);
     if (err != ESP_OK) {
         return err;
     }
-    return writeRegister(kRegDeviceCtrl2, on ? kDeviceCtrl2Play : kDeviceCtrl2DeepSleep);
+    return writeRegister(kRegDeviceCtrl2, exitStandby ? kDeviceCtrl2DspStandbyBit : 0x00);
 }
 
 esp_err_t Tas3251::setVolumeDb(Channel channel, float db)

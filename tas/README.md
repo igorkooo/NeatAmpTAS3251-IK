@@ -191,11 +191,13 @@ before relying on these signals; per the netlist
 (`Netlist_Class_D_amp_2026-07-23.enet` at the repository root), leaving a
 pair open floats that signal instead of connecting it.
 
-At GPIO configuration time (`Tas3251::init()`), RESET_AMP and DAC_MUTE are
-driven to their safe defaults — reset asserted, muted — and both the 12 V and
-3.3 V analog rails start disabled; `SystemController::startup()` then runs
-the sequence in [Firmware Architecture](#firmware-architecture) to bring
-everything up in order. The I2C lines rely on the board-level 4.7 kOhm
+As the very first action of `SystemController::startup()` (`Tas3251::assertSafeState()`,
+also called again as part of `Tas3251::init()`'s own GPIO configuration),
+RESET_AMP and DAC_MUTE are driven to their safe defaults — reset asserted,
+muted, together, since both are active low — before any other peripheral is
+touched; both the 12 V and 3.3 V analog rails start disabled. `startup()`
+then runs the sequence in [Firmware Architecture](#firmware-architecture) to
+bring everything up in order. The I2C lines rely on the board-level 4.7 kOhm
 pull-ups.
 
 ## Potential DSP (ADAU1466) Connectivity
@@ -250,16 +252,23 @@ transition at `ESP_LOGI` and any failure at `ESP_LOGE` (aborting the sequence
 on failure, leaving the amplifier held in reset and muted):
 
 ```
+AMP_RESET               → RESET_AMP asserted, DAC_MUTE asserted together (both active low),
+                           as the very first action of startup(), before any other peripheral
 INIT                    → status LED (blue), I2C bus, GPIOs, /FAULT + /CLIP_OTW IRQs, DSP probe
-AMP_RESET               → RESET_AMP asserted, DAC_MUTE asserted
-WAIT_POWER_STABLE       → 100 ms delay (see ⚠️ below)
+WAIT_POWER_STABLE       → 2 ms delay (see ⚠️ below)
 CHECK_13V2              → poll GOOD_13.2V; abort if not good
 ENABLE_12V              → enable the 12V GVDD analog rail
 ENABLE_3V3_ANALOG       → enable the 3.3V analog (DAC_AVDD) rail
-WAIT_PRE_RESET_RELEASE  → 50 ms delay (see ⚠️ below)
-RELEASE_RESET           → RESET_AMP released
-CONFIGURE               → power on (B0-P0-R2), set a conservative low startup volume
+WAIT_PRE_RESET_RELEASE  → 5 ms delay (see ⚠️ below)
+MUTE_I2C                → mute both DACs over I2C (B0-P0-R3, bit0 left + bit4 right) —
+                           RESET_AMP is still asserted at this point
+CONFIGURE               → placeholder for DSP config (EQ/crossover) and volume setup —
+                           not implemented yet, see ⚠️ below
+DSP_STANDBY             → bring the DSP out of standby (B0-P0-R2 DEVICE_CTRL_2, bit7 DSPR = 1)
+WAIT_BEFORE_UNMUTE      → 200 ms delay
 UNMUTE                  → DAC_MUTE released
+WAIT_BEFORE_RESET_RELEASE → 205 ms delay
+RELEASE_RESET           → RESET_AMP released, audio path active
 READY                   → status LED (green), hand off to runForever()
 ```
 
@@ -276,20 +285,20 @@ GOOD_13.2V every 50 ms, logging state changes and reacting to `/FAULT` and
 the code (`system_controller.cpp`, `tas3251.hpp`) — verify against the actual
 TAS3251 datasheet before trusting them in the field:**
 
-- The 100 ms `WAIT_POWER_STABLE` and 50 ms `WAIT_PRE_RESET_RELEASE` delays
-  are placeholders, not datasheet-derived timings. If `GOOD_13.2V` already
-  guarantees the rails have settled, the first delay may be unnecessary; the
-  second should be checked against the TAS3251's minimum reset/supply
-  sequencing spec.
+- The 2 ms `WAIT_POWER_STABLE`, 5 ms `WAIT_PRE_RESET_RELEASE`, 200 ms
+  `WAIT_BEFORE_UNMUTE` and 205 ms `WAIT_BEFORE_RESET_RELEASE` delays come
+  from the hardware bring-up spec. If `GOOD_13.2V` already guarantees the
+  rails have settled, `WAIT_POWER_STABLE` may be unnecessary.
 - Whether the 3.3V analog (AVDD) rail must be enabled a fixed time
   before/after the 12V (GVDD) rail, rather than immediately after it as
   implemented, is unconfirmed.
-- `Tas3251::powerOn()`'s DEVICE_CTRL_2 (B0-P0-R2) bit encoding and
-  `Tas3251::setVolumeDb()`'s dB-to-register-code formula both follow common
-  TI PurePath conventions but are **unverified for TAS3251 specifically**.
-  The startup sequence deliberately uses a conservative low volume
-  regardless, so a wrong-but-quiet result is the worst case today — confirm
-  both against the datasheet before writing arbitrary volumes in the field.
+- `CONFIGURE` (DSP config / volume setup) is a placeholder today —
+  `SystemController::startup()` does not write any EQ/crossover coefficients
+  or set a startup volume between muting the DACs and bringing the DSP out
+  of standby. `Tas3251::setVolumeDb()`'s dB-to-register-code formula also
+  follows a common TI PurePath convention but is **unverified for TAS3251
+  specifically** — confirm against the datasheet before writing arbitrary
+  volumes in the field.
 - `Dsp`'s placeholder I2C address (`0x38`) is unconfirmed; harmless today
   since no board has the ADAU1466 populated.
 
@@ -383,7 +392,7 @@ or [Potential DSP (ADAU1466) Connectivity](#potential-dsp-adau1466-connectivity)
 
 Since connector U11 (the I2S input header, see
 [Firmware Architecture](#firmware-architecture) above) only reaches the
-TAS3251 and nothing else drives it, a user-installed patch from three of the
+TAS3251 and nothing else drives it, a user-installed patch from four of the
 free H2 pins to U11 lets the ESP32-S3 act as a temporary I2S source for the
 amplifier — no board respin needed:
 
@@ -392,15 +401,8 @@ amplifier — no board respin needed:
 | 4 | LRCK (WS) | 18 | IO14 |
 | 5 | SCLK (BCLK) | 16 | IO13 |
 | 6 | SDIN (DOUT, ESP32 → TAS3251) | 20 | IO21 |
-| 3 | MCLK | *TBD* | — |
+| 3 | MCLK | 12 | IO11 |
 | 1 | GND | any H2 GND pin (15/17/19/21-24) | — |
-
-MCLK is left open for now: it's unconfirmed whether the TAS3251's I2S input
-requires an external MCLK or can derive its clock from BCLK/LRCK alone
-(`I2sBus`/`i2s_std` do support MCLK-less operation). If bring-up shows MCLK
-is required, H2 pin 7 (IO8), 8 (IO9), 10 (IO10) or 12 (IO11) are the next
-free candidates — avoid IO3/IO46 (H2 pins 4/6) since they're ESP32-S3
-strapping pins.
 
 ⚠️ **Do not patch H2 to U11 while a DIR9001 module (or anything else) is also
 connected to U11** — the ESP32-S3 would then be driving LRCK/SCLK/SDIN into

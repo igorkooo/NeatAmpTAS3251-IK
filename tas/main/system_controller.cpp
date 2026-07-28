@@ -95,22 +95,31 @@ void logChipInfo()
 }
 
 /**
- * @note Placeholder value suggested during architecture review, to let the
- *       13.2V->12V LDO chain and 3.3V analog rail settle before RESET_AMP
- *       is released. TODO: verify against the TAS3251 datasheet power-up
- *       timing spec — if isRail13V2Good() already guarantees the rail has
- *       settled, this fixed delay may be redundant and could be removed or
- *       shortened.
+ * @note Per hardware bring-up spec: lets the 13.2V->12V LDO chain and 3.3V
+ *       analog rail begin settling before GOOD_13.2V is polled.
  */
-constexpr uint32_t kPowerStabilizeDelayMs = 100;
+constexpr uint32_t kPowerStabilizeDelayMs = 2;
 
 /**
- * @note Placeholder value suggested during architecture review, inserted
- *       between enabling the 12V/3.3V analog rails and releasing RESET_AMP.
- *       TODO: verify against the TAS3251 datasheet minimum reset-to-supply
- *       or supply-to-reset-release timing before relying on it.
+ * @note Per hardware bring-up spec: settle time after enabling the 12V/3.3V
+ *       analog rails, before starting the I2C configuration sequence that
+ *       eventually leads to releasing RESET_AMP (see kDspStandbyToUnmuteDelayMs
+ *       / kUnmuteToResetReleaseDelayMs below for the rest of that path).
  */
-constexpr uint32_t kPreResetReleaseDelayMs = 50;
+constexpr uint32_t kPreResetReleaseDelayMs = 5;
+
+/**
+ * @note Per hardware bring-up spec: delay after bringing the DSP out of
+ *       standby (Tas3251::setDspStandby(true), DEVICE_CTRL_2 bit7 DSPR)
+ *       before releasing DAC_MUTE.
+ */
+constexpr uint32_t kDspStandbyToUnmuteDelayMs = 200;
+
+/**
+ * @note Per hardware bring-up spec: additional delay after releasing
+ *       DAC_MUTE before releasing RESET_AMP — the last step of startup().
+ */
+constexpr uint32_t kUnmuteToResetReleaseDelayMs = 205;
 
 /**
  * @note Conservative "low" volume, used both as the startup default and as
@@ -147,9 +156,20 @@ esp_err_t SystemController::fail(esp_err_t err)
 
 esp_err_t SystemController::startup()
 {
+    /* State: AMP_RESET — RESET_AMP and DAC_MUTE asserted (both active low)
+     * together, as the very first action, before touching any other
+     * peripheral — per hardware bring-up spec. See Tas3251::assertSafeState()
+     * for why this needs nothing but GPIO. amp_.init() below repeats this
+     * harmlessly as part of its own GPIO configuration. */
+    esp_err_t err = amp_.assertSafeState();
+    if (err != ESP_OK) {
+        ESP_LOGE(kTag, "Failed to assert RESET_AMP/DAC_MUTE at boot: %s", esp_err_to_name(err));
+        return fail(err);
+    }
+
     logChipInfo();
 
-    esp_err_t err = statusLed_.init();
+    err = statusLed_.init();
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "StatusLed init failed: %s", esp_err_to_name(err));
         return fail(err);
@@ -187,18 +207,6 @@ esp_err_t SystemController::startup()
                        "(expected on boards where it is not populated)");
     }
 
-    ESP_LOGI(kTag, "State: AMP_RESET — RESET_AMP asserted, DAC_MUTE asserted");
-    err = amp_.reset(true);
-    if (err != ESP_OK) {
-        ESP_LOGE(kTag, "Failed to assert RESET_AMP: %s", esp_err_to_name(err));
-        return fail(err);
-    }
-    err = amp_.mute(true);
-    if (err != ESP_OK) {
-        ESP_LOGE(kTag, "Failed to assert DAC_MUTE: %s", esp_err_to_name(err));
-        return fail(err);
-    }
-
     ESP_LOGI(kTag, "State: WAIT_POWER_STABLE — waiting %" PRIu32 " ms for supplies to settle",
              kPowerStabilizeDelayMs);
     vTaskDelay(pdMS_TO_TICKS(kPowerStabilizeDelayMs));
@@ -233,35 +241,48 @@ esp_err_t SystemController::startup()
              kPreResetReleaseDelayMs);
     vTaskDelay(pdMS_TO_TICKS(kPreResetReleaseDelayMs));
 
-    ESP_LOGI(kTag, "State: RELEASE_RESET — releasing RESET_AMP");
-    err = amp_.reset(false);
+    /* RESET_AMP is still asserted at this point — only DAC_MUTE and
+     * DEVICE_CTRL_2 (bit7 DSPR) are configured over I2C below, before
+     * RESET_AMP is finally released at the end of this sequence. */
+    ESP_LOGI(kTag, "State: MUTE_I2C — muting DACs via I2C (B0-P0-R3, bit0+bit4)");
+    err = amp_.setSoftMuteRegister(true);
     if (err != ESP_OK) {
-        ESP_LOGE(kTag, "Failed to release RESET_AMP: %s", esp_err_to_name(err));
+        ESP_LOGE(kTag, "Failed to set I2C soft-mute (B0-P0-R3): %s", esp_err_to_name(err));
         return fail(err);
     }
 
-    ESP_LOGI(kTag, "State: CONFIGURE — writing TAS3251 configuration via I2C");
-    err = amp_.powerOn(true);
-    if (err != ESP_OK) {
-        ESP_LOGE(kTag, "Failed to power on TAS3251 (B0-P0-R2): %s", esp_err_to_name(err));
-        return fail(err);
-    }
-    err = amp_.setVolumeDb(Channel::Left, kLowVolumeDb);
-    if (err == ESP_OK) {
-        err = amp_.setVolumeDb(Channel::Right, kLowVolumeDb);
-    }
-    if (err != ESP_OK) {
-        ESP_LOGE(kTag, "Failed to set startup volume: %s", esp_err_to_name(err));
-        return fail(err);
-    }
-    /* TODO: EQ / crossover biquad configuration (Book 0x8C pages, safeload
-     * via B0x8C-P5-R7C) goes here once coefficients are finalized — see
-     * Tas3251::selectBookPage()/writeRegister(). */
+    /* TODO: DSP configuration (EQ / crossover biquads, Book 0x8C pages,
+     * safeload via B0x8C-P5-R7C) and volume setup (Tas3251::setVolumeDb(),
+     * Tas3251::setVolumeRampSpeed()) go here once coefficients/levels are
+     * finalized — see Tas3251::selectBookPage()/writeRegister(). Placeholder
+     * only: nothing is written here yet. */
 
-    ESP_LOGI(kTag, "State: UNMUTE — releasing DAC_MUTE, audio path active");
+    ESP_LOGI(kTag, "State: DSP_STANDBY — bringing DSP out of standby (B0-P0-R2, bit7 DSPR)");
+    err = amp_.setDspStandby(true);
+    if (err != ESP_OK) {
+        ESP_LOGE(kTag, "Failed to bring DSP out of standby (B0-P0-R2): %s", esp_err_to_name(err));
+        return fail(err);
+    }
+
+    ESP_LOGI(kTag, "State: WAIT_BEFORE_UNMUTE — waiting %" PRIu32 " ms before releasing DAC_MUTE",
+             kDspStandbyToUnmuteDelayMs);
+    vTaskDelay(pdMS_TO_TICKS(kDspStandbyToUnmuteDelayMs));
+
+    ESP_LOGI(kTag, "State: UNMUTE — releasing DAC_MUTE");
     err = amp_.mute(false);
     if (err != ESP_OK) {
         ESP_LOGE(kTag, "Failed to release DAC_MUTE: %s", esp_err_to_name(err));
+        return fail(err);
+    }
+
+    ESP_LOGI(kTag, "State: WAIT_BEFORE_RESET_RELEASE — waiting %" PRIu32 " ms before releasing RESET_AMP",
+             kUnmuteToResetReleaseDelayMs);
+    vTaskDelay(pdMS_TO_TICKS(kUnmuteToResetReleaseDelayMs));
+
+    ESP_LOGI(kTag, "State: RELEASE_RESET — releasing RESET_AMP, audio path active");
+    err = amp_.reset(false);
+    if (err != ESP_OK) {
+        ESP_LOGE(kTag, "Failed to release RESET_AMP: %s", esp_err_to_name(err));
         return fail(err);
     }
 

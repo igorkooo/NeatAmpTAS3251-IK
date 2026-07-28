@@ -44,19 +44,70 @@ struct FaultStatus {
  */
 class Tas3251 {
 public:
+    /**
+     * @name TAS3251 B0-P0 registers used by this driver
+     * Register numbers per the hardware README register map / TI book-page
+     * addressing (e.g. "B0-P0-R2" = Book 0, Page 0, Register 2). Exposed here
+     * (rather than kept file-local in tas3251.cpp) so callers/tests can refer
+     * to them by name instead of a bare hex literal.
+     */
+    ///@{
+    static constexpr uint8_t kRegPageSelect = 0x00;      ///< PAGE — selects the page within the current book.
+    static constexpr uint8_t kRegBookSelect = 0x7F;      ///< BOOK — selects the book (always issued from page 0).
+    static constexpr uint8_t kRegDeviceCtrl2 = 0x02;     ///< DEVICE_CTRL_2 — bit7 is DSPR (see kDeviceCtrl2DspStandbyBit).
+    static constexpr uint8_t kRegDacMute = 0x03;         ///< DAC mute control — bit0 (left) / bit4 (right), see kMuteBothChannelsMask.
+    static constexpr uint8_t kRegVolumeLeft = 61;        ///< Left channel digital volume, 0.5 dB/step.
+    static constexpr uint8_t kRegVolumeRight = 62;       ///< Right channel digital volume, 0.5 dB/step.
+    static constexpr uint8_t kRegVolumeRampSpeed = 64;   ///< Volume ramp speed code (startup/shutdown pop control).
+    static constexpr uint8_t kRegFaultStatus1 = 94;      ///< Latched fault status byte 1.
+    static constexpr uint8_t kRegFaultStatus2 = 95;      ///< Latched fault status byte 2.
+    ///@}
+
+    /**
+     * @name DEVICE_CTRL_2 (B0-P0-R2) bits used by this driver
+     * Only bit7 (DSPR) is used/confirmed; the remaining bits of this register
+     * are not written by this driver.
+     */
+    ///@{
+    static constexpr uint8_t kDeviceCtrl2DspStandbyBit = 0x80; ///< Bit7 DSPR: 1 = DSP out of standby, 0 = DSP held in standby.
+    ///@}
+
+    /**
+     * @name B0-P0-R3 (DAC mute) bits used by this driver
+     * Per hardware bring-up spec: both the left (bit0) and right (bit4) mute
+     * bits are set together — there is no independent per-channel I2C mute
+     * in this firmware's sequencing.
+     */
+    ///@{
+    static constexpr uint8_t kMuteBothChannelsMask = 0x11; ///< bit0 (left) | bit4 (right).
+    ///@}
+
     Tas3251() = default;
 
     /**
      * @brief Configure the GPIO lines (including the /FAULT and /CLIP_OTW
      *        falling-edge interrupts), resolve the I2C address from the ADR
      *        strap (AMP ADDRESS pin), and attach the device on @p bus.
-     * @note Does not touch RESET_AMP or DAC_MUTE beyond configuring them as
-     *       outputs; call reset()/mute() explicitly to drive a known state,
-     *       as done by SystemController::startup().
+     * @note Calls assertSafeState() as part of GPIO configuration, so
+     *       RESET_AMP/DAC_MUTE end up asserted regardless of whether the
+     *       caller already called assertSafeState() earlier.
      * @param bus Already-initialized shared I2C bus (see I2cBus::init()).
      * @return ESP_OK on success.
      */
     esp_err_t init(const I2cBus &bus);
+
+    /**
+     * @brief Configure RESET_AMP and DAC_MUTE as GPIO outputs and drive both
+     *        low (asserted) immediately.
+     * @note Per hardware bring-up spec, both lines are negative logic and
+     *       must go down together as early as possible — call this as the
+     *       very first action of SystemController::startup(), before any
+     *       other peripheral (I2C bus, power rails, status LED) is touched,
+     *       since it needs nothing but GPIO. init() also calls this, so
+     *       calling it twice is harmless (it does not change an
+     *       already-asserted level).
+     */
+    esp_err_t assertSafeState();
 
     /**
      * @brief Drive RESET_AMP (active low).
@@ -73,20 +124,23 @@ public:
     esp_err_t mute(bool muteOn);
 
     /**
-     * @brief Set the I2C soft-mute bit (B0-P0-R3), independent of the
-     *        DAC_MUTE GPIO line.
+     * @brief Set the I2C soft-mute bits (B0-P0-R3, kMuteBothChannelsMask —
+     *        bit0 left + bit4 right), independent of the DAC_MUTE GPIO line.
+     * @param muteOn true = set both mute bits, false = clear both.
      */
     esp_err_t setSoftMuteRegister(bool muteOn);
 
     /**
-     * @brief Write the device power mode (B0-P0-R2 / DEVICE_CTRL_2).
-     * @warning The PLAY/HI-Z/SLEEP/DEEP_SLEEP bit encoding used here follows
-     *          the common TI PurePath DEVICE_CTRL_2 convention and has NOT
-     *          been verified against the TAS3251 datasheet specifically —
-     *          confirm before relying on it.
-     * @param on true = request Play mode, false = request Deep Sleep.
+     * @brief Bring the DSP out of standby, or put it back into standby
+     *        (B0-P0-R2 / DEVICE_CTRL_2, bit7 DSPR — kDeviceCtrl2DspStandbyBit).
+     * @note Writes the whole register byte with only bit7 set/clear, on the
+     *       assumption the register is still at its post-hardware-reset
+     *       default (0x00) elsewhere — this driver does not use any other
+     *       DEVICE_CTRL_2 bits.
+     * @param exitStandby true = DSPR = 1 (out of standby), false = DSPR = 0
+     *        (standby).
      */
-    esp_err_t powerOn(bool on);
+    esp_err_t setDspStandby(bool exitStandby);
 
     /**
      * @brief Set per-channel digital volume (B0-P0-R61/R62), 0.5 dB/step,

@@ -43,9 +43,11 @@ public:
     SystemController() = default;
 
     /**
-     * @brief Run the startup sequence: init peripherals, reset the
-     *        amplifier, sequence the power rails, release reset, configure
-     *        the TAS3251 over I2C, and unmute.
+     * @brief Run the startup sequence: assert RESET_AMP/DAC_MUTE, init
+     *        peripherals, sequence the power rails, mute the DACs and bring
+     *        the DSP out of standby over I2C while still in reset, then
+     *        release DAC_MUTE and finally RESET_AMP. See tas/README.md
+     *        "Startup sequence" for the full state list and timing.
      * @return ESP_OK if the amplifier reached the "ready" state.
      */
     esp_err_t startup();
