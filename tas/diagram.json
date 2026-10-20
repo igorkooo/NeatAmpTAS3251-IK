@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "author": "NeatAmpTAS3251",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_mute",
+      "top": -60,
+      "left": 105,
+      "attrs": {
+        "color": "yellow",
+        "label": "MUTE"
+      }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw_clip",
+      "top": -55,
+      "left": 150,
+      "attrs": {
+        "label": "CLIP"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_reset",
+      "top": -60,
+      "left": 195,
+      "attrs": {
+        "color": "red",
+        "label": "RESET"
+      }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw_fault",
+      "top": -55,
+      "left": 240,
+      "attrs": {
+        "label": "FAULT"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_en3v3",
+      "top": -60,
+      "left": 285,
+      "attrs": {
+        "color": "green",
+        "label": "EN3V3"
+      }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw_good13v2",
+      "top": -55,
+      "left": 330,
+      "attrs": {
+        "label": "GOOD"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_en12v",
+      "top": -60,
+      "left": 375,
+      "attrs": {
+        "color": "green",
+        "label": "EN12V"
+      }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw_adr",
+      "top": 140,
+      "left": -120,
+      "attrs": {
+        "label": "ADDR"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "esp:1",
+      "led_mute:A",
+      "green",
+      []
+    ],
+    [
+      "sw_clip:2",
+      "esp:2",
+      "blue",
+      []
+    ],
+    [
+      "esp:42",
+      "led_reset:A",
+      "green",
+      []
+    ],
+    [
+      "sw_fault:2",
+      "esp:41",
+      "blue",
+      []
+    ],
+    [
+      "esp:40",
+      "led_en3v3:A",
+      "green",
+      []
+    ],
+    [
+      "sw_good13v2:2",
+      "esp:39",
+      "blue",
+      []
+    ],
+    [
+      "esp:38",
+      "led_en12v:A",
+      "green",
+      []
+    ],
+    [
+      "sw_clip:1",
+      "led_mute:C",
+      "black",
+      [
+        "v8",
+        "h-45"
+      ]
+    ],
+    [
+      "led_reset:C",
+      "sw_clip:1",
+      "black",
+      [
+        "v8",
+        "h-45"
+      ]
+    ],
+    [
+      "sw_fault:1",
+      "led_reset:C",
+      "black",
+      [
+        "v8",
+        "h-45"
+      ]
+    ],
+    [
+      "led_en3v3:C",
+      "sw_fault:1",
+      "black",
+      [
+        "v8",
+        "h-45"
+      ]
+    ],
+    [
+      "sw_good13v2:1",
+      "led_en3v3:C",
+      "black",
+      [
+        "v8",
+        "h-45"
+      ]
+    ],
+    [
+      "led_en12v:C",
+      "sw_good13v2:1",
+      "black",
+      [
+        "v8",
+        "h-45"
+      ]
+    ],
+    [
+      "led_mute:C",
+      "esp:GND.2",
+      "black",
+      [
+        "v8",
+        "h-27",
+        "v42"
+      ]
+    ],
+    [
+      "sw_fault:3",
+      "sw_clip:3",
+      "red",
+      [
+        "v14",
+        "h-90"
+      ]
+    ],
+    [
+      "sw_good13v2:3",
+      "sw_fault:3",
+      "red",
+      [
+        "v14",
+        "h-90"
+      ]
+    ],
+    [
+      "sw_clip:3",
+      "esp:3V3.1",
+      "red",
+      [
+        "v14",
+        "h-192",
+        "v35"
+      ]
+    ],
+    [
+      "sw_adr:2",
+      "esp:12",
+      "blue",
+      []
+    ],
+    [
+      "sw_adr:1",
+      "esp:GND.1",
+      "black",
+      [
+        "v10",
+        "h103",
+        "v47"
+      ]
+    ],
+    [
+      "sw_adr:3",
+      "esp:3V3.1",
+      "red",
+      [
+        "v14",
+        "h68",
+        "v-160"
+      ]
+    ]
+  ],
+  "serialMonitor": {
+    "display": "always"
+  }
+}

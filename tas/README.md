@@ -241,6 +241,34 @@ then runs the sequence in [Firmware Architecture](#firmware-architecture) to
 bring everything up in order. The I2C lines rely on the board-level 4.7 kOhm
 pull-ups.
 
+## Simulation (Wokwi)
+
+The firmware can be run without hardware in the
+[Wokwi](https://wokwi.com/) simulator through its VS Code extension. The
+project is configured by [wokwi.toml](wokwi.toml) (points at the ESP-IDF build
+output) and [diagram.json](diagram.json) (an ESP32-S3-DevKitC-1 wired to the
+pin map in [ESP32-S3 Hardware IO](#esp32-s3-hardware-io)):
+
+| Signal | IO | Wokwi part |
+|--------|----|------------|
+| AMP RESET | IO42 | LED, lit = reset released |
+| DAC MUTE | IO1 | LED, lit = unmuted |
+| ENABLE 12V | IO38 | LED |
+| ENABLE 3.3V analog | IO40 | LED |
+| AMP FAULT | IO41 | Slide switch (low = fault) |
+| AMP CLIP/OTW | IO2 | Slide switch (low = warning) |
+| AMP ADDRESS | IO12 | Slide switch |
+| GOOD 13.2V | IO39 | Slide switch |
+
+Build first (`idf.py build`), then run **Wokwi: Start Simulator** from the VS
+Code command palette. The simulator needs a Wokwi license, and `build/` must
+exist because `wokwi.toml` reads `build/flasher_args.json` and `build/tas.elf`.
+
+Not simulated: the TAS3251 and ADAU1466 on the I2C bus (IO0/IO45) and the
+SK9822 status LEDs (IO36/IO37), since Wokwi has no models for them. Startup
+steps that wait for the TAS3251 over I2C will therefore time out or fail; the
+GPIO outputs (reset, mute, rail enables) can still be observed.
+
 ## Potential DSP (ADAU1466) Connectivity
 
 The board breaks out a DSP interface on connector U10 (1x6, 2.54 mm) for a
