@@ -1,6 +1,6 @@
 | Target | ESP-IDF |
 | ------ | ------- |
-| ESP32-S3 (ESP32-S3-WROOM-1U-N8R8) | 6.0.2 |
+| ESP32-S3 (ESP32-S3-WROOM-1U-N8R8) | 6.1 |
 
 # Tas — ESP32-S3 Controller Firmware
 
@@ -13,6 +13,47 @@ monitors /FAULT, /CLIP_OTW and the 13.2V rail — see
 
 This firmware targets the ESP32-S3 only — the board and this project are not
 built for any other Espressif chip.
+
+## Installing ESP-IDF (macOS, command line)
+
+ESP-IDF is installed with the ESP-IDF Installation Manager (`eim`). The
+command-line `eim` is more reliable than the GUI app, which ignores the shell
+`PATH` and may fail to find a suitable Python.
+
+**Prerequisite — Python 3.10 to 3.13.** `eim` runs a Python sanity check and
+refuses to install with anything outside that range. Homebrew's default
+`python3` may be newer (e.g. 3.15) and will fail with `[FAIL] Python Version`.
+Install a supported version alongside it and put it first on the `PATH` for the
+shell used to run `eim`:
+
+```sh
+brew install python@3.13 espressif/eim/eim
+export PATH=/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
+python3 --version   # must print 3.13.x
+```
+
+Use `libexec/bin`, not `bin`: only `libexec/bin` provides the unversioned
+`python3`/`python` names that `eim` looks up. `eim` itself only needs to be
+reachable from that shell, so the default `python3` does not have to be changed
+system-wide.
+
+Then install ESP-IDF for the ESP32-S3 (this clones ESP-IDF and downloads the
+toolchains into `~/.espressif`, several GB; run it from a scratch directory
+because `eim` can drop an `eim_config.toml` into the current directory):
+
+```sh
+eim install -n true -t esp32s3 -i v6.1
+```
+
+When it finishes it prints the activation command, which is used in each new
+shell (see [Local setup](#local-setup)):
+
+```sh
+source ~/.espressif/tools/activate_idf_v6.1.sh
+```
+
+Verified: `idf.py set-target esp32s3 && idf.py build` completes on ESP-IDF
+6.1 with this setup.
 
 ## Local setup
 
@@ -29,15 +70,15 @@ Initialize the ESP-IDF toolchain in each new shell. This sets `IDF_PATH`, adds
 Python environment required by the build:
 
 ```sh
-export IDF_PATH=~/.espressif/v6.0.2/esp-idf
-source "$IDF_PATH/export.sh"
+source ~/.espressif/tools/activate_idf_v6.1.sh
 ```
 
-`~/.espressif/v6.0.2/esp-idf` is where the ESP-IDF Installation Manager
-(`eim`) installs ESP-IDF 6.0.2 by default on any machine/user; adjust the
-path only if you installed it somewhere else.
+This script is created by `eim` (see
+[Installing ESP-IDF](#installing-esp-idf-macos-command-line)); ESP-IDF itself
+lives in `~/.espressif/v6.1/esp-idf`. Adjust the version in the file name if
+you installed a different one.
 
-Run the ESP-IDF commands after `export.sh`; ESP-IDF may replace the active
+Run the ESP-IDF commands after activation; ESP-IDF may replace the active
 `.venv` interpreter with its managed environment so all ESP-IDF dependencies
 match the installed ESP-IDF release.
 
