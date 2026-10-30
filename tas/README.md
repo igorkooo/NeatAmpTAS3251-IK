@@ -94,8 +94,19 @@ IntelliSense. Keeping the project build configured ensures ESP-IDF headers
 such as `esp_system.h` and `esp_flash.h` resolve without missing-include
 warnings.
 
-`sdkconfig.defaults` sets the flash size (8 MB) and PSRAM (8 MB Quad) to
-match the ESP32-S3-WROOM-1U-N8R8 module actually used on this board. If a
+`sdkconfig.defaults` sets the flash size (8 MB) and PSRAM (8 MB **Octal**) to
+match the ESP32-S3-WROOM-1U-N8R8 module actually used on this board. Octal
+PSRAM claims GPIO35/36/37 (module pins 28/29/30) internally — see
+[Reserved pins](#reserved-pins-do-not-use) below.
+
+> **Existing `sdkconfig` after pulling the Octal PSRAM change:**
+> `sdkconfig.defaults` only seeds a *new* `sdkconfig`; an existing one keeps
+> `CONFIG_SPIRAM_MODE_QUAD=y`. Either delete `sdkconfig` and run
+> `idf.py reconfigure`, or set *Component config → ESP PSRAM → SPI RAM
+> config → Mode (QUAD/OCT) of SPI RAM chip in use* to **Octal Mode PSRAM**
+> in menuconfig. Check with `grep SPIRAM_MODE sdkconfig`.
+
+If a
 fresh `sdkconfig` ever comes up as 2 MB flash / no PSRAM again (check the
 boot log — see
 [Chip and firmware info logging](#chip-and-firmware-info-logging) — or
@@ -218,6 +229,8 @@ configuration and default power-up states are owned by
 | GOOD 13.2V | IO39 | GPIO input | Confirms that the 13.2 V intermediate rail is ready through jumper U15 | Yes — U15 pins 5-6 (IO39 to GOOD_13.2V) |
 | ENABLE 12V | IO38 | GPIO output | Enables the 12 V GVDD analog supply after 13.2 V is good through jumper U15 | Yes — U15 pins 7-8 (IO38 to ENABLE_12V) |
 | ENABLE 3.3V analog | IO40 | GPIO output | Enables the isolated 3.3 V analog rail for TAS3251 DAC_AVDD | Yes — U15 pins 3-4 (IO40 to ENABLE_3.3V) |
+| STATUS LED SDI | IO8 | GPIO output (bit-banged) | SK9822 data into U8 SDI via R18 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
+| STATUS LED CKI | IO9 | GPIO output (bit-banged) | SK9822 clock into U8 CKI via R17 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
 
 Header U14 (2x4, 2.54 mm) carries the amplifier control/status lines between
 the ESP32-S3 and the TAS3251, and header U15 (2x4, 2.54 mm) carries the power
@@ -238,8 +251,35 @@ RESET_AMP and DAC_MUTE are driven to their safe defaults — reset asserted,
 muted, together, since both are active low — before any other peripheral is
 touched; both the 12 V and 3.3 V analog rails start disabled. `startup()`
 then runs the sequence in [Firmware Architecture](#firmware-architecture) to
-bring everything up in order. The I2C lines rely on the board-level 4.7 kOhm
+bring everything up in order. The I2C lines rely on the board-level 6.8 kOhm
 pull-ups.
+
+### Reserved pins (do not use)
+
+| Module pin | ESP32-S3 IO | Reserved for | HW V1.0/V1.1 (wrong) | HW V1.2 |
+|------------|-------------|--------------|----------------------|---------|
+| 28 | IO35 | Octal PSRAM (internal, N8R8) | SW2 + C51 (100 nF) to GND, TP12 | Not connected (SW2 → IO10, R51 pull-up) |
+| 29 | IO36 | Octal PSRAM (internal, N8R8) | R18 → `L_SDI` (status LED data) | Not connected (`L_SDI` ← IO8) |
+| 30 | IO37 | Octal PSRAM (internal, N8R8) | R17 → `L_CKI` (status LED clock) | Not connected (`L_CKI` ← IO9) |
+| 13 / 14 | IO19 / IO20 | USB D− / D+ (native USB-Serial-JTAG) | R16 / R15 → USB-C | unchanged |
+| 36 / 37 | RXD0 / TXD0 | UART0 console / ROM download | H2 pin 5 / H2 pin 3 | unchanged |
+
+`tas_pins.h` contains a `static_assert` that fails the build if any pin
+macro is set to IO35-IO37 while `CONFIG_SPIRAM_MODE_OCT` is enabled.
+
+Strapping pins IO0 (I2C SDA, 6.8 kΩ pull-up → normal SPI boot), IO3 and
+IO46 (H2 pins 4/6) also need care. Do not load them in a way that changes
+their level at reset.
+
+### Key SW configuration (`sdkconfig.defaults`)
+
+| Setting | Value | Why |
+|---------|-------|-----|
+| `CONFIG_ESPTOOLPY_FLASHSIZE_8MB` | `y` | N8R8 has 8 MB (Quad) flash |
+| `CONFIG_SPIRAM` | `y` | Enable the 8 MB PSRAM |
+| `CONFIG_SPIRAM_MODE_OCT` | `y` | N8R8 PSRAM is **Octal**. Quad mode fails PSRAM init. This mode is why IO35-IO37 are reserved |
+| `CONFIG_SPIRAM_SPEED_80M` | `y` | Max reliable PSRAM clock for this module |
+| `MINIMAL_BUILD` (root `CMakeLists.txt`) | `ON` | `esp_psram` must stay in `main`'s `PRIV_REQUIRES`, or `CONFIG_SPIRAM` disappears |
 
 ## Potential DSP (ADAU1466) Connectivity
 
@@ -347,8 +387,11 @@ TAS3251 datasheet before trusting them in the field:**
 
 U8 and U9 are SK9822 (APA102-compatible) addressable RGB LEDs, chained in
 series and driven from the ESP32-S3 over a bit-banged two-wire link:
-IO36 → 27 Ω → `L_SDI` (data, into U8) and IO37 → 27 Ω → `L_CKI` (clock); U8's
-CKO/SDO feed U9's CKI/SDI. This is **not** a WS2812B (single-wire) — see the
+IO8 → `L_SDI` (data, into U8) and IO9 → `L_CKI` (clock); U8's
+CKO/SDO feed U9's CKI/SDI. HW V1.0/V1.1 drove these from IO36/IO37 through
+R18/R17, which collides with the Octal PSRAM. On those boards the LEDs only
+work after the [V1.0 rework](#hardware-v10-checklist-before-first-power-up).
+HW V1.2 routes IO8/IO9 directly. This is **not** a WS2812B (single-wire) — see the
 correction in the top-level [README.md](../README.md#visual-indicators).
 `tas::StatusLed` treats the chain as two independently-addressable LEDs and
 gives them different jobs:
@@ -426,9 +469,9 @@ or [Potential DSP (ADAU1466) Connectivity](#potential-dsp-adau1466-connectivity)
 | 20 | IO21 | free |
 | 4 | IO3 | free, but an ESP32-S3 strapping pin (JTAG source select) — avoid |
 | 6 | IO46 | free, but an ESP32-S3 strapping pin (ROM print control) — avoid |
-| 7 | IO8 | free |
-| 8 | IO9 | free |
-| 10 | IO10 | free |
+| 7 | IO8 | V1.0/V1.1: **in use** after LED rework. V1.2: not connected |
+| 8 | IO9 | V1.0/V1.1: **in use** after LED rework. V1.2: not connected |
+| 10 | IO10 | V1.0/V1.1: free. V1.2: not connected (IO10 is the SW2 button) |
 | 12 | IO11 | free |
 
 Since connector U11 (the I2S input header, see
@@ -489,23 +532,112 @@ longer needed for bring-up.
     * The baud rate for downloading is too high: lower your baud rate via [Configuration (menuconfig)](#configuration-menuconfig), and try again.
 
 
-### Hardware issue on V 1.0
+### Hardware V1.0 checklist (before first power-up)
 
-If you (like me) have V1.0 hardware, then USB-C is 180 deg rotated from what it should be. This has been **fixed in V 1.1** of hardware. But in order to flash and use this HW anyway, please follow the steps:
+V1.0 boards have two hardware faults:
 
-1. Power the board independently of USB-C — e.g. the main 36V input. The broken connector can't supply power either, so this has to be sorted first regardless of the UART wiring.
-2. Wire the UART adapter (3.3V-logic only): adapter TXD → H2 pin 5, adapter RXD → H2 pin 3, adapter GND → H2 pin 15/17/19/21-24. Don't wire the adapter's 3.3V/5V output — see the caution in my last message.
-3. Enter the ROM bootloader manually:
-- Jumper U10 pin 4 to U10 pin 1 (IO0 → GND) and hold it there.
-- Press and release SW1 (resets the chip) while that jumper is still in place.
-- Wait about 200 ms after releasing SW1, then remove the IO0→GND jumper.
-- The chip is now sitting in the UART download bootloader, listening on UART0.
-4. Flash: point ESP-IDF at the adapter's port instead of the old native-USB one:
+- **USB-C rotated 180°** (V1.0 only, fixed in V1.1). There is no USB power,
+  no native USB flashing and no JTAG.
+- **IO35/IO36/IO37 (module pins 28/29/30) used on an N8R8 module** (V1.0
+  *and* V1.1, fixed in V1.2). These pins belong to the internal Octal PSRAM.
+  SW2/C51 sit on IO35, and the SK9822 status LEDs hang off IO36/IO37 through
+  R18/R17. The C51 load and any GPIO drive on these pins corrupt PSRAM and
+  crash the firmware.
 
-``` idf.py -p /dev/tty.usbserial-XXXX flash monitor ```
+Do all of the steps below **before connecting the 36 V supply**. On V1.1,
+do sections A and B, then flash over USB-C instead of section C.
 
-(run `ls /dev/tty.*` before/after plugging the adapter in to find its name — it won't be `/dev/tty.usbmodem2101`, that was the native USB device on the broken connector). esptool will still attempt its normal DTR/RTS reset pulses and fail silently since nothing's wired to them — that's fine, since the chip's already parked in the bootloader waiting, esptool will sync and flash normally.
-- In VS Code, also update .vscode/settings.json: idf.port to the new device path, and idf.flashType from "JTAG" to "UART" so the extension's own Flash/Monitor buttons use this path instead of the (now dead) JTAG/native-USB route.
-5. After flashing, power-cycle or press SW1 again (with IO0 not grounded this time) to boot the new firmware normally, then reopen the monitor at 115200 to watch logs.
+#### A. Rework (soldering iron, board unpowered)
 
-One thing this doesn't restore: live JTAG debugging (breakpoints, register inspection via the gdbtarget launch config) — that goes over the same broken USB-C native-USB-JTAG peripheral, so it's unavailable until the connector is fixed. 
+1. **Remove C51** (100 nF, across SW2). It loads the IO35 PSRAM line.
+2. **SW2: remove it, or never press it.** Pressing it shorts a PSRAM line to
+   GND and crashes the ESP32. SW2 has no firmware function on V1.0/V1.1.
+3. **Remove R18 and R17** (27 Ω, 0402). This frees IO36/IO37 from the LED
+   lines.
+4. **Bodge the status LEDs to IO8/IO9** (the pins the firmware now uses):
+   - H2 pin 7 (IO8) → R18 pad on the `L_SDI` side (continuity to U8 pin 1, SDI)
+   - H2 pin 8 (IO9) → R17 pad on the `L_CKI` side (continuity to U8 pin 2, CKI)
+
+   Use the pad that beeps to U8, **not** the one that beeps to the ESP32
+   module (pins 29/30). Use short, thin wire (e.g. 30 AWG). This step is
+   optional: if you skip it, the firmware still runs, but the status LEDs
+   stay dark.
+5. **Continuity check:**
+   - No connection between H2 pin 7/8 and module pins 29/30.
+   - No short between H2 pins 7 and 8.
+   - No short from either pin to GND or 3.3V.
+   - Nothing else is connected to H2 pins 7/8. They now carry the LED bus.
+
+#### B. Shunts / jumpers
+
+| Header | Pins | Connects | Needed for |
+|--------|------|----------|------------|
+| U14 | 1-2 | IO1 ↔ TAS_MUTE | DAC_MUTE control |
+| U14 | 3-4 | IO2 ↔ TAS_CLIP | /CLIP_OTW sense |
+| U14 | 5-6 | IO42 ↔ TAS_RESET | RESET_AMP control |
+| U14 | 7-8 | IO41 ↔ TAS_FAULT | /FAULT sense |
+| U15 | 3-4 | IO40 ↔ ENABLE_3.3V | 3.3 V analog rail enable |
+| U15 | 5-6 | IO39 ↔ GOOD_13.2V | 13.2 V good sense |
+| U15 | 7-8 | IO38 ↔ ENABLE_12V | 12 V GVDD enable |
+| H2 | 13-14 | TAS_ADR ↔ IO12 | I2C address strap read |
+| U13 | 3-4 (exactly one pair) | FREQ_ADJ → 10 kΩ | 768 kHz PWM (default, see top-level README) |
+
+#### C. Flash the firmware first, without 36 V
+
+6. **Rebuild with Octal PSRAM.** Delete the old `sdkconfig` and run
+   `idf.py reconfigure build`. Check that `grep SPIRAM_MODE sdkconfig` shows
+   `CONFIG_SPIRAM_MODE_OCT=y`.
+7. **Power the digital side only.** Connect a 5 V bench supply with a
+   ~300 mA current limit: + to **H2 pin 1** (+5V), − to H2 pin 15/17/19/21-24
+   (GND).
+   - +5V feeds the AP63203 3.3 V buck directly, and D5 blocks back-feed into
+     the 36 V buck.
+   - This is the same state as the intended USB-C programming mode, so the
+     TAS3251 output stage stays unpowered.
+   - Alternative: power from the main 36 V input as before, but only after
+     sections A and B are done.
+8. **Wire a 3.3 V-logic UART adapter:**
+   - adapter TXD → H2 pin 5 (RXD0)
+   - adapter RXD → H2 pin 3 (TXD0)
+   - adapter GND → any H2 GND pin
+
+   Do not connect the adapter's 3.3 V/5 V output.
+9. **Enter the ROM bootloader:**
+   1. Jumper U10 pin 4 to U10 pin 1 (IO0 → GND).
+   2. Press and release SW1 (EN/reset).
+   3. Wait ~200 ms, then remove the IO0 jumper.
+
+   The chip now waits in the UART download bootloader on UART0.
+10. **Flash:**
+
+    ```sh
+    idf.py -p /dev/tty.usbserial-XXXX flash monitor
+    ```
+
+    - To find the port, run `ls /dev/tty.*` before and after plugging in
+      the adapter.
+    - esptool's DTR/RTS reset pulses fail silently because nothing is wired
+      to them. That's fine, since the chip is already in the bootloader.
+    - In VS Code, set `idf.port` to this device and `idf.flashType` to
+      `"UART"` in `.vscode/settings.json`.
+11. **Boot and check the log.** Press SW1 again (IO0 not grounded) and check
+    the monitor output at 115200:
+    - You should see `esp_psram: Found 8MB PSRAM device`.
+    - The status LED (if reworked) goes blue, then amber, because
+      GOOD_13.2V is absent without 36 V. That is expected.
+    - If PSRAM init fails or the chip reboots in a loop, recheck step 6 and
+      section A.
+
+#### D. First 36 V power-up
+
+12. Remove the 5 V bench supply from H2 pin 1 and keep the UART monitor
+    connected.
+13. Apply 36 V from a current-limited supply for the first power-up.
+    Expected result:
+    - LED 0 goes blue → green.
+    - The red D_FAULT LED stays off.
+    - The log walks through the startup states to `READY`.
+
+One limit remains on V1.0: live JTAG debugging (the gdbtarget launch config)
+goes over the broken USB-C native-USB-JTAG peripheral, so it is unavailable
+on V1.0 boards.

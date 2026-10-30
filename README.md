@@ -31,6 +31,26 @@ The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
 
 ## Release Notes
 
+### Version 1.2 (schematic updated, not yet produced)
+- **Important fix — ESP32-S3 module pins 28/29/30 (IO35/IO36/IO37) no longer
+  used.** On the ESP32-S3-WROOM-1U-N8R8 these pins are wired internally to the
+  Octal PSRAM and must stay unconnected. V1.0/V1.1 used them for SW2 + C51
+  (IO35) and for the SK9822 status LED data/clock (IO36/IO37 via R18/R17).
+  Using them corrupts PSRAM and crashes the firmware. Changes (netlist
+  [Netlist_Class_D_amp_2026-10-30.enet](Netlist_Class_D_amp_2026-10-30.enet)):
+  - Module pins 28, 29, 30 → **no connection**.
+  - Status LED U8 SDI → R18 (27 Ω) → **IO8** (module pin 12).
+  - Status LED U8 CKI → R17 (27 Ω) → **IO9** (module pin 17).
+  - SW2 + C51 (100 nF debounce) + TP12 → **IO10** (module pin 18), with a
+    new **R51 10 kΩ** pull-up to 3.3V.
+  - IO8, IO9 and IO10 are **no longer on H2**. H2 pins 7, 8 and 10 are now
+    not connected.
+- Firmware already follows this mapping: LEDs on IO8/IO9, PSRAM in Octal mode
+  (see [ESP32-S3 module pinout](#esp32-s3-module-pinout) and the
+  [firmware README](tas/README.md#reserved-pins-do-not-use)).
+- V1.0/V1.1 boards can be reworked to the same mapping. See the
+  [V1.0 checklist](tas/README.md#hardware-v10-checklist-before-first-power-up).
+
 ### Version 1.1
 - **Important fix** — ESP32 USB-C connector was rotated 180° in V1.0, making the
   connector unusable when assembled. Now fixed.
@@ -41,14 +61,20 @@ The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
 ### Version 1.0
 - PCB routing completed for the first prototype revision.
 - EasyEDA Pro project migrated to the new `.eprj2` project format.
-- Development performed using **EasyEDA Pro V3.2.149**.
+- Development performed using **EasyEDA Pro V3.2.149** (V1.2 changes made
+  with **V3.2.209**).
 - Latest layout improvements include routing optimisation, power distribution refinement, grounding improvements, and thermal optimisation.
 
 ---
 
 ## Status
 
-**Version:** 1.0 (Prototype)
+**Version:** 1.0/1.1 (Prototype), 1.2 proposed
+
+⚠️ **V1.0/V1.1 boards need rework before the first power-up**: remove C51,
+R17 and R18, and bodge the LEDs to IO8/IO9. V1.0 also needs UART flashing
+because of the rotated USB-C connector. Follow the
+[V1.0 checklist](tas/README.md#hardware-v10-checklist-before-first-power-up).
 
 ⚠️ This is the first public prototype release. The hardware has **not yet been validated in real-world operation**. It should be considered experimental until prototype testing is completed.
 
@@ -146,7 +172,7 @@ USB-C VBUS (5V) ────────→ 1N5819 D2 ────────�
 
 ## Microcontroller — ESP32-S3 controlling TAS3251
 
-The ESP32-S3-WROOM-1U-N8 acts as the system controller, handling WiFi connectivity,
+The ESP32-S3-WROOM-1U-N8R8 (8 MB flash, 8 MB Octal PSRAM) acts as the system controller, handling WiFi connectivity,
 TAS3251 configuration, real-time monitoring, and user interface.
 
 For the ESP32-S3 firmware workspace, including the Python environment, ESP-IDF
@@ -161,8 +187,8 @@ with the ADAU1466 when fitted.
 
 | Signal | ESP32-S3 GPIO | TAS3251 Pin | Notes |
 |--------|--------------|-------------|-------|
-| SDA | GPIO IO0 | SDA (54) | 4.7kΩ pull-up to 3.3V |
-| SCL | GPIO IO45 | SCL (53) | 4.7kΩ pull-up to 3.3V |
+| SDA | GPIO IO0 | SDA (54) | 6.8kΩ pull-up (R21) to 3.3V |
+| SCL | GPIO IO45 | SCL (53) | 6.8kΩ pull-up (R22) to 3.3V |
 | RESET_AMP | GPIO out IO42 | /RESET_AMP (27) | Active low; 10kΩ pull-up to 3.3V (default: not in reset) |
 | DAC_MUTE | GPIO out IO1 | DAC_MUTE (45) | Active low; 10kΩ pull-down to GND (default: muted at boot) |
 | /FAULT | GPIO in + IRQ IO41 | /FAULT (28) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
@@ -228,10 +254,65 @@ state/color breakdown:
 |-----|--------|-----------|
 | D_FAULT | Red | /FAULT asserted (hardware, no firmware needed) |
 | D_CLIP | Yellow/Orange | /CLIP_OTW asserted (hardware, no firmware needed) |
-| D_STATUS | 2× SK9822 (U8, U9), chained | ESP32-S3 controlled over a bit-banged 2-wire link (IO36 data / IO37 clock, not WS2812B) — see [Status LED (U8/U9)](tas/README.md#status-led-u8u9) in the firmware README for the color scheme |
+| D_STATUS | 2× SK9822 (U8, U9), chained | ESP32-S3 controlled over a bit-banged 2-wire link (IO8 data / IO9 clock from V1.2 and reworked V1.0/V1.1; was IO36/IO37 on V1.0/V1.1 — not WS2812B) — see [Status LED (U8/U9)](tas/README.md#status-led-u8u9) in the firmware README for the color scheme |
 
 Fault and clip LEDs are driven directly from the open-drain output through a 560Ω
 resistor — they light up regardless of firmware state.
+
+### ESP32-S3 Module Pinout
+
+This table covers every pin of U6 (ESP32-S3-WROOM-1U-N8R8). The V1.0/V1.1
+column comes from `Netlist_Class_D_amp_2026-07-23.enet`. The V1.2 column
+comes from `Netlist_Class_D_amp_2026-10-30.enet`. **Bold** marks a change.
+
+| Module pin | IO | V1.0/V1.1 connection | V1.2 (proposed) | Firmware use (`tas_pins.h`) | Notes |
+|-----------:|----|----------------------|-----------------|------------------------------|-------|
+| 1, 40, 41 | GND | GND | GND | — | |
+| 2 | 3V3 | 3.3V | 3.3V | — | |
+| 3 | EN | SW1 (reset), C48, TP9 | unchanged | — | Reset button |
+| 4–7 | IO4–IO7 | U7 pins 3–6 (XH 6-pin, + GND/3.3V) | unchanged | — | Spare / expansion |
+| 8–11 | IO15–IO18 | H1 pins 1–4 | unchanged | — | Spare / expansion |
+| 12 | IO8 | H2 pin 7 | **R18 → U8 SDI** (H2 pin 7 NC) | `TAS_PIN_STATUS_LED_SDI` | V1.0/V1.1: bodge from H2 pin 7 |
+| 13 | IO19 | R16 → USB D− | unchanged | — | Native USB, reserved |
+| 14 | IO20 | R15 → USB D+ | unchanged | — | Native USB, reserved |
+| 15 | IO3 | H2 pin 4 | unchanged | — | Strapping pin, avoid |
+| 16 | IO46 | H2 pin 6 | unchanged | — | Strapping pin, avoid |
+| 17 | IO9 | H2 pin 8 | **R17 → U8 CKI** (H2 pin 8 NC) | `TAS_PIN_STATUS_LED_CKI` | V1.0/V1.1: bodge from H2 pin 8 |
+| 18 | IO10 | H2 pin 10 | **SW2 + C51, R51 10 kΩ pull-up, TP12** (H2 pin 10 NC) | — (button not used yet) | User button, active low |
+| 19 | IO11 | H2 pin 12 | unchanged | — | Spare (I2S test patch MCLK) |
+| 20 | IO12 | H2 pin 14 (`ESP_TAS_ADR`) | unchanged | `TAS_PIN_AMP_ADDRESS` | Jumper H2 13-14 |
+| 21 | IO13 | H2 pin 16 | unchanged | — | Spare (I2S test patch BCLK) |
+| 22 | IO14 | H2 pin 18 | unchanged | — | Spare (I2S test patch LRCK) |
+| 23 | IO21 | H2 pin 20 | unchanged | — | Spare (I2S test patch SDIN) |
+| 24 | IO47 | U10 pin 3 (`DSP_RESET`) | unchanged | `TAS_PIN_DSP_RESET` | |
+| 25 | IO48 | U10 pin 6 (`DSP_SELFBOOT`) | unchanged | `TAS_PIN_DSP_SELFBOOT` | |
+| 26 | IO45 | SCL (TAS3251, R20 → U10) | unchanged | `TAS_PIN_I2C_SCL` | Strapping pin; 6.8 kΩ pull-up |
+| 27 | IO0 | SDA (TAS3251, R19 → U10) | unchanged | `TAS_PIN_I2C_SDA` | Strapping pin (boot); 6.8 kΩ pull-up |
+| **28** | **IO35** | ⚠️ SW2 + C51 to GND, TP12 | **not connected** | — | **Octal PSRAM, reserved** |
+| **29** | **IO36** | ⚠️ R18 → `L_SDI` | **not connected** | — | **Octal PSRAM, reserved** |
+| **30** | **IO37** | ⚠️ R17 → `L_CKI` | **not connected** | — | **Octal PSRAM, reserved** |
+| 31 | IO38 | U15 pin 7 (`ENABLE_12V`) | unchanged | `TAS_PIN_ENABLE_12V` | Jumper U15 7-8 |
+| 32 | IO39 | U15 pin 5 (`GOOD_13.2V`) | unchanged | `TAS_PIN_GOOD_13V2` | Jumper U15 5-6 |
+| 33 | IO40 | U15 pin 3 (`ENABLE_3.3V`) | unchanged | `TAS_PIN_ENABLE_3V3_ANALOG` | Jumper U15 3-4 |
+| 34 | IO41 | U14 pin 7 (`/FAULT`) | unchanged | `TAS_PIN_AMP_FAULT` | Jumper U14 7-8 |
+| 35 | IO42 | U14 pin 5 (`RESET_AMP`) | unchanged | `TAS_PIN_AMP_RESET` | Jumper U14 5-6 |
+| 36 | RXD0 (IO44) | H2 pin 5, TP11 | unchanged | — | UART0 console / flashing |
+| 37 | TXD0 (IO43) | H2 pin 3, TP10 | unchanged | — | UART0 console / flashing |
+| 38 | IO2 | U14 pin 3 (`/CLIP_OTW`) | unchanged | `TAS_PIN_AMP_CLIP_OTW` | Jumper U14 3-4 |
+| 39 | IO1 | U14 pin 1 (`DAC_MUTE`) | unchanged | `TAS_PIN_DAC_MUTE` | Jumper U14 1-2 |
+
+### ESP32-S3 Software Configuration
+
+These settings must match the N8R8 module. They are seeded from
+[`tas/sdkconfig.defaults`](tas/sdkconfig.defaults). See the
+[firmware README](tas/README.md#key-sw-configuration-sdkconfigdefaults) for
+details and for how to update an existing `sdkconfig`.
+
+| Setting | Value | Reason |
+|---------|-------|--------|
+| Flash size | 8 MB (`CONFIG_ESPTOOLPY_FLASHSIZE_8MB`) | N8 = 8 MB Quad flash |
+| PSRAM | enabled, **Octal** (`CONFIG_SPIRAM_MODE_OCT`), 80 MHz | R8 = 8 MB Octal PSRAM. Quad mode fails init. Octal mode is why IO35–IO37 are reserved |
+| Pin map | [`tas/main/tas_pins.h`](tas/main/tas_pins.h) | Single source of truth. The build fails if a pin is set to IO35–IO37 |
 
 ### Startup Sequence
 
@@ -377,7 +458,7 @@ The following components are excluded from the SMT order
 
 ## EasyEDA Pro Setup
 
-**Recommended EasyEDA Pro version:** **V3.2.149**.
+**Recommended EasyEDA Pro version:** **V3.2.209** (V1.0/V1.1 were made with V3.2.149).
 
 
 This repository includes a custom component library. To use it, create a symbolic
