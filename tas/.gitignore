@@ -64,6 +64,7 @@ env/
 # Language Servers
 .clangd/
 .ccls-cache/
+.cache/
 compile_commands.json
 
 # Doxygen output (run `doxygen Doxyfile` to regenerate)
