@@ -31,18 +31,20 @@ The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
 
 ## Release Notes
 
-### Version 1.2 (proposed — not yet produced)
+### Version 1.2 (schematic updated, not yet produced)
 - **Important fix — ESP32-S3 module pins 28/29/30 (IO35/IO36/IO37) no longer
   used.** On the ESP32-S3-WROOM-1U-N8R8 these pins are wired internally to the
   Octal PSRAM and must stay unconnected. V1.0/V1.1 used them for SW2 + C51
   (IO35) and for the SK9822 status LED data/clock (IO36/IO37 via R18/R17).
-  Using them corrupts PSRAM and crashes the firmware. Proposed changes:
-  - Module pins 28, 29, 30 → **no connection** (remove the nets and TP12).
-  - Status LED `L_SDI` (U8 SDI) → **IO8** (module pin 12, shared with H2 pin 7).
-  - Status LED `L_CKI` (U8 CKI) → **IO9** (module pin 17, shared with H2 pin 8).
-  - Keep R18/R17 (27 Ω) in series, now placed between IO8/IO9 and the LEDs.
-  - SW2 + C51 (user button with debounce) → **IO10** (module pin 18, shared
-    with H2 pin 10). Optionally add a 10 kΩ pull-up to 3.3V.
+  Using them corrupts PSRAM and crashes the firmware. Changes (netlist
+  [Netlist_Class_D_amp_2026-10-30.enet](Netlist_Class_D_amp_2026-10-30.enet)):
+  - Module pins 28, 29, 30 → **no connection**.
+  - Status LED U8 SDI → R18 (27 Ω) → **IO8** (module pin 12).
+  - Status LED U8 CKI → R17 (27 Ω) → **IO9** (module pin 17).
+  - SW2 + C51 (100 nF debounce) + TP12 → **IO10** (module pin 18), with a
+    new **R51 10 kΩ** pull-up to 3.3V.
+  - IO8, IO9 and IO10 are **no longer on H2**. H2 pins 7, 8 and 10 are now
+    not connected.
 - Firmware already follows this mapping: LEDs on IO8/IO9, PSRAM in Octal mode
   (see [ESP32-S3 module pinout](#esp32-s3-module-pinout) and the
   [firmware README](tas/README.md#reserved-pins-do-not-use)).
@@ -59,7 +61,8 @@ The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
 ### Version 1.0
 - PCB routing completed for the first prototype revision.
 - EasyEDA Pro project migrated to the new `.eprj2` project format.
-- Development performed using **EasyEDA Pro V3.2.149**.
+- Development performed using **EasyEDA Pro V3.2.149** (V1.2 changes made
+  with **V3.2.209**).
 - Latest layout improvements include routing optimisation, power distribution refinement, grounding improvements, and thermal optimisation.
 
 ---
@@ -184,8 +187,8 @@ with the ADAU1466 when fitted.
 
 | Signal | ESP32-S3 GPIO | TAS3251 Pin | Notes |
 |--------|--------------|-------------|-------|
-| SDA | GPIO IO0 | SDA (54) | 4.7kΩ pull-up to 3.3V |
-| SCL | GPIO IO45 | SCL (53) | 4.7kΩ pull-up to 3.3V |
+| SDA | GPIO IO0 | SDA (54) | 6.8kΩ pull-up (R21) to 3.3V |
+| SCL | GPIO IO45 | SCL (53) | 6.8kΩ pull-up (R22) to 3.3V |
 | RESET_AMP | GPIO out IO42 | /RESET_AMP (27) | Active low; 10kΩ pull-up to 3.3V (default: not in reset) |
 | DAC_MUTE | GPIO out IO1 | DAC_MUTE (45) | Active low; 10kΩ pull-down to GND (default: muted at boot) |
 | /FAULT | GPIO in + IRQ IO41 | /FAULT (28) | Open-drain; 10kΩ pull-up; falling-edge interrupt |
@@ -260,7 +263,7 @@ resistor — they light up regardless of firmware state.
 
 This table covers every pin of U6 (ESP32-S3-WROOM-1U-N8R8). The V1.0/V1.1
 column comes from `Netlist_Class_D_amp_2026-07-23.enet`. The V1.2 column
-shows the proposed fix. **Bold** marks a change.
+comes from `Netlist_Class_D_amp_2026-10-30.enet`. **Bold** marks a change.
 
 | Module pin | IO | V1.0/V1.1 connection | V1.2 (proposed) | Firmware use (`tas_pins.h`) | Notes |
 |-----------:|----|----------------------|-----------------|------------------------------|-------|
@@ -269,13 +272,13 @@ shows the proposed fix. **Bold** marks a change.
 | 3 | EN | SW1 (reset), C48, TP9 | unchanged | — | Reset button |
 | 4–7 | IO4–IO7 | U7 pins 3–6 (XH 6-pin, + GND/3.3V) | unchanged | — | Spare / expansion |
 | 8–11 | IO15–IO18 | H1 pins 1–4 | unchanged | — | Spare / expansion |
-| 12 | IO8 | H2 pin 7 | **H2 pin 7 + `L_SDI` (R18)** | `TAS_PIN_STATUS_LED_SDI` | V1.0/V1.1: bodge wire |
+| 12 | IO8 | H2 pin 7 | **R18 → U8 SDI** (H2 pin 7 NC) | `TAS_PIN_STATUS_LED_SDI` | V1.0/V1.1: bodge from H2 pin 7 |
 | 13 | IO19 | R16 → USB D− | unchanged | — | Native USB, reserved |
 | 14 | IO20 | R15 → USB D+ | unchanged | — | Native USB, reserved |
 | 15 | IO3 | H2 pin 4 | unchanged | — | Strapping pin, avoid |
 | 16 | IO46 | H2 pin 6 | unchanged | — | Strapping pin, avoid |
-| 17 | IO9 | H2 pin 8 | **H2 pin 8 + `L_CKI` (R17)** | `TAS_PIN_STATUS_LED_CKI` | V1.0/V1.1: bodge wire |
-| 18 | IO10 | H2 pin 10 | **H2 pin 10 + SW2/C51** | — (button not used yet) | User button |
+| 17 | IO9 | H2 pin 8 | **R17 → U8 CKI** (H2 pin 8 NC) | `TAS_PIN_STATUS_LED_CKI` | V1.0/V1.1: bodge from H2 pin 8 |
+| 18 | IO10 | H2 pin 10 | **SW2 + C51, R51 10 kΩ pull-up, TP12** (H2 pin 10 NC) | — (button not used yet) | User button, active low |
 | 19 | IO11 | H2 pin 12 | unchanged | — | Spare (I2S test patch MCLK) |
 | 20 | IO12 | H2 pin 14 (`ESP_TAS_ADR`) | unchanged | `TAS_PIN_AMP_ADDRESS` | Jumper H2 13-14 |
 | 21 | IO13 | H2 pin 16 | unchanged | — | Spare (I2S test patch BCLK) |
@@ -283,8 +286,8 @@ shows the proposed fix. **Bold** marks a change.
 | 23 | IO21 | H2 pin 20 | unchanged | — | Spare (I2S test patch SDIN) |
 | 24 | IO47 | U10 pin 3 (`DSP_RESET`) | unchanged | `TAS_PIN_DSP_RESET` | |
 | 25 | IO48 | U10 pin 6 (`DSP_SELFBOOT`) | unchanged | `TAS_PIN_DSP_SELFBOOT` | |
-| 26 | IO45 | SCL (TAS3251, R20 → U10) | unchanged | `TAS_PIN_I2C_SCL` | Strapping pin; 4.7 kΩ pull-up |
-| 27 | IO0 | SDA (TAS3251, R19 → U10) | unchanged | `TAS_PIN_I2C_SDA` | Strapping pin (boot); 4.7 kΩ pull-up |
+| 26 | IO45 | SCL (TAS3251, R20 → U10) | unchanged | `TAS_PIN_I2C_SCL` | Strapping pin; 6.8 kΩ pull-up |
+| 27 | IO0 | SDA (TAS3251, R19 → U10) | unchanged | `TAS_PIN_I2C_SDA` | Strapping pin (boot); 6.8 kΩ pull-up |
 | **28** | **IO35** | ⚠️ SW2 + C51 to GND, TP12 | **not connected** | — | **Octal PSRAM, reserved** |
 | **29** | **IO36** | ⚠️ R18 → `L_SDI` | **not connected** | — | **Octal PSRAM, reserved** |
 | **30** | **IO37** | ⚠️ R17 → `L_CKI` | **not connected** | — | **Octal PSRAM, reserved** |
@@ -455,7 +458,7 @@ The following components are excluded from the SMT order
 
 ## EasyEDA Pro Setup
 
-**Recommended EasyEDA Pro version:** **V3.2.149**.
+**Recommended EasyEDA Pro version:** **V3.2.209** (V1.0/V1.1 were made with V3.2.149).
 
 
 This repository includes a custom component library. To use it, create a symbolic

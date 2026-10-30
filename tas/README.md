@@ -229,8 +229,8 @@ configuration and default power-up states are owned by
 | GOOD 13.2V | IO39 | GPIO input | Confirms that the 13.2 V intermediate rail is ready through jumper U15 | Yes — U15 pins 5-6 (IO39 to GOOD_13.2V) |
 | ENABLE 12V | IO38 | GPIO output | Enables the 12 V GVDD analog supply after 13.2 V is good through jumper U15 | Yes — U15 pins 7-8 (IO38 to ENABLE_12V) |
 | ENABLE 3.3V analog | IO40 | GPIO output | Enables the isolated 3.3 V analog rail for TAS3251 DAC_AVDD | Yes — U15 pins 3-4 (IO40 to ENABLE_3.3V) |
-| STATUS LED SDI | IO8 | GPIO output (bit-banged) | SK9822 data into U8 (`L_SDI`); also on H2 pin 7 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
-| STATUS LED CKI | IO9 | GPIO output (bit-banged) | SK9822 clock into U8 (`L_CKI`); also on H2 pin 8 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
+| STATUS LED SDI | IO8 | GPIO output (bit-banged) | SK9822 data into U8 SDI via R18 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
+| STATUS LED CKI | IO9 | GPIO output (bit-banged) | SK9822 clock into U8 CKI via R17 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
 
 Header U14 (2x4, 2.54 mm) carries the amplifier control/status lines between
 the ESP32-S3 and the TAS3251, and header U15 (2x4, 2.54 mm) carries the power
@@ -251,14 +251,14 @@ RESET_AMP and DAC_MUTE are driven to their safe defaults — reset asserted,
 muted, together, since both are active low — before any other peripheral is
 touched; both the 12 V and 3.3 V analog rails start disabled. `startup()`
 then runs the sequence in [Firmware Architecture](#firmware-architecture) to
-bring everything up in order. The I2C lines rely on the board-level 4.7 kOhm
+bring everything up in order. The I2C lines rely on the board-level 6.8 kOhm
 pull-ups.
 
 ### Reserved pins (do not use)
 
 | Module pin | ESP32-S3 IO | Reserved for | HW V1.0/V1.1 (wrong) | HW V1.2 |
 |------------|-------------|--------------|----------------------|---------|
-| 28 | IO35 | Octal PSRAM (internal, N8R8) | SW2 + C51 (100 nF) to GND, TP12 | Not connected (SW2 → IO10) |
+| 28 | IO35 | Octal PSRAM (internal, N8R8) | SW2 + C51 (100 nF) to GND, TP12 | Not connected (SW2 → IO10, R51 pull-up) |
 | 29 | IO36 | Octal PSRAM (internal, N8R8) | R18 → `L_SDI` (status LED data) | Not connected (`L_SDI` ← IO8) |
 | 30 | IO37 | Octal PSRAM (internal, N8R8) | R17 → `L_CKI` (status LED clock) | Not connected (`L_CKI` ← IO9) |
 | 13 / 14 | IO19 / IO20 | USB D− / D+ (native USB-Serial-JTAG) | R16 / R15 → USB-C | unchanged |
@@ -267,7 +267,7 @@ pull-ups.
 `tas_pins.h` contains a `static_assert` that fails the build if any pin
 macro is set to IO35-IO37 while `CONFIG_SPIRAM_MODE_OCT` is enabled.
 
-Strapping pins IO0 (I2C SDA, 4.7 kΩ pull-up → normal SPI boot), IO3 and
+Strapping pins IO0 (I2C SDA, 6.8 kΩ pull-up → normal SPI boot), IO3 and
 IO46 (H2 pins 4/6) also need care. Do not load them in a way that changes
 their level at reset.
 
@@ -469,9 +469,9 @@ or [Potential DSP (ADAU1466) Connectivity](#potential-dsp-adau1466-connectivity)
 | 20 | IO21 | free |
 | 4 | IO3 | free, but an ESP32-S3 strapping pin (JTAG source select) — avoid |
 | 6 | IO46 | free, but an ESP32-S3 strapping pin (ROM print control) — avoid |
-| 7 | IO8 | **in use** — status LED SDI (HW V1.2 / reworked V1.0) |
-| 8 | IO9 | **in use** — status LED CKI (HW V1.2 / reworked V1.0) |
-| 10 | IO10 | free on V1.0/V1.1; proposed SW2 user button on V1.2 |
+| 7 | IO8 | V1.0/V1.1: **in use** after LED rework. V1.2: not connected |
+| 8 | IO9 | V1.0/V1.1: **in use** after LED rework. V1.2: not connected |
+| 10 | IO10 | V1.0/V1.1: free. V1.2: not connected (IO10 is the SW2 button) |
 | 12 | IO11 | free |
 
 Since connector U11 (the I2S input header, see

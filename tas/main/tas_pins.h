@@ -52,10 +52,10 @@
  *
  * HW V1.0/V1.1 routed these to IO36/IO37 (module pins 29/30) through R18/R17,
  * but on the ESP32-S3-WROOM-1U-N8R8 those pins belong to the internal Octal
- * PSRAM and must not be used. From HW V1.2 (and on V1.0/V1.1 boards with the
- * documented rework: R17/R18 removed, H2 pins 7/8 wired to the LED side of
- * R18/R17) the chain is driven from IO8/IO9, which are also broken out on
- * H2 pins 7/8.
+ * PSRAM and must not be used. From HW V1.2 the chain is driven from IO8/IO9
+ * through R18/R17 (Netlist_Class_D_amp_2026-10-30.enet). V1.0/V1.1 boards get
+ * the same mapping with the documented rework: R17/R18 removed, H2 pins 7/8
+ * (IO8/IO9 on those revisions) wired to the LED side of R18/R17.
  */
 ///@{
 #define TAS_PIN_STATUS_LED_SDI GPIO_NUM_8
