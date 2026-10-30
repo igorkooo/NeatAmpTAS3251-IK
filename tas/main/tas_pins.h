@@ -48,13 +48,40 @@
 /**
  * @name Status LED chain (U8, U9 — SK9822, APA102-compatible clocked RGB)
  * U8 is first in the chain (data/clock in from the ESP32-S3), its CKO/SDO
- * feed U9's CKI/SDI. Both lines are ESP32-S3 outputs through 27 Ohm series
- * resistors (R17 on CKI, R18 on SDI, per Netlist_Class_D_amp_2026-07-23.enet).
+ * feed U9's CKI/SDI.
+ *
+ * HW V1.0/V1.1 routed these to IO36/IO37 (module pins 29/30) through R18/R17,
+ * but on the ESP32-S3-WROOM-1U-N8R8 those pins belong to the internal Octal
+ * PSRAM and must not be used. From HW V1.2 (and on V1.0/V1.1 boards with the
+ * documented rework: R17/R18 removed, H2 pins 7/8 wired to the LED side of
+ * R18/R17) the chain is driven from IO8/IO9, which are also broken out on
+ * H2 pins 7/8.
  */
 ///@{
-#define TAS_PIN_STATUS_LED_SDI GPIO_NUM_36
-#define TAS_PIN_STATUS_LED_CKI GPIO_NUM_37
+#define TAS_PIN_STATUS_LED_SDI GPIO_NUM_8
+#define TAS_PIN_STATUS_LED_CKI GPIO_NUM_9
 ///@}
+
+/**
+ * @note GPIO35, GPIO36 and GPIO37 (module pins 28, 29, 30) are wired
+ * internally to the Octal PSRAM on the N8R8 module and are reserved. Driving
+ * them corrupts PSRAM accesses and crashes the firmware. The check below
+ * stops any pin assignment in this file from landing on them.
+ */
+#include <assert.h>
+#include "sdkconfig.h"
+
+#if CONFIG_SPIRAM_MODE_OCT
+#define TAS_PIN_IS_OPI_PSRAM(pin) ((pin) >= GPIO_NUM_35 && (pin) <= GPIO_NUM_37)
+static_assert(!TAS_PIN_IS_OPI_PSRAM(TAS_PIN_I2C_SDA) && !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_I2C_SCL) &&
+                  !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_AMP_RESET) && !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_DAC_MUTE) &&
+                  !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_AMP_FAULT) && !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_AMP_CLIP_OTW) &&
+                  !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_AMP_ADDRESS) && !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_GOOD_13V2) &&
+                  !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_ENABLE_12V) && !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_ENABLE_3V3_ANALOG) &&
+                  !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_DSP_RESET) && !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_DSP_SELFBOOT) &&
+                  !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_STATUS_LED_SDI) && !TAS_PIN_IS_OPI_PSRAM(TAS_PIN_STATUS_LED_CKI),
+              "GPIO35-37 are reserved for the Octal PSRAM on ESP32-S3-WROOM-1U-N8R8");
+#endif
 
 /**
  * @note I2S audio bus (MCLK/BCLK/LRCK/SDIN) is NOT currently wired to any
