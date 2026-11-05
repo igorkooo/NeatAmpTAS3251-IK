@@ -228,7 +228,7 @@ state/color breakdown:
 |-----|--------|-----------|
 | D_FAULT | Red | /FAULT asserted (hardware, no firmware needed) |
 | D_CLIP | Yellow/Orange | /CLIP_OTW asserted (hardware, no firmware needed) |
-| D_STATUS | 2× SK9822 (U8, U9), chained | ESP32-S3 controlled over a bit-banged 2-wire link (IO36 data / IO37 clock, not WS2812B) — see [Status LED (U8/U9)](tas/README.md#status-led-u8u9) in the firmware README for the color scheme |
+| D_STATUS | 2× SK9822 (U8, U9), chained | ESP32-S3 controlled over a bit-banged 2-wire link (IO36 data / IO37 clock, not WS2812B) — ⚠️ these pins conflict with the N8R8's octal PSRAM, see [BUG / TODO](#bug--todo-io35-io36-io37-are-not-usable-on-esp32-s3-wroom-1u-n8r8-v10v11); see [Status LED (U8/U9)](tas/README.md#status-led-u8u9) in the firmware README for the color scheme |
 
 Fault and clip LEDs are driven directly from the open-drain output through a 560Ω
 resistor — they light up regardless of firmware state.
@@ -281,6 +281,66 @@ TAS3251/ESP32-S3 for signal integrity and EMI reduction.
 > - Heatsink footprint required rework — addressed in PCB revision.
 
 - Current propsed heatsink 
+
+### BUG / TODO: IO35, IO36, IO37 are not usable on ESP32-S3-WROOM-1U-N8R8 (V1.0/V1.1)
+
+U6 is an **ESP32-S3-WROOM-1U-N8R8**, which has 8 MB **octal** PSRAM inside the
+module. ESP32-S3-WROOM-1/1U datasheet v1.8, Table 3-1, note b: *"For modules with
+Octal SPI PSRAM, i.e., modules embedded with ESP32-S3R8 or ESP32-S3R16V, pins IO35,
+IO36, and IO37 are connected to the Octal SPI PSRAM and are not available for other
+uses."* The board uses all three:
+
+| U6 pin | IO | Board net (from `Netlist_Class_D_amp_2026-07-23.enet`) | Problem |
+|--------|----|--------------------------------------------------------|---------|
+| 28 | IO35 | SW2 + C51 (100 nF) to GND, TP12 — user button | C51 sits on PSRAM data line DQ6; the button shorts it to GND |
+| 29 | IO36 | R18 (27 Ω) → `L_SDI` → U8 SDI — SK9822 data | Shared with PSRAM DQ7; firmware bit-banging would corrupt PSRAM traffic |
+| 30 | IO37 | R17 (27 Ω) → `L_CKI` → U8 CKI — SK9822 clock | Shared with PSRAM DQS; same problem |
+
+Related: [tas/sdkconfig.defaults](tas/sdkconfig.defaults) sets
+`CONFIG_SPIRAM_MODE_QUAD=y`, but the N8R8 needs `CONFIG_SPIRAM_MODE_OCT=y`.
+Octal PSRAM doesn't start in quad mode.
+
+#### Proposed rework (V1.0/V1.1 boards)
+
+Move the three signals to IO8, IO9 and IO10. Those GPIOs are free: no strapping
+function, and not used by the planned
+[I2S test tone patch](tas/README.md#i2s-test-tone-h2-to-u11-patch), which uses
+IO11/13/14/21. They are already routed to through-hole pins on header H2, so every
+patch wire ends on a robust solder point.
+
+| Signal | Old IO | New IO | Rework | Patch wire |
+|--------|--------|--------|--------|------------|
+| SK9822 data `L_SDI` | IO36 | **IO9** | Desolder R18 (0402), no trace cut | R18 pad 1 (`L_SDI` side) → H2 pin 8 |
+| SK9822 clock `L_CKI` | IO37 | **IO10** | Desolder R17 (0402), no trace cut | R17 pad 1 (`L_CKI` side) → H2 pin 10 |
+| Button (SW2/C51) | IO35 | **IO8** | Cut **one** trace between U6 pin 28 and the first branch to SW2/TP12, as close to U6 as practical | TP12 → H2 pin 7 |
+
+Notes:
+
+- **R17/R18:** removing the resistor disconnects the module pin completely and
+  can be undone. The 27 Ω only damps edges. Over a short wire and a slow
+  bit-banged clock it isn't needed. If you want to keep it, fit a 27–33 Ω
+  resistor in series at the H2 end of the wire.
+- **IO35 cut:** before cutting, check in the layout where the trace branches. The
+  cut must isolate U6 pin 28 from **both** SW2 pin 1 and TP12. Afterwards, check
+  with a continuity meter: U6 pin 28 is open to TP12 and SW2 pin 1, TP12 still
+  beeps to SW2 pin 1, and nothing is shorted to U6 pins 27 or 29. If the trace
+  can't be reached (inner layer or under the module), lift SW2 pin 1 and C51
+  pad 2 instead, and patch the button from SW2/C51 to H2 pin 7.
+- **Use thin wire** (30 AWG wire-wrap or enamelled) and glue it down.
+- **H2 pins 7, 8 and 10 are no longer spare.** Nothing plugged into H2 may drive
+  them.
+- **Button pull-up:** there is no external pull-up on the button net. Enable the
+  ESP32-S3 internal pull-up on IO8 (~45 kΩ). With C51 (100 nF) that gives a
+  debounce time constant of about 4.5 ms.
+
+#### Firmware changes after the rework
+
+- [tas/main/tas_pins.h](tas/main/tas_pins.h): `TAS_PIN_STATUS_LED_SDI` →
+  `GPIO_NUM_9` and `TAS_PIN_STATUS_LED_CKI` → `GPIO_NUM_10`. When the button is
+  implemented, use `GPIO_NUM_8` (input, internal pull-up, active low).
+- [tas/sdkconfig.defaults](tas/sdkconfig.defaults): `CONFIG_SPIRAM_MODE_OCT=y`
+  instead of `CONFIG_SPIRAM_MODE_QUAD=y`.
+- Never use IO35/IO36/IO37 in firmware on this module.
 
 ---
 
@@ -411,6 +471,11 @@ After creating the symlink, restart EasyEDA Pro. The library will appear in the
 - removing 3.3V power output as big connector with screws - keep it on headers only
 - ensure cooling space around TAS chip to be 32x32mm or 40x40mm. Presently it is 23x27mm
 - (to be checked) add extra electrolyt capacitors in power line
+- **must fix:** move the button (SW2/C51) and SK9822 data/clock off IO35/IO36/IO37,
+  which the N8R8's octal PSRAM uses (IO8/IO9/IO10 as in the V1.x rework, see
+  [BUG / TODO](#bug--todo-io35-io36-io37-are-not-usable-on-esp32-s3-wroom-1u-n8r8-v10v11)).
+  If you don't need 8 MB of PSRAM, an ESP32-S3-WROOM-1U-N8R2 (quad PSRAM, same
+  footprint and pinout) also frees these pins.
 
 > **Note:** Replace `/path/to/NeatAmpTAS3251/library` with the actual path where
 > you cloned this repository. The EasyEDA Pro libraries directory location may vary

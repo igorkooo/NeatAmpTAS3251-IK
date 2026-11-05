@@ -378,6 +378,12 @@ series and driven from the ESP32-S3 over a bit-banged two-wire link:
 IO36 → 27 Ω → `L_SDI` (data, into U8) and IO37 → 27 Ω → `L_CKI` (clock); U8's
 CKO/SDO feed U9's CKI/SDI. This is **not** a WS2812B (single-wire) — see the
 correction in the top-level [README.md](../README.md#visual-indicators).
+
+> ⚠️ **Known bug:** on the ESP32-S3-WROOM-1U-N8R8, IO36/IO37 are wired inside the
+> module to the octal PSRAM and can't be used for the LEDs. The V1.x rework
+> moves `L_SDI` to IO9 and `L_CKI` to IO10. See
+> [BUG / TODO](../README.md#bug--todo-io35-io36-io37-are-not-usable-on-esp32-s3-wroom-1u-n8r8-v10v11)
+> in the top-level README.
 `tas::StatusLed` treats the chain as two independently-addressable LEDs and
 gives them different jobs:
 
@@ -454,9 +460,9 @@ or [Potential DSP (ADAU1466) Connectivity](#potential-dsp-adau1466-connectivity)
 | 20 | IO21 | free |
 | 4 | IO3 | free, but an ESP32-S3 strapping pin (JTAG source select) — avoid |
 | 6 | IO46 | free, but an ESP32-S3 strapping pin (ROM print control) — avoid |
-| 7 | IO8 | free |
-| 8 | IO9 | free |
-| 10 | IO10 | free |
+| 7 | IO8 | **taken by the V1.x rework** (button, was IO35) — see [BUG / TODO](../README.md#bug--todo-io35-io36-io37-are-not-usable-on-esp32-s3-wroom-1u-n8r8-v10v11) |
+| 8 | IO9 | **taken by the V1.x rework** (SK9822 `L_SDI`, was IO36) |
+| 10 | IO10 | **taken by the V1.x rework** (SK9822 `L_CKI`, was IO37) |
 | 12 | IO11 | free |
 
 Since connector U11 (the I2S input header, see

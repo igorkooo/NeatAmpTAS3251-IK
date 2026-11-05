@@ -4,7 +4,7 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "board-esp32-s3-devkitc-1",
+      "type": "wokwi-custom-board",
       "id": "esp",
       "top": 0,
       "left": 0,
@@ -200,11 +200,7 @@
       "led_mute:C",
       "esp:GND.2",
       "black",
-      [
-        "v8",
-        "h-27",
-        "v42"
-      ]
+      []
     ],
     [
       "sw_fault:3",
@@ -226,13 +222,9 @@
     ],
     [
       "sw_clip:3",
-      "esp:3V3.1",
+      "esp:3V3",
       "red",
-      [
-        "v14",
-        "h-192",
-        "v35"
-      ]
+      []
     ],
     [
       "sw_adr:2",
@@ -244,21 +236,13 @@
       "sw_adr:1",
       "esp:GND.1",
       "black",
-      [
-        "v10",
-        "h103",
-        "v47"
-      ]
+      []
     ],
     [
       "sw_adr:3",
-      "esp:3V3.1",
+      "esp:3V3",
       "red",
-      [
-        "v14",
-        "h68",
-        "v-160"
-      ]
+      []
     ]
   ],
   "serialMonitor": {

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18.0mm" height="19.2mm" viewBox="0 0 18.0 19.2">
+  <!-- ESP32-S3-WROOM-1U-N8R8, top view, 1 unit = 1 mm.
+       Geometry: ESP32-S3-WROOM-1/1U datasheet v1.8, Fig. 10-2; pinout: Table 3-1. -->
+  <rect x="0" y="0" width="18.0" height="19.2" rx="0.2" fill="#1f3b2c" stroke="#0d1f16" stroke-width="0.1"/>
+  <!-- RF shield can -->
+  <rect x="0.25" y="3.3" width="17.5" height="15.65" rx="0.4" fill="#b9bcc0" stroke="#7d8085" stroke-width="0.1"/>
+  <rect x="0.5" y="3.55" width="17.0" height="15.15" rx="0.3" fill="#3a3d42"/>
+  <!-- U.FL / IPEX MHF I antenna connector (approximate position) -->
+  <g transform="translate(13.1 1.7)">
+    <rect x="-1.3" y="-1.3" width="2.6" height="2.6" rx="0.15" fill="#c8a54a" stroke="#7a6326" stroke-width="0.08"/>
+    <circle r="0.95" fill="#e6cf86" stroke="#7a6326" stroke-width="0.08"/>
+    <circle r="0.3" fill="#7a6326"/>
+  </g>
+  <g fill="#d4af37" stroke="#8a6d1d" stroke-width="0.05">
+    <rect x="0" y="0.765" width="0.9" height="0.85"/><circle cx="0" cy="1.19" r="0.275"/>
+    <rect x="0" y="2.035" width="0.9" height="0.85"/><circle cx="0" cy="2.46" r="0.275"/>
+    <rect x="0" y="3.305" width="0.9" height="0.85"/><circle cx="0" cy="3.73" r="0.275"/>
+    <rect x="0" y="4.575" width="0.9" height="0.85"/><circle cx="0" cy="5.0" r="0.275"/>
+    <rect x="0" y="5.845" width="0.9" height="0.85"/><circle cx="0" cy="6.27" r="0.275"/>
+    <rect x="0" y="7.115" width="0.9" height="0.85"/><circle cx="0" cy="7.54" r="0.275"/>
+    <rect x="0" y="8.385" width="0.9" height="0.85"/><circle cx="0" cy="8.81" r="0.275"/>
+    <rect x="0" y="9.655" width="0.9" height="0.85"/><circle cx="0" cy="10.08" r="0.275"/>
+    <rect x="0" y="10.925" width="0.9" height="0.85"/><circle cx="0" cy="11.35" r="0.275"/>
+    <rect x="0" y="12.195" width="0.9" height="0.85"/><circle cx="0" cy="12.62" r="0.275"/>
+    <rect x="0" y="13.465" width="0.9" height="0.85"/><circle cx="0" cy="13.89" r="0.275"/>
+    <rect x="0" y="14.735" width="0.9" height="0.85"/><circle cx="0" cy="15.16" r="0.275"/>
+    <rect x="0" y="16.005" width="0.9" height="0.85"/><circle cx="0" cy="16.43" r="0.275"/>
+    <rect x="0" y="17.275" width="0.9" height="0.85"/><circle cx="0" cy="17.7" r="0.275"/>
+    <rect x="1.59" y="18.3" width="0.85" height="0.9"/><circle cx="2.015" cy="19.2" r="0.275"/>
+    <rect x="2.86" y="18.3" width="0.85" height="0.9"/><circle cx="3.285" cy="19.2" r="0.275"/>
+    <rect x="4.13" y="18.3" width="0.85" height="0.9"/><circle cx="4.555" cy="19.2" r="0.275"/>
+    <rect x="5.4" y="18.3" width="0.85" height="0.9"/><circle cx="5.825" cy="19.2" r="0.275"/>
+    <rect x="6.67" y="18.3" width="0.85" height="0.9"/><circle cx="7.095" cy="19.2" r="0.275"/>
+    <rect x="7.94" y="18.3" width="0.85" height="0.9"/><circle cx="8.365" cy="19.2" r="0.275"/>
+    <rect x="9.21" y="18.3" width="0.85" height="0.9"/><circle cx="9.635" cy="19.2" r="0.275"/>
+    <rect x="10.48" y="18.3" width="0.85" height="0.9"/><circle cx="10.905" cy="19.2" r="0.275"/>
+    <rect x="11.75" y="18.3" width="0.85" height="0.9"/><circle cx="12.175" cy="19.2" r="0.275"/>
+    <rect x="13.02" y="18.3" width="0.85" height="0.9"/><circle cx="13.445" cy="19.2" r="0.275"/>
+    <rect x="14.29" y="18.3" width="0.85" height="0.9"/><circle cx="14.715" cy="19.2" r="0.275"/>
+    <rect x="15.56" y="18.3" width="0.85" height="0.9"/><circle cx="15.985" cy="19.2" r="0.275"/>
+    <rect x="17.1" y="17.275" width="0.9" height="0.85"/><circle cx="18.0" cy="17.7" r="0.275"/>
+    <rect x="17.1" y="16.005" width="0.9" height="0.85"/><circle cx="18.0" cy="16.43" r="0.275"/>
+    <rect x="17.1" y="14.735" width="0.9" height="0.85"/><circle cx="18.0" cy="15.16" r="0.275"/>
+    <rect x="17.1" y="13.465" width="0.9" height="0.85"/><circle cx="18.0" cy="13.89" r="0.275"/>
+    <rect x="17.1" y="12.195" width="0.9" height="0.85"/><circle cx="18.0" cy="12.62" r="0.275"/>
+    <rect x="17.1" y="10.925" width="0.9" height="0.85"/><circle cx="18.0" cy="11.35" r="0.275"/>
+    <rect x="17.1" y="9.655" width="0.9" height="0.85"/><circle cx="18.0" cy="10.08" r="0.275"/>
+    <rect x="17.1" y="8.385" width="0.9" height="0.85"/><circle cx="18.0" cy="8.81" r="0.275"/>
+    <rect x="17.1" y="7.115" width="0.9" height="0.85"/><circle cx="18.0" cy="7.54" r="0.275"/>
+    <rect x="17.1" y="5.845" width="0.9" height="0.85"/><circle cx="18.0" cy="6.27" r="0.275"/>
+    <rect x="17.1" y="4.575" width="0.9" height="0.85"/><circle cx="18.0" cy="5.0" r="0.275"/>
+    <rect x="17.1" y="3.305" width="0.9" height="0.85"/><circle cx="18.0" cy="3.73" r="0.275"/>
+    <rect x="17.1" y="2.035" width="0.9" height="0.85"/><circle cx="18.0" cy="2.46" r="0.275"/>
+    <rect x="17.1" y="0.765" width="0.9" height="0.85"/><circle cx="18.0" cy="1.19" r="0.275"/>
+  </g>
+  <g fill="#e8e8e8" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="9.0" y="9.2" font-size="1.05" font-weight="bold">ESP32-S3-WROOM-1U</text>
+    <text x="9.0" y="10.7" font-size="0.9">N8R8</text>
+    <text x="9.0" y="12.0" font-size="0.6" fill="#b0b0b0">8 MB QSPI flash · 8 MB octal PSRAM</text>
+  </g>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="0.58">
+    <text x="1.0" y="1.39" text-anchor="start" fill="#e8e8e8">GND</text>
+    <text x="1.0" y="2.66" text-anchor="start" fill="#e8e8e8">3V3</text>
+    <text x="1.0" y="3.93" text-anchor="start" fill="#e8e8e8">EN</text>
+    <text x="1.0" y="5.2" text-anchor="start" fill="#e8e8e8">4</text>
+    <text x="1.0" y="6.47" text-anchor="start" fill="#e8e8e8">5</text>
+    <text x="1.0" y="7.74" text-anchor="start" fill="#e8e8e8">6</text>
+    <text x="1.0" y="9.01" text-anchor="start" fill="#e8e8e8">7</text>
+    <text x="1.0" y="10.28" text-anchor="start" fill="#e8e8e8">15</text>
+    <text x="1.0" y="11.55" text-anchor="start" fill="#e8e8e8">16</text>
+    <text x="1.0" y="12.82" text-anchor="start" fill="#e8e8e8">17</text>
+    <text x="1.0" y="14.09" text-anchor="start" fill="#e8e8e8">18</text>
+    <text x="1.0" y="15.36" text-anchor="start" fill="#e8e8e8">8</text>
+    <text x="1.0" y="16.63" text-anchor="start" fill="#e8e8e8">19</text>
+    <text x="1.0" y="17.9" text-anchor="start" fill="#e8e8e8">20</text>
+    <text x="2.235" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 2.235 18.05)">3</text>
+    <text x="3.505" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 3.505 18.05)">46</text>
+    <text x="4.775" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 4.775 18.05)">9</text>
+    <text x="6.045" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 6.045 18.05)">10</text>
+    <text x="7.315" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 7.315 18.05)">11</text>
+    <text x="8.585" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 8.585 18.05)">12</text>
+    <text x="9.855" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 9.855 18.05)">13</text>
+    <text x="11.125" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 11.125 18.05)">14</text>
+    <text x="12.395" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 12.395 18.05)">21</text>
+    <text x="13.665" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 13.665 18.05)">47</text>
+    <text x="14.935" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 14.935 18.05)">48</text>
+    <text x="16.205" y="18.05" text-anchor="start" fill="#e8e8e8" transform="rotate(-90 16.205 18.05)">45</text>
+    <text x="17.0" y="17.9" text-anchor="end" fill="#e8e8e8">0</text>
+    <text x="17.0" y="16.63" text-anchor="end" fill="#ff8a80">35</text>
+    <text x="17.0" y="15.36" text-anchor="end" fill="#ff8a80">36</text>
+    <text x="17.0" y="14.09" text-anchor="end" fill="#ff8a80">37</text>
+    <text x="17.0" y="12.82" text-anchor="end" fill="#e8e8e8">38</text>
+    <text x="17.0" y="11.55" text-anchor="end" fill="#e8e8e8">39</text>
+    <text x="17.0" y="10.28" text-anchor="end" fill="#e8e8e8">40</text>
+    <text x="17.0" y="9.01" text-anchor="end" fill="#e8e8e8">41</text>
+    <text x="17.0" y="7.74" text-anchor="end" fill="#e8e8e8">42</text>
+    <text x="17.0" y="6.47" text-anchor="end" fill="#e8e8e8">RX</text>
+    <text x="17.0" y="5.2" text-anchor="end" fill="#e8e8e8">TX</text>
+    <text x="17.0" y="3.93" text-anchor="end" fill="#e8e8e8">2</text>
+    <text x="17.0" y="2.66" text-anchor="end" fill="#e8e8e8">1</text>
+    <text x="17.0" y="1.39" text-anchor="end" fill="#e8e8e8">GND</text>
+  </g>
+</svg>

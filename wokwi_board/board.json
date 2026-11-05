@@ -1,0 +1,217 @@
+{
+  "name": "ESP32-S3-WROOM-1U-N8R8",
+  "version": 1,
+  "description": "ESP32-S3-WROOM-1U-N8R8 module: ESP32-S3R8 (dual-core Xtensa LX7 up to 240 MHz, 8 MB octal SPI PSRAM in package), 8 MB quad SPI flash, 2.4 GHz Wi-Fi + Bluetooth LE, U.FL/IPEX external antenna connector, 41 pins, 18 x 19.2 x 3.2 mm. IO35, IO36 and IO37 are used by the octal PSRAM and are not available for other uses. Based on the Wokwi ESP32-S3-DevKitC-1 board by Ariella Eliassaf; data from the ESP32-S3-WROOM-1/1U datasheet v1.8.",
+  "author": "Igor Korzinek",
+  "mcu": "esp32-s3",
+  "fqbn": "esp32:esp32:esp32s3",
+  "width": 18.0,
+  "height": 19.2,
+  "pins": {
+    "GND.1": {
+      "x": 0.45,
+      "y": 1.19,
+      "target": "GND"
+    },
+    "3V3": {
+      "x": 0.45,
+      "y": 2.46,
+      "target": "power(3.3)"
+    },
+    "EN": {
+      "x": 0.45,
+      "y": 3.73,
+      "target": "CHIP_PU"
+    },
+    "4": {
+      "x": 0.45,
+      "y": 5.0,
+      "target": "GPIO4"
+    },
+    "5": {
+      "x": 0.45,
+      "y": 6.27,
+      "target": "GPIO5"
+    },
+    "6": {
+      "x": 0.45,
+      "y": 7.54,
+      "target": "GPIO6"
+    },
+    "7": {
+      "x": 0.45,
+      "y": 8.81,
+      "target": "GPIO7"
+    },
+    "15": {
+      "x": 0.45,
+      "y": 10.08,
+      "target": "GPIO15"
+    },
+    "16": {
+      "x": 0.45,
+      "y": 11.35,
+      "target": "GPIO16"
+    },
+    "17": {
+      "x": 0.45,
+      "y": 12.62,
+      "target": "GPIO17"
+    },
+    "18": {
+      "x": 0.45,
+      "y": 13.89,
+      "target": "GPIO18"
+    },
+    "8": {
+      "x": 0.45,
+      "y": 15.16,
+      "target": "GPIO8"
+    },
+    "19": {
+      "x": 0.45,
+      "y": 16.43,
+      "target": "GPIO19"
+    },
+    "20": {
+      "x": 0.45,
+      "y": 17.7,
+      "target": "GPIO20"
+    },
+    "3": {
+      "x": 2.015,
+      "y": 18.75,
+      "target": "GPIO3"
+    },
+    "46": {
+      "x": 3.285,
+      "y": 18.75,
+      "target": "GPIO46"
+    },
+    "9": {
+      "x": 4.555,
+      "y": 18.75,
+      "target": "GPIO9"
+    },
+    "10": {
+      "x": 5.825,
+      "y": 18.75,
+      "target": "GPIO10"
+    },
+    "11": {
+      "x": 7.095,
+      "y": 18.75,
+      "target": "GPIO11"
+    },
+    "12": {
+      "x": 8.365,
+      "y": 18.75,
+      "target": "GPIO12"
+    },
+    "13": {
+      "x": 9.635,
+      "y": 18.75,
+      "target": "GPIO13"
+    },
+    "14": {
+      "x": 10.905,
+      "y": 18.75,
+      "target": "GPIO14"
+    },
+    "21": {
+      "x": 12.175,
+      "y": 18.75,
+      "target": "GPIO21"
+    },
+    "47": {
+      "x": 13.445,
+      "y": 18.75,
+      "target": "GPIO47"
+    },
+    "48": {
+      "x": 14.715,
+      "y": 18.75,
+      "target": "GPIO48"
+    },
+    "45": {
+      "x": 15.985,
+      "y": 18.75,
+      "target": "GPIO45"
+    },
+    "0": {
+      "x": 17.55,
+      "y": 17.7,
+      "target": "GPIO0"
+    },
+    "35": {
+      "x": 17.55,
+      "y": 16.43,
+      "target": "GPIO35"
+    },
+    "36": {
+      "x": 17.55,
+      "y": 15.16,
+      "target": "GPIO36"
+    },
+    "37": {
+      "x": 17.55,
+      "y": 13.89,
+      "target": "GPIO37"
+    },
+    "38": {
+      "x": 17.55,
+      "y": 12.62,
+      "target": "GPIO38"
+    },
+    "39": {
+      "x": 17.55,
+      "y": 11.35,
+      "target": "GPIO39"
+    },
+    "40": {
+      "x": 17.55,
+      "y": 10.08,
+      "target": "GPIO40"
+    },
+    "41": {
+      "x": 17.55,
+      "y": 8.81,
+      "target": "GPIO41"
+    },
+    "42": {
+      "x": 17.55,
+      "y": 7.54,
+      "target": "GPIO42"
+    },
+    "RX": {
+      "x": 17.55,
+      "y": 6.27,
+      "target": "GPIO44"
+    },
+    "TX": {
+      "x": 17.55,
+      "y": 5.0,
+      "target": "GPIO43"
+    },
+    "2": {
+      "x": 17.55,
+      "y": 3.73,
+      "target": "GPIO2"
+    },
+    "1": {
+      "x": 17.55,
+      "y": 2.46,
+      "target": "GPIO1"
+    },
+    "GND.2": {
+      "x": 17.55,
+      "y": 1.19,
+      "target": "GND"
+    },
+    "GND.3": {
+      "x": 9.0,
+      "y": 10.29,
+      "target": "GND"
+    }
+  }
+}
