@@ -25,10 +25,15 @@ design by jmf13 and extends it with:
 - **Revised power supply** — fully redesigned for lower noise and better thermal performance
 - **EasyEDA Pro** — migrated from KiCad v9 for simplified JLCPCB prototyping workflow
 
-The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
-The PDF and the 3D render above show **V1.0/V1.1**. For V1.2, see the EasyEDA
-Pro project and
-[Netlist_Class_D_amp_2026-10-30.enet](Netlist_Class_D_amp_2026-10-30.enet).
+The complete V1.2 hardware schematic is available in [Schematic.pdf](Schematic.pdf).
+
+<p align="center">
+
+  <img src="Pictures/PCB_3D_TOP.png" width="900">
+
+</p>
+
+<p align="center"><em>V1.2 PCB, top view</em></p>
 
 ---
 
@@ -53,6 +58,10 @@ Pro project and
   [firmware README](tas/README.md#reserved-pins-do-not-use)).
 - PCB re-routed for the new connections. DRC passes. Board outline,
   connector positions and the heatsink area are unchanged from V1.0/V1.1.
+- Silkscreen revision text updated to **V 1.2**.
+- [Schematic.pdf](Schematic.pdf), the 3D render and the new top-view render
+  ([Pictures/PCB_3D_TOP.png](Pictures/PCB_3D_TOP.png)) are re-exported from
+  V1.2.
 - V1.0/V1.1 boards can be reworked to the same firmware mapping. See the
   [V1.0/V1.1 rework checklist](tas/README.md#hardware-v10v11-rework-checklist-before-first-power-up),
   including the list of differences that remain after rework.
