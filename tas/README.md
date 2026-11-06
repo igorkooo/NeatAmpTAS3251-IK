@@ -229,8 +229,8 @@ configuration and default power-up states are owned by
 | GOOD 13.2V | IO39 | GPIO input | Confirms that the 13.2 V intermediate rail is ready through jumper U15 | Yes — U15 pins 5-6 (IO39 to GOOD_13.2V) |
 | ENABLE 12V | IO38 | GPIO output | Enables the 12 V GVDD analog supply after 13.2 V is good through jumper U15 | Yes — U15 pins 7-8 (IO38 to ENABLE_12V) |
 | ENABLE 3.3V analog | IO40 | GPIO output | Enables the isolated 3.3 V analog rail for TAS3251 DAC_AVDD | Yes — U15 pins 3-4 (IO40 to ENABLE_3.3V) |
-| STATUS LED SDI | IO8 | GPIO output (bit-banged) | SK9822 data into U8 SDI via R18 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
-| STATUS LED CKI | IO9 | GPIO output (bit-banged) | SK9822 clock into U8 CKI via R17 | V1.0/V1.1: rework, see [V1.0 checklist](#hardware-v10-checklist-before-first-power-up). V1.2: no |
+| STATUS LED SDI | IO8 | GPIO output (bit-banged) | SK9822 data into U8 SDI via R18 | V1.0/V1.1: rework, see [V1.0/V1.1 rework checklist](#hardware-v10v11-rework-checklist-before-first-power-up). V1.2: no |
+| STATUS LED CKI | IO9 | GPIO output (bit-banged) | SK9822 clock into U8 CKI via R17 | V1.0/V1.1: rework, see [V1.0/V1.1 rework checklist](#hardware-v10v11-rework-checklist-before-first-power-up). V1.2: no |
 
 Header U14 (2x4, 2.54 mm) carries the amplifier control/status lines between
 the ESP32-S3 and the TAS3251, and header U15 (2x4, 2.54 mm) carries the power
@@ -263,6 +263,10 @@ pull-ups.
 | 30 | IO37 | Octal PSRAM (internal, N8R8) | R17 → `L_CKI` (status LED clock) | Not connected (`L_CKI` ← IO9) |
 | 13 / 14 | IO19 / IO20 | USB D− / D+ (native USB-Serial-JTAG) | R16 / R15 → USB-C | unchanged |
 | 36 / 37 | RXD0 / TXD0 | UART0 console / ROM download | H2 pin 5 / H2 pin 3 | unchanged |
+
+`L_SDI` / `L_CKI` are the V1.0/V1.1 net names. In the V1.2 netlist these
+nets are unnamed (`$4N…`), but they connect the same parts (R18 → U8 SDI,
+R17 → U8 CKI).
 
 `tas_pins.h` contains a `static_assert` that fails the build if any pin
 macro is set to IO35-IO37 while `CONFIG_SPIRAM_MODE_OCT` is enabled.
@@ -390,7 +394,7 @@ series and driven from the ESP32-S3 over a bit-banged two-wire link:
 IO8 → `L_SDI` (data, into U8) and IO9 → `L_CKI` (clock); U8's
 CKO/SDO feed U9's CKI/SDI. HW V1.0/V1.1 drove these from IO36/IO37 through
 R18/R17, which collides with the Octal PSRAM. On those boards the LEDs only
-work after the [V1.0 rework](#hardware-v10-checklist-before-first-power-up).
+work after the [V1.0 rework](#hardware-v10v11-rework-checklist-before-first-power-up).
 HW V1.2 routes IO8/IO9 directly. This is **not** a WS2812B (single-wire) — see the
 correction in the top-level [README.md](../README.md#visual-indicators).
 `tas::StatusLed` treats the chain as two independently-addressable LEDs and
@@ -532,7 +536,7 @@ longer needed for bring-up.
     * The baud rate for downloading is too high: lower your baud rate via [Configuration (menuconfig)](#configuration-menuconfig), and try again.
 
 
-### Hardware V1.0 checklist (before first power-up)
+### Hardware V1.0/V1.1 rework checklist (before first power-up)
 
 V1.0 boards have two hardware faults:
 
@@ -551,7 +555,9 @@ do sections A and B, then flash over USB-C instead of section C.
 
 1. **Remove C51** (100 nF, across SW2). It loads the IO35 PSRAM line.
 2. **SW2: remove it, or never press it.** Pressing it shorts a PSRAM line to
-   GND and crashes the ESP32. SW2 has no firmware function on V1.0/V1.1.
+   GND and crashes the ESP32. The firmware does not use SW2 yet (on any
+   revision). To make it work like V1.2 (optional), see
+   [SW2 on IO10](#optional-sw2-on-io10-v12-equivalent) below.
 3. **Remove R18 and R17** (27 Ω, 0402). This frees IO36/IO37 from the LED
    lines.
 4. **Bodge the status LEDs to IO8/IO9** (the pins the firmware now uses):
@@ -567,6 +573,20 @@ do sections A and B, then flash over USB-C instead of section C.
    - No short between H2 pins 7 and 8.
    - No short from either pin to GND or 3.3V.
    - Nothing else is connected to H2 pins 7/8. They now carry the LED bus.
+
+#### Optional: SW2 on IO10 (V1.2 equivalent)
+
+On V1.0/V1.1, the SW2 pad, the C51 pad and TP12 connect directly to module
+pin 28 (IO35). No resistor sits in between, so you cannot just add a wire.
+
+1. Cut the trace between module pin 28 and SW2/C51/TP12. Check that the SW2
+   pad no longer beeps to module pin 28.
+2. Wire the SW2 signal pad to H2 pin 10 (IO10).
+3. Add a 10 kΩ pull-up from H2 pin 10 to 3.3V (this is R51 on V1.2).
+4. Optional: refit C51 (100 nF) on its pads as the debounce cap. It now sits
+   on IO10, not on a PSRAM line.
+
+Skip this section until the firmware actually uses the button.
 
 #### B. Shunts / jumpers
 
@@ -641,3 +661,20 @@ do sections A and B, then flash over USB-C instead of section C.
 One limit remains on V1.0: live JTAG debugging (the gdbtarget launch config)
 goes over the broken USB-C native-USB-JTAG peripheral, so it is unavailable
 on V1.0 boards.
+
+#### Reworked V1.0/V1.1 vs V1.2
+
+After sections A–C, a reworked board runs the same firmware as V1.2 (same
+`tas_pins.h`, same `sdkconfig`). The PCB outline, connectors and heatsink
+area are the same on all revisions. These differences remain:
+
+| Item | Reworked V1.0/V1.1 | V1.2 | Can rework fix it? |
+|------|--------------------|------|--------------------|
+| USB-C (V1.0 only) | Rotated 180°: no USB power, no USB flashing, no JTAG | Works | **No.** Use UART flashing (section C) |
+| SW2 user button | Removed or unused | IO10 with R51 10 kΩ pull-up | Yes, see [SW2 on IO10](#optional-sw2-on-io10-v12-equivalent) |
+| H2 pins 7 / 8 | Carry the status LED bus (IO8/IO9) because of the bodge | Not connected | No. Don't use them for anything else |
+| H2 pin 10 | Still IO10 (or SW2, if you reworked it) | Not connected | No. Don't use it for anything else |
+| C51, R17, R18 | Removed (C51 optional on IO10) | Fitted, on the new nets | — |
+
+Anything plugged into H2 must leave pins 7, 8 and 10 alone, so the same
+add-on board works on every revision.

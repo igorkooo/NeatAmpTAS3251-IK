@@ -25,13 +25,21 @@ design by jmf13 and extends it with:
 - **Revised power supply** — fully redesigned for lower noise and better thermal performance
 - **EasyEDA Pro** — migrated from KiCad v9 for simplified JLCPCB prototyping workflow
 
-The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
+The complete V1.2 hardware schematic is available in [Schematic.pdf](Schematic.pdf).
+
+<p align="center">
+
+  <img src="Pictures/PCB_3D_TOP.png" width="900">
+
+</p>
+
+<p align="center"><em>V1.2 PCB, top view</em></p>
 
 ---
 
 ## Release Notes
 
-### Version 1.2 (schematic updated, not yet produced)
+### Version 1.2 (schematic + PCB layout done, DRC clean, not yet produced)
 - **Important fix — ESP32-S3 module pins 28/29/30 (IO35/IO36/IO37) no longer
   used.** On the ESP32-S3-WROOM-1U-N8R8 these pins are wired internally to the
   Octal PSRAM and must stay unconnected. V1.0/V1.1 used them for SW2 + C51
@@ -48,8 +56,15 @@ The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
 - Firmware already follows this mapping: LEDs on IO8/IO9, PSRAM in Octal mode
   (see [ESP32-S3 module pinout](#esp32-s3-module-pinout) and the
   [firmware README](tas/README.md#reserved-pins-do-not-use)).
-- V1.0/V1.1 boards can be reworked to the same mapping. See the
-  [V1.0 checklist](tas/README.md#hardware-v10-checklist-before-first-power-up).
+- PCB re-routed for the new connections. DRC passes. Board outline,
+  connector positions and the heatsink area are unchanged from V1.0/V1.1.
+- Silkscreen revision text updated to **V 1.2**.
+- [Schematic.pdf](Schematic.pdf), the 3D render and the new top-view render
+  ([Pictures/PCB_3D_TOP.png](Pictures/PCB_3D_TOP.png)) are re-exported from
+  V1.2.
+- V1.0/V1.1 boards can be reworked to the same firmware mapping. See the
+  [V1.0/V1.1 rework checklist](tas/README.md#hardware-v10v11-rework-checklist-before-first-power-up),
+  including the list of differences that remain after rework.
 
 ### Version 1.1
 - **Important fix** — ESP32 USB-C connector was rotated 180° in V1.0, making the
@@ -69,12 +84,12 @@ The complete hardware schematic is available in [Schematic.pdf](Schematic.pdf).
 
 ## Status
 
-**Version:** 1.0/1.1 (Prototype), 1.2 proposed
+**Version:** 1.0/1.1 (Prototype), 1.2 (layout done, not yet produced)
 
 ⚠️ **V1.0/V1.1 boards need rework before the first power-up**: remove C51,
 R17 and R18, and bodge the LEDs to IO8/IO9. V1.0 also needs UART flashing
 because of the rotated USB-C connector. Follow the
-[V1.0 checklist](tas/README.md#hardware-v10-checklist-before-first-power-up).
+[V1.0/V1.1 rework checklist](tas/README.md#hardware-v10v11-rework-checklist-before-first-power-up).
 
 ⚠️ This is the first public prototype release. The hardware has **not yet been validated in real-world operation**. It should be considered experimental until prototype testing is completed.
 
@@ -265,7 +280,7 @@ This table covers every pin of U6 (ESP32-S3-WROOM-1U-N8R8). The V1.0/V1.1
 column comes from `Netlist_Class_D_amp_2026-07-23.enet`. The V1.2 column
 comes from `Netlist_Class_D_amp_2026-10-30.enet`. **Bold** marks a change.
 
-| Module pin | IO | V1.0/V1.1 connection | V1.2 (proposed) | Firmware use (`tas_pins.h`) | Notes |
+| Module pin | IO | V1.0/V1.1 connection | V1.2 | Firmware use (`tas_pins.h`) | Notes |
 |-----------:|----|----------------------|-----------------|------------------------------|-------|
 | 1, 40, 41 | GND | GND | GND | — | |
 | 2 | 3V3 | 3.3V | 3.3V | — | |
@@ -360,8 +375,6 @@ TAS3251/ESP32-S3 for signal integrity and EMI reduction.
 > - Silkscreen polarity for **C25, C26, C27, C28** was inverted — caps replaced with
 >   non-polarised X7R ceramics in this revision, resolving the issue entirely.
 > - Heatsink footprint required rework — addressed in PCB revision.
-
-- Current propsed heatsink 
 
 ---
 
@@ -481,19 +494,19 @@ ln -s /path/to/git/NeatAmpTAS3251/EasyEDA-Pro/libraries/* .
 cd %USERPROFILE%\EasyEDA-Pro\libraries
 
 :: Create directory symlink
-mklink /D NeatAmpTAS3251-lib C:\path\to\NeatAmpTAS3251\library
+mklink /D NeatAmpTAS3251-lib C:\path\to\NeatAmpTAS3251\EasyEDA-Pro\libraries
 ```
 
 After creating the symlink, restart EasyEDA Pro. The library will appear in the
 **Libraries** panel under `NeatAmpTAS3251-lib`.
 
-## Next versions updates to consider
-
-- removing 3.3V power output as big connector with screws - keep it on headers only
-- ensure cooling space around TAS chip to be 32x32mm or 40x40mm. Presently it is 23x27mm
-- (to be checked) add extra electrolyt capacitors in power line
-
-> **Note:** Replace `/path/to/NeatAmpTAS3251/library` with the actual path where
+> **Note:** Replace `/path/to/git/NeatAmpTAS3251` (or `C:\path\to\NeatAmpTAS3251`) with the actual path where
 > you cloned this repository. The EasyEDA Pro libraries directory location may vary
 > by OS version — check your EasyEDA Pro installation settings if the default path
 > above does not exist.
+
+## Next versions updates to consider
+
+- removing 3.3V power output as big connector with screws - keep it on headers only
+- ensure cooling space around TAS chip to be 32x32mm or 40x40mm. Presently it is 23x27mm (unchanged in V1.2)
+- (to be checked) add extra electrolytic capacitors in power line
