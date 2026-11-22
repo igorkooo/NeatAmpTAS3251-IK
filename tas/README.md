@@ -538,15 +538,27 @@ longer needed for bring-up.
 
 ### Hardware V1.0/V1.1 rework checklist (before first power-up)
 
-V1.0 boards have two hardware faults:
+Known hardware issues on the built V1.0/V1.1 boards, and what to do about each
+before the first power-up (details in
+[hw_review_2026-11-06.md](../hw_review_2026-11-06.md)):
 
-- **USB-C rotated 180°** (V1.0 only, fixed in V1.1). There is no USB power,
-  no native USB flashing and no JTAG.
-- **IO35/IO36/IO37 (module pins 28/29/30) used on an N8R8 module** (V1.0
-  *and* V1.1, fixed in V1.2). These pins belong to the internal Octal PSRAM.
-  SW2/C51 sit on IO35, and the SK9822 status LEDs hang off IO36/IO37 through
-  R18/R17. The C51 load and any GPIO drive on these pins corrupt PSRAM and
-  crash the firmware.
+| # | Issue | Effect if not handled | Before power-up |
+|---|-------|-----------------------|-----------------|
+| 1 | **USB-C rotated 180°** (V1.0 only, fixed in V1.1) | No USB power, no native USB flashing, no JTAG | Nothing to rework. Flash over UART (section C) |
+| 2 | **IO35/IO36/IO37 (module pins 28/29/30) used on an N8R8 module** (V1.0 and V1.1, fixed in V1.2). These pins belong to the internal Octal PSRAM. SW2/C51 sit on IO35; the SK9822 LEDs hang off IO36/IO37 via R18/R17 | PSRAM corruption, firmware crashes | **Rework**: steps A1–A5 |
+| 3 | **ESP32 EN (CHIP_PU) has no pull-up**, only C48 1 µF + SW1 (review P0-1, all revisions) | EN floats: the ESP32 may not start, or resets at random | **Rework**: step A6 |
+| 4 | **I²C on strapping pins IO0 (SDA) / IO45 (SCL)** (review P0-2, all revisions) | If the module's eFuse doesn't override the IO45 strap, flash/PSRAM get 1.8 V and the board doesn't boot (no damage) | **Check**: step 11a |
+| 5 | **Inrush**: 3 × 2200 µF on PVDD behind fast-acting F1 (review P0-4) | Plugging into a stiff 36 V supply can blow F1 | **Procedure**: step 13 (current-limited supply). Optional rework: step P3 (time-lag fuse, as in V1.3) |
+| 6 | **Q1 reverse-polarity FET is mounted the wrong way round** (source to input, drain to PVDD; review P0-6, fixed in the KiCad redraw) | Correct polarity works normally. A **reversed** supply is not blocked: Q1's body diode and D2 conduct and F1 must blow | **Procedure**: step 12a. Not reworkable on V1.0/V1.1 |
+| 7 | **RESET_AMP and ENABLE_12V default to "on"** (R45 10 kΩ and R7 100 kΩ pull **up** to 3.3 V; review P0-7, fixed in V1.3) | For the ~0.3 s while the ESP32 boots, GVDD turns on and the power stage leaves reset with no configuration. Then the firmware resets it again. You hear a click or two at switch-on | Optional rework: step P1 |
+| 8 | **No PVDD sense** (review P0-7, added in V1.3 on IO8) | At mains-off the firmware can't see PVDD falling, so the amp runs until GVDD collapses. You hear a thump at switch-off | Optional rework: step P2 (PVDD sense on IO4). Without it, use the soft-off procedure (step P4) |
+
+The board works at the correct input voltage once items 2 and 3 are reworked
+and item 4 checks out. Items 1, 5 and 6 are handled by procedure, not
+rework. Items 7 and 8 only affect switch-on and switch-off noise, not
+function. Do the optional [pop-free rework](#optional-pop-free-rework-v13-equivalent)
+if the board is used for firmware development, so the power sequencing code
+behaves the same as on V1.3.
 
 Do all of the steps below **before connecting the 36 V supply**. On V1.1,
 do sections A and B, then flash over USB-C instead of section C.
@@ -573,6 +585,10 @@ do sections A and B, then flash over USB-C instead of section C.
    - No short between H2 pins 7 and 8.
    - No short from either pin to GND or 3.3V.
    - Nothing else is connected to H2 pins 7/8. They now carry the LED bus.
+6. **Add the EN pull-up:** solder a **10 kΩ** (0402/0603) from **TP9** (EN)
+   to the nearest 3.3V pad, for example C48's neighbourhood or any 3.3V test
+   point. With the existing C48 1 µF this gives the RC reset delay Espressif
+   recommends. Check: TP9 measures ~10 kΩ to 3.3V and does not beep to GND.
 
 #### Optional: SW2 on IO10 (V1.2 equivalent)
 
@@ -586,7 +602,81 @@ pin 28 (IO35). No resistor sits in between, so you cannot just add a wire.
 4. Optional: refit C51 (100 nF) on its pads as the debounce cap. It now sits
    on IO10, not on a PSRAM line.
 
-Skip this section until the firmware actually uses the button.
+Skip this section until the firmware actually uses the button. The planned
+use is a **soft-off** (long press: mute, reset, GVDD off; see step P4).
+
+#### Optional: pop-free rework (V1.3 equivalent)
+
+The V1.3 hardware changes from review P0-7, done as bodges. After P1 and P2, a
+V1.0/V1.1 board behaves like V1.3 at switch-on and switch-off. The only
+difference is the ADC pin of the PVDD sense: **IO4** here, IO8 on V1.3. None
+of these steps is needed for the board to work.
+
+**P1. RESET_AMP and ENABLE_12V default to off** (issue 7)
+
+- **ENABLE_12V:** keep R7 and solder a **4.7 kΩ** (THT or 0805 on wires)
+  from **U15 pin 8** (ENABLE_12V) to **U15 pin 1** (GND). Fit it on the
+  bottom side of the header. With R7 (100 kΩ to 3.3 V) the line now idles at
+  about 0.15 V, so GVDD stays off. When IO38 drives high through the U15 7-8
+  shunt, it sources about 0.7 mA, which is fine.
+- **RESET_AMP:** **remove R45** (10 kΩ 0603, the pull-up from TAS_RESET to
+  3.3 V. Find it by continuity: one pad beeps to TP29, the other to 3.3 V).
+  Then solder a **10 kΩ** from **U14 pin 6** (TAS_RESET) to GND (U15 pin 1,
+  U7 pin 1 or an H2 GND pin, using a short wire).
+  - Alternative without removing R45: add a 1 kΩ from U14 pin 6 to GND
+    instead (about 0.3 V idle level with R45). Check that this is below the
+    TAS3251 RESET_AMP V_IL before relying on it.
+- **Check**, with 5 V only on H2 pin 1 and the shunts fitted, while holding
+  SW1 (ESP32 in reset):
+  - U14 pin 6 < 0.4 V
+  - U15 pin 8 < 0.4 V
+- After this, the amp **stays off when the U14 5-6 or U15 7-8 shunt is
+  removed** (before the rework it ran by default).
+
+**P2. PVDD sense on IO4** (issue 8)
+
+The same divider as V1.3 (R53 / R54 / C70), built off-board onto U7
+(XH 6-pin: pin 1 = GND, pin 2 = 3.3 V, pin 3 = IO4 = ADC1_CH3):
+
+```text
+PVDD (TP1) ──[100 kΩ]──┬── U7 pin 3 (IO4)
+                       ├──[6.8 kΩ]── U7 pin 1 (GND)
+                       └──[100 nF]── U7 pin 1 (GND)
+```
+
+- Solder the **100 kΩ right at TP1**, so the long wire carries only the
+  divided voltage. If that wire chafes and shorts to something, the current
+  is limited to < 0.4 mA.
+- Put the 6.8 kΩ and the 100 nF at the U7 end (on an XH plug or on the
+  header's back side).
+- **Check**: with 36 V on CN1, U7 pin 3 reads about **2.29 V**
+  (PVDD × 6.8 / 106.8).
+- No zener or clamp is needed, see review P0-7.
+- Firmware: `TAS_PIN_PVDD_SENSE` = **GPIO_NUM_4** (ADC1_CH3) on reworked
+  V1.0/V1.1, GPIO_NUM_8 (ADC1_CH7) on V1.3. See the TODO in
+  [tas_pins.h](main/tas_pins.h).
+
+**P3. F1 → time-lag fuse** (issue 5, optional)
+
+Replace F1 (Littelfuse 0451005.MRL, fast-acting) with **0452005.MRL**
+(LCSC C66503, NANO² Slo-Blo 5 A, same 2410 footprint) as in V1.3. With this
+fuse, switching the PSU on at the mains with the board already connected is
+safe without a current-limited bench supply.
+
+**P4. Switching off** (until P2 and the firmware PVDD monitor are in place)
+
+Without PVDD sense the firmware can't react to the mains going off. To
+avoid the switch-off thump:
+
+1. Mute first: volume down / I²C soft-mute, or (once implemented) a long
+   press on SW2 or the `off` console command, which mutes, pulls RESET_AMP
+   low and turns GVDD off.
+2. Then switch off the mains / PSU.
+
+These clicks and thumps are **not dangerous** for normal speakers: they're
+short, small-energy transients, like those of many consumer amps. During
+development, use cheap test speakers or a dummy load anyway, keep the volume
+low, and never connect a tweeter without its crossover capacitor.
 
 #### B. Shunts / jumpers
 
@@ -648,15 +738,44 @@ Skip this section until the firmware actually uses the button.
     - If PSRAM init fails or the chip reboots in a loop, recheck step 6 and
       section A.
 
+    11a. **Check the VDD_SPI strap override** (issue 4). With the chip in the
+    bootloader (step 9), run:
+
+    ```sh
+    espefuse.py -p /dev/tty.usbserial-XXXX summary | grep -i -E "VDD_SPI|FLASH_TPUW"
+    ```
+
+    `VDD_SPI_FORCE` must be set with `VDD_SPI_TIEH = 1` (3.3 V). If it isn't,
+    note the board: SCL's pull-up on IO45 selects 1.8 V for flash/PSRAM at
+    reset. If step 11 boots fine, the board is OK as it is.
+
 #### D. First 36 V power-up
 
 12. Remove the 5 V bench supply from H2 pin 1 and keep the UART monitor
     connected.
-13. Apply 36 V from a current-limited supply for the first power-up.
-    Expected result:
+
+    12a. **Check the input polarity at CN1 with a meter before connecting**
+    (issue 6): pin 1 = **+36 V**, pin 2 = **GND**. On V1.0/V1.1 a reversed
+    supply is not blocked by Q1.
+13. Apply 36 V from a **current-limited** bench supply (e.g. 1–2 A limit)
+    and turn the output on with the board already connected. The supply's
+    current limit then charges the 6600 µF PVDD bulk capacitance gently
+    (issue 5). Do not hot-plug a stiff, unlimited 36 V supply until F1 is
+    replaced by a time-lag type. Expected result:
     - LED 0 goes blue → green.
     - The red D_FAULT LED stays off.
     - The log walks through the startup states to `READY`.
+14. **Measure the rails** (GND = CN1 pin 2):
+
+    | Test point | Rail | Expected |
+    |------------|------|----------|
+    | TP1 | PVDD | supply voltage minus a few mV (Q1 fully on) |
+    | TP30 | PVDDLMQ | ≈ PVDD |
+    | TP2 | +13.2V | 13.2 V |
+    | TP3 | 12V_GVDD | 12.0 V, once the firmware drives ENABLE_12V (review P0-5) |
+
+    If TP1 is ~0.7–1.4 V below the input, Q1 isn't turning on and the load
+    runs through its body diode. Switch off and check D1/R2/R5.
 
 One limit remains on V1.0: live JTAG debugging (the gdbtarget launch config)
 goes over the broken USB-C native-USB-JTAG peripheral, so it is unavailable
@@ -672,9 +791,15 @@ area are the same on all revisions. These differences remain:
 |------|--------------------|------|--------------------|
 | USB-C (V1.0 only) | Rotated 180°: no USB power, no USB flashing, no JTAG | Works | **No.** Use UART flashing (section C) |
 | SW2 user button | Removed or unused | IO10 with R51 10 kΩ pull-up | Yes, see [SW2 on IO10](#optional-sw2-on-io10-v12-equivalent) |
+| Reverse-polarity protection (Q1) | Not effective (Q1 mounted source-to-input) | Same in the EasyEDA V1.2 design. Fixed in the KiCad 10 redraw (next revision) | **No.** Check polarity before connecting (step 12a) |
+| ESP32 EN pull-up | 10 kΩ bodge on TP9 (step A6) | Missing in V1.2 too. To be added in the next revision | Yes, step A6 |
 | H2 pins 7 / 8 | Carry the status LED bus (IO8/IO9) because of the bodge | Not connected | No. Don't use them for anything else |
 | H2 pin 10 | Still IO10 (or SW2, if you reworked it) | Not connected | No. Don't use it for anything else |
 | C51, R17, R18 | Removed (C51 optional on IO10) | Fitted, on the new nets | — |
+| RESET_AMP / ENABLE_12V default | Pulled **up** (amp on during ESP32 boot) | Pulled down in V1.3 (R45, R7 → GND) | Yes, step P1 |
+| PVDD sense | None | V1.3: R53 / R54 / C70 on **IO8** (ADC1_CH7) | Yes, step P2, on **IO4** (ADC1_CH3) via U7 |
+| F1 | 0451005 fast-acting | V1.3: 0452005 Slo-Blo | Yes, step P3 |
+| U7 pin 3 (IO4) | PVDD sense, if P2 is done | Spare | — |
 
 Anything plugged into H2 must leave pins 7, 8 and 10 alone, so the same
 add-on board works on every revision.
